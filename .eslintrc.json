@@ -1,0 +1,72 @@
+{
+	"root": true,
+	"ignorePatterns": ["src/rest/api", "src/app/shared/translation/i18n"],
+	"overrides": [
+		{
+			"files": ["*.ts"],
+			"parserOptions": {
+				"project": ["tsconfig.json"],
+				"createDefaultProgram": true
+			},
+			"extends": [
+				"plugin:cypress/recommended",
+				"@lubowiecki/base",
+				"plugin:@angular-eslint/recommended",
+				"plugin:@angular-eslint/template/process-inline-templates"
+			],
+			"plugins": ["cypress", "@lubowiecki/assertions"],
+			"rules": {
+				"@angular-eslint/directive-selector": [
+					"error",
+					{
+						"type": "attribute",
+						"prefix": "app",
+						"style": "camelCase"
+					}
+				],
+				"@angular-eslint/component-selector": [
+					"error",
+					{
+						"type": "element",
+						"prefix": "app",
+						"style": "kebab-case"
+					}
+				],
+				"import/order": [
+					"error",
+					{
+						"groups": ["builtin", "external", "internal"],
+						"pathGroups": [
+							{
+								"pattern": "@{core,pages,rest,translations,cypress}/**",
+								"group": "internal"
+							},
+							{
+								"pattern": "@environment",
+								"group": "internal"
+							}
+						],
+						"pathGroupsExcludedImportTypes": ["builtin"],
+						"newlines-between": "always"
+					}
+				],
+				"@lubowiecki/assertions/assertions-code": [
+					"error",
+					"^[a-z0-9]{8}$"
+				],
+				"@lubowiecki/assertions/assertions-condition": ["error"]
+			}
+		},
+		{
+			"files": ["*.html"],
+			"extends": ["plugin:@angular-eslint/template/recommended"],
+			"rules": {}
+		},
+		{
+			"files": ["*.js"],
+			"parserOptions": {
+				"ecmaVersion": 11
+			}
+		}
+	]
+}

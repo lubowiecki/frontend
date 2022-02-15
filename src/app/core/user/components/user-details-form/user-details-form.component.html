@@ -1,0 +1,61 @@
+<ng-container [formGroup]="formGroup">
+	<div>
+		<mat-form-field>
+			<mat-label>{{ "label.firstname" | translate }}</mat-label>
+			<input matInput formControlName="firstname" [readonly]="readonly" />
+		</mat-form-field>
+	</div>
+	<div>
+		<mat-form-field>
+			<mat-label>{{ "label.lastname" | translate }}</mat-label>
+			<input matInput formControlName="lastname" [readonly]="readonly" />
+		</mat-form-field>
+	</div>
+	<div>
+		<mat-form-field>
+			<mat-label>{{ "label.year" | translate }}</mat-label>
+			<input
+				matInput
+				formControlName="year"
+				[matDatepicker]="pickerYear"
+				[readonly]="readonly"
+			/>
+			<mat-datepicker-toggle
+				*ngIf="!readonly"
+				matSuffix
+				[for]="pickerYear"
+			></mat-datepicker-toggle>
+			<mat-datepicker #pickerYear></mat-datepicker>
+		</mat-form-field>
+	</div>
+	<div>
+		<mat-form-field>
+			<mat-label>{{ "label.creationDate" | translate }}</mat-label>
+			<input
+				matInput
+				type="datetime-local"
+				step="1"
+				formControlName="creationDate"
+				[readonly]="readonly"
+			/>
+		</mat-form-field>
+	</div>
+	<div>
+		<mat-form-field>
+			<mat-label>{{ "label.updateDate" | translate }}</mat-label>
+			<input
+				matInput
+				type="datetime-local"
+				step="1"
+				formControlName="updateDate"
+				[readonly]="readonly"
+			/>
+		</mat-form-field>
+	</div>
+
+	<div *ngIf="!readonly" class="my-md">
+		<button (click)="update()">
+			{{ "common.action.update" | translate }}
+		</button>
+	</div>
+</ng-container>
