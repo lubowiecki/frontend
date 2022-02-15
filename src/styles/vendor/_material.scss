@@ -1,0 +1,133 @@
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@use "@angular/material" as mat;
+
+// Plus imports for other components in your app.
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat.core;
+
+$sedn-blue: (
+	50: #e9f1ff,
+	100: #c8dcff,
+	200: #a4c5ff,
+	300: #7faefe,
+	400: #639cfe,
+	500: var(--blue-500),
+	600: #4183fe,
+	700: #3878fe,
+	800: #306efe,
+	900: #215bfd,
+	A100: #fff,
+	A200: #fff,
+	A400: #cedaff,
+	A700: #b5c6ff,
+	contrast: (
+		50: #000,
+		100: #000,
+		200: #000,
+		300: #000,
+		400: #000,
+		500: #000,
+		600: #fff,
+		700: #fff,
+		800: #fff,
+		900: #fff,
+		A100: #000,
+		A200: #000,
+		A400: #000,
+		A700: #000,
+	),
+);
+$sedn-navy: (
+	50: #e0e5e9,
+	100: #b3bdc7,
+	200: #8092a2,
+	300: #4d667d,
+	400: #264561,
+	500: var(--navy-500),
+	600: #00203e,
+	700: #001b36,
+	800: #00162e,
+	900: #000d1f,
+	A100: #5c89ff,
+	A200: #2964ff,
+	A400: #0044f5,
+	A700: #003ddb,
+	contrast: (
+		50: #000,
+		100: #000,
+		200: #000,
+		300: #fff,
+		400: #fff,
+		500: #fff,
+		600: #fff,
+		700: #fff,
+		800: #fff,
+		900: #fff,
+		A100: #000,
+		A200: #fff,
+		A400: #fff,
+		A700: #fff,
+	),
+);
+$sedn-red: (
+	50: #f7e0e0,
+	100: #ebb3b3,
+	200: #dd8080,
+	300: #cf4d4d,
+	400: #c52626,
+	500: var(--red-500),
+	600: #b50000,
+	700: #ac0000,
+	800: #a40000,
+	900: #960000,
+	A100: #ffc1c1,
+	A200: #ff8e8e,
+	A400: #ff5b5b,
+	A700: #ff4141,
+	contrast: (
+		50: #000,
+		100: #000,
+		200: #000,
+		300: #fff,
+		400: #fff,
+		500: #fff,
+		600: #fff,
+		700: #fff,
+		800: #fff,
+		900: #fff,
+		A100: #000,
+		A200: #000,
+		A400: #000,
+		A700: #fff,
+	),
+);
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+$sedn-primary: mat.define-palette($sedn-blue);
+$sedn-accent: mat.define-palette($sedn-navy);
+
+// The warn palette is optional (defaults to red).
+$sedn-warn: mat.define-palette($sedn-red);
+
+// Create the theme object. A theme consists of configurations for individual
+// theming systems such as "color" or "typography".
+$sedn-theme: mat.define-light-theme(
+	(
+		color: (
+			primary: $sedn-primary,
+			accent: $sedn-accent,
+			warn: $sedn-warn,
+		),
+	)
+);
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include mat.all-component-themes($sedn-theme);

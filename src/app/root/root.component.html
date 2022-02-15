@@ -1,0 +1,12 @@
+<ul class="flex space-x-sm">
+	<li>
+		<a routerLink="/">{{ "page.profile.title" | translate }}</a>
+	</li>
+	<li>
+		<a routerLink="/user">{{ "page.user.title" | translate }}</a>
+	</li>
+</ul>
+<div class="mb-md">
+	<app-language-switcher-container></app-language-switcher-container>
+</div>
+<router-outlet></router-outlet>

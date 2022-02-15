@@ -1,0 +1,3 @@
+{
+	"extends": ["@lubowiecki/stylelint-config-base"]
+}

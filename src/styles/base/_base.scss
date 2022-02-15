@@ -1,0 +1,13 @@
+html,
+body {
+	height: 100%;
+}
+
+body {
+	@apply font-sans text-base p-sm;
+}
+
+b,
+strong {
+	@apply font-bold;
+}
