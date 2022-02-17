@@ -1,6 +1,6 @@
 import { always, ValueObject } from '@lubowiecki/ts-utility';
 
-import { UuidDto } from '@rest/api/models';
+import { UuidDto } from '@rest/dtos/models';
 
 import { UserIdProps } from './user-id-props';
 import { isUserIdProps } from './is-user-id-props';

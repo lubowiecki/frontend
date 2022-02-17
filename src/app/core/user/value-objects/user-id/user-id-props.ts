@@ -1,4 +1,4 @@
-import { UuidDto } from '@rest/api/models';
+import { UuidDto } from '@rest/dtos/models';
 
 export interface UserIdProps {
     id: UuidDto;
