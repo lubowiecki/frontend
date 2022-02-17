@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 import { environment } from '@environment';
-import { UserDto } from '@rest/api/models';
+import { UserDto } from '@rest/dtos/models';
 
 import { UserId } from '../value-objects/user-id';
 import { User } from '../value-objects/user';

@@ -1,7 +1,7 @@
 import { isOfType, OfType } from '@lubowiecki/ts-utility';
 import * as R from 'ramda';
 
-import { IsoDateWithTimeDto } from '@rest/api/models';
+import { IsoDateWithTimeDto } from '@rest/dtos/models';
 
 export const isIsoDateWithTimeDto = (value: unknown): value is IsoDateWithTimeDto =>
 	isOfType(OfType.string, value) &&
