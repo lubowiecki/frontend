@@ -1,11 +1,12 @@
 {
-	"integrationFolder": "cypress/integration",
+	"integrationFolder": "cypress/integration/frontend",
 	"supportFile": "cypress/support/index.ts",
-	"videosFolder": "cypress/videos",
+	"videosFolder": "cypress/videos/frontend",
 	"screenshotsFolder": "cypress/screenshots",
 	"pluginsFile": "cypress/plugins/index.ts",
-	"fixturesFolder": "cypress/fixtures",
+	"fixturesFolder": "cypress/fixtures/frontend",
 	"baseUrl": "http://localhost:4201",
 	"viewportWidth": 1280,
-	"video": false
+	"video": false,
+	"trashAssetsBeforeRuns": false
 }

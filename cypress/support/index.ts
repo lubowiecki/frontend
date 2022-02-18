@@ -6,7 +6,7 @@ import './check-screenshot';
 
 addMatchImageSnapshotCommand({
 	customSnapshotsDir: 'cypress/screenshots',
-	failureThreshold: 0.03,
+	failureThreshold: 0,
 	failureThresholdType: 'percent',
-	customDiffConfig: { threshold: 0.1 },
+	customDiffConfig: { threshold: 0 },
 });
