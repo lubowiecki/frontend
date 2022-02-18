@@ -35,7 +35,6 @@
 		"@lubowiecki/ts-utility": "^1.0.0",
 		"@ngx-translate/core": "^14.0.0",
 		"@ngx-translate/http-loader": "^7.0.0",
-		"application": "^0.1.4",
 		"luxon": "^2.3.0",
 		"ramda": "^0.28.0",
 		"rxjs": "~7.5.4",
