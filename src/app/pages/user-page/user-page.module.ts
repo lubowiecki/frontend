@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 import { UserDetailsFormModule } from 'src/app/core/user/components/user-details-form/user-details-form.module';
 import { customMatDatepickerIntl } from 'src/app/core/vendor/angular-material-config/datepicker/datepicker-intl-provider';
 
+import { UserDownloadCvModule } from '@core/user/components/user-download-cv/user-download-cv.module';
+
 import { UserPageRoutingModule } from './user-page-routing.module';
 import { UserPageComponent } from './user-page.component';
 
@@ -14,6 +16,7 @@ import { UserPageComponent } from './user-page.component';
 		CommonModule,
 		UserPageRoutingModule,
 		UserDetailsFormModule,
+		UserDownloadCvModule,
 	],
 	providers: [customMatDatepickerIntl],
 })

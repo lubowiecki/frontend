@@ -1,8 +1,12 @@
-<app-user-details-form
-	[user]="user$ | async"
-	(userChange)="update($event)"
-></app-user-details-form>
+<ng-container *ngIf="user$ | async as user">
+	<app-user-details-form
+		[user]="user"
+		(userChange)="update($event)"
+	></app-user-details-form>
 
-<div class="text-navy-500">
-	{{ relativeUpdateDate }}
-</div>
+	<app-user-download-cv [user]="user"></app-user-download-cv>
+
+	<div class="text-navy-500">
+		{{ relativeUpdateDate }}
+	</div>
+</ng-container>

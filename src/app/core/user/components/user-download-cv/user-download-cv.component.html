@@ -1,0 +1,5 @@
+<app-file-download
+	[label]="'label.downloadFile' | translate"
+	[file]="getFile$() | async"
+	(download)="download()"
+></app-file-download>

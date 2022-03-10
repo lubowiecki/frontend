@@ -11,6 +11,7 @@ export interface Translations {
 	'datepicker.switchToMonthViewLabel': string;
 	'datepicker.switchToMultiYearViewLabel': string;
 	'label.creationDate': string;
+	'label.downloadFile': string;
 	'label.firstname': string;
 	'label.lastname': string;
 	'label.updateDate': string;

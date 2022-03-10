@@ -1,0 +1,11 @@
+<button mat-button (click)="onDownload()">
+	<div class="flex items-center">
+		{{ label }}
+
+		<app-file-download-progress
+			*ngIf="file"
+			class="ml-sm"
+			[file]="file"
+		></app-file-download-progress>
+	</div>
+</button>
