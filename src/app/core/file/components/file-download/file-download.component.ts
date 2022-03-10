@@ -20,23 +20,10 @@ export class FileDownloadComponent {
 
 	onDownload(): void {
 		if (this.file) {
-			this.saveFile(this.file);
+			this.file.saveLocally();
 			return;
 		}
 
 		this.download.emit();
-	}
-
-	saveFile(file: FileDownload): void {
-		if (!(file.content && file.name)) return;
-
-		const anchorElement = document.createElement('a');
-		const href = URL.createObjectURL(file.content);
-
-		anchorElement.href = href;
-		anchorElement.download = file.name;
-		anchorElement.click();
-
-		URL.revokeObjectURL(href);
 	}
 }

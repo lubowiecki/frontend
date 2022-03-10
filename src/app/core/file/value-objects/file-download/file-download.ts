@@ -56,4 +56,17 @@ export class FileDownload extends ValueObject<FileDownloadProps> {
 	get name(): Maybe<string> {
 		return this.props.name;
 	}
+
+	saveLocally(): void {
+		if (!(this.content && this.name)) return;
+
+		const anchorElement = document.createElement('a');
+		const href = URL.createObjectURL(this.content);
+
+		anchorElement.href = href;
+		anchorElement.download = this.name;
+		anchorElement.click();
+
+		URL.revokeObjectURL(href);
+	}
 }

@@ -26,6 +26,7 @@ export class UserDownloadCvComponent {
 	download(): void {
 		this.restUserService.getUserCv$(this.user.id).subscribe((file) => {
 			this.#file.next(file);
+			file.saveLocally();
 		});
 	}
 }
