@@ -1,6 +1,6 @@
 {
 	"root": true,
-	"ignorePatterns": ["src/rest/api", "src/app/shared/translation/i18n"],
+	"ignorePatterns": ["src/app/rest/dtos", "src/app/core/translation/i18n"],
 	"overrides": [
 		{
 			"files": ["*.ts"],
