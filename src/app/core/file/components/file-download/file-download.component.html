@@ -1,4 +1,4 @@
-<button mat-button (click)="onDownload()">
+<button mat-flat-button color="accent" (click)="onDownload()">
 	<div class="flex items-center">
 		{{ label }}
 
@@ -6,6 +6,7 @@
 			*ngIf="file"
 			class="ml-sm"
 			[file]="file"
+			color="accent"
 		></app-file-download-progress>
 	</div>
 </button>

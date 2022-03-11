@@ -1,6 +1,7 @@
 import { Component, ChangeDetectionStrategy, Input } from '@angular/core';
 import { Maybe } from '@lubowiecki/ts-utility';
 import { ProgressSpinnerMode } from '@angular/material/progress-spinner';
+import { ThemePalette } from '@angular/material/core';
 
 import { FileDownload } from '@core/file/value-objects/file-download';
 
@@ -15,13 +16,11 @@ export class FileDownloadProgressComponent {
 
 	@Input() diameter: number;
 
-	@Input() strokeWidth: number;
+	@Input() strokeWidth: number = 15;
 
-	mode: ProgressSpinnerMode;
+	@Input() color: ThemePalette = 'primary';
 
-	constructor() {
-		this.mode = 'determinate';
-		this.diameter = 18;
-		this.strokeWidth = 3;
-	}
+	@Input() inline: boolean = true;
+
+	mode: ProgressSpinnerMode = 'determinate';
 }

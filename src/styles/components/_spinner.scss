@@ -1,0 +1,18 @@
+@use "@angular/material" as mat;
+@use "~src/styles/vendor/material" as palette;
+
+.mat-progress-spinner {
+	&.is-inline {
+		width: 1em !important;
+		height: 1em !important;
+
+		svg {
+			width: 100% !important;
+			height: 100% !important;
+		}
+	}
+}
+
+.mat-accent .mat-progress-spinner circle {
+	stroke: mat.get-contrast-color-from-palette(palette.$sedn-accent, 500);
+}
