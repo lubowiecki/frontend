@@ -1,8 +1,7 @@
 import {
 	Component, ChangeDetectionStrategy, OnInit, OnDestroy,
 } from '@angular/core';
-import { Subscription } from 'rxjs';
-import { webSocket } from 'rxjs/webSocket';
+import { io, Socket } from 'socket.io-client';
 
 @Component({
 	selector: 'app-websocket-page',
@@ -11,29 +10,27 @@ import { webSocket } from 'rxjs/webSocket';
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class WebsocketPageComponent implements OnInit, OnDestroy {
-	#websocket$ = webSocket({
-		url: 'ws://localhost:8080/v1',
-	});
-
-	#subscriptions: Subscription = new Subscription();
+	socket: Socket;
 
 	constructor() { }
 
 	ngOnInit(): void {
-		this.#subscriptions.add(
-			this.#websocket$.subscribe({
-				next: console.log,
-				error: console.log,
-				complete: () => console.log('complete'),
-			}),
-		);
+		this.socket = io('ws://localhost:8080/v1', {
+			auth: {
+				token: 'myToken',
+			},
+		});
 	}
 
 	ngOnDestroy(): void {
-		this.#subscriptions.unsubscribe();
+		this.socket.close();
 	}
 
-	onSend(): void {
-		this.#websocket$.next(JSON.stringify({ update: `New data: ${Math.random()}` }));
+	onUserCreate(): void {
+		this.socket.emit('user:create', JSON.stringify({ update: `New data: ${Math.random()}` }));
+	}
+
+	onUserUpdate(): void {
+		this.socket.emit('user:update', JSON.stringify({ update: `New data: ${Math.random()}` }));
 	}
 }
