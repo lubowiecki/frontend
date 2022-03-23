@@ -4,7 +4,7 @@ import {
 
 import { IsoDateWithTime } from '@core/date/value-objects/iso-date-with-time';
 import { IsoDate } from '@core/date/value-objects/iso-date';
-import { UserDto } from '@rest/dtos/models';
+import { UserDto } from '@api/dtos/models';
 
 import { UserProps } from './user-props';
 import { isUserProps } from './is-user-props';

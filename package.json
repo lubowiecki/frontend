@@ -17,7 +17,7 @@
 		"test:docs:e2e": "ng e2e docs",
 		"analyze:bundle": "npm run build:prod -- --stats-json && npx webpack-bundle-analyzer dist/frontend/stats.json --port 4002",
 		"translate:build": "translate build --source=\"./src/app/**/*+(.ts|.html)\" --i18n=./src/app/core/translation/i18n/ --langs=pl --langs=en",
-		"dtos:build": "openapi b typescript --dist=./src/app/rest/dtos"
+		"dtos:build": "openapi b typescript --dist=./src/app/api/dtos"
 	},
 	"private": true,
 	"dependencies": {

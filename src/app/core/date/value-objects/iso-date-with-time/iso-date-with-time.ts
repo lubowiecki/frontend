@@ -2,7 +2,7 @@ import { always, Maybe, ValueObject } from '@lubowiecki/ts-utility';
 import { DateTime } from 'luxon';
 import { TranslationLanguage } from 'src/app/core/translation/value-objects/translation-language';
 
-import { IsoDateWithTimeDto } from '@rest/dtos/models';
+import { IsoDateWithTimeDto } from '@api/dtos/models';
 
 import { IsoDateWithTimeProps } from './iso-date-with-time-props';
 import { isIsoDateWithTimeProps } from './is-iso-date-with-time-props';

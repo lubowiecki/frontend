@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 import { environment } from '@environment';
-import { UserDto } from '@rest/dtos/models';
+import { UserDto } from '@api/dtos/models';
 import { FileDownload } from '@core/file/value-objects/file-download';
 
 import { UserId } from '../value-objects/user-id';

@@ -38,7 +38,7 @@
 						"groups": ["builtin", "external", "internal"],
 						"pathGroups": [
 							{
-								"pattern": "@{core,pages,rest,translations,cypress}/**",
+								"pattern": "@{api,core,pages,translations,cypress}/**",
 								"group": "internal"
 							},
 							{

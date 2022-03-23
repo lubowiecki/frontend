@@ -20,7 +20,7 @@
 			"@environment": ["./src/environments/environment.ts"],
 			"@core/*": ["src/app/core/*"],
 			"@pages/*": ["./src/app/pages/*"],
-			"@rest/*": ["./src/app/rest/*"],
+			"@api/*": ["./src/app/api/*"],
 			"@translations/*": ["./src/translations/*"],
 			"@cypress/*": ["./cypress/*"]
 		},
