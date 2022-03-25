@@ -5,7 +5,7 @@
 	"screenshotsFolder": "cypress/screenshots",
 	"pluginsFile": "cypress/plugins/index.ts",
 	"fixturesFolder": "cypress/fixtures/docs",
-	"baseUrl": "http://localhost:4200",
+	"baseUrl": "http://host.docker.internal:4200",
 	"viewportWidth": 1280,
 	"video": false,
 	"trashAssetsBeforeRuns": false

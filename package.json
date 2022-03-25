@@ -4,8 +4,8 @@
 	"scripts": {
 		"ng": "ng",
 		"start": "ng serve",
-		"start:mock": "ng serve --configuration mock",
-		"start:docs": "cross-env TAILWIND_INCLUDE_DOCS=true ng serve docs",
+		"start:mock": "ng serve --configuration mock --disable-host-check",
+		"start:docs": "cross-env TAILWIND_INCLUDE_DOCS=true ng serve docs --disable-host-check",
 		"build": "ng build",
 		"build:prod": "ng build --configuration production",
 		"lint:angular": "ng lint --fix",
@@ -13,8 +13,10 @@
 		"test:unit": "ng test",
 		"test:e2e": "ng e2e",
 		"test:mock:e2e": "ng e2e frontend",
+		"test:mock:e2e:docker": "docker run -it --rm --add-host host.docker.internal:host-gateway -v \"%cd%\":/e2e -w /e2e cypress/included:9.5.2 cypress run --config-file cypress.frontend.json --browser chrome",
 		"test:docs:unit": "ng test docs",
 		"test:docs:e2e": "ng e2e docs",
+		"test:docs:e2e:docker": "docker run -it --rm --add-host host.docker.internal:host-gateway -v \"%cd%\":/e2e -w /e2e cypress/included:9.5.2 cypress run --config-file cypress.docs.json --browser chrome",
 		"analyze:bundle": "npm run build:prod -- --stats-json && npx webpack-bundle-analyzer dist/frontend/stats.json --port 4002",
 		"translate:build": "translate build --source=\"./src/app/**/*+(.ts|.html)\" --i18n=./src/app/core/translation/i18n/ --langs=pl --langs=en",
 		"dtos:build": "openapi b typescript --dist=./src/app/api/dtos"
