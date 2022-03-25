@@ -31,6 +31,10 @@ export class User extends ValueObject<UserProps> {
 		});
 	}
 
+	static fromString(value: string): User {
+		return this.fromDto(JSON.parse(value));
+	}
+
 	get id(): UserId {
 		return this.props.id;
 	}
@@ -67,5 +71,9 @@ export class User extends ValueObject<UserProps> {
 			creationDate: this.creationDate.toDto(),
 			updateDate: this.updateDate?.toDto(),
 		};
+	}
+
+	toString(): string {
+		return JSON.stringify(this.toDto());
 	}
 }

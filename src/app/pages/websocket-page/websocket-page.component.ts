@@ -1,7 +1,9 @@
 import {
 	Component, ChangeDetectionStrategy, OnInit, OnDestroy,
 } from '@angular/core';
-import { WebSocketService } from 'src/app/api/websocket/web-socket.service';
+
+import { WebSocketUserService } from '@core/user/services/web-socket-user.service';
+import { WebSocketService } from '@core/web-socket/web-socket.service';
 
 @Component({
 	selector: 'app-websocket-page',
@@ -10,7 +12,10 @@ import { WebSocketService } from 'src/app/api/websocket/web-socket.service';
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class WebsocketPageComponent implements OnInit, OnDestroy {
-	constructor(private webSocketService: WebSocketService) { }
+	constructor(
+		private webSocketService: WebSocketService,
+		private webSocketUserService: WebSocketUserService,
+	) { }
 
 	ngOnInit(): void {
 		this.webSocketService.open('myToken');
@@ -21,10 +26,10 @@ export class WebsocketPageComponent implements OnInit, OnDestroy {
 	}
 
 	onUserCreate(): void {
-		this.webSocketService.emitUserCreate(JSON.stringify({ update: `New data: ${Math.random()}` }));
+		this.webSocketUserService.emitUserCreate(JSON.stringify({ update: `New data: ${Math.random()}` }));
 	}
 
 	onUserUpdate(): void {
-		this.webSocketService.emitUserUpdate(JSON.stringify({ update: `New data: ${Math.random()}` }));
+		this.webSocketUserService.emitUserUpdate(JSON.stringify({ update: `New data: ${Math.random()}` }));
 	}
 }
