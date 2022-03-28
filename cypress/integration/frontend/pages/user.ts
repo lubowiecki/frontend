@@ -4,6 +4,6 @@ describe('Frontend :: User', () => {
 
 		cy.get('input[formControlName="firstname"]').should('have.value', 'firstname');
 
-		cy.checkScreenshot('user', 'en');
+		cy.checkScreenshot('user', 'pl');
 	});
 });

@@ -4,6 +4,6 @@ describe('Frontend :: Home', () => {
 
 		cy.get('input[formControlName="firstname"]').should('have.value', 'firstname');
 
-		cy.checkScreenshot('home', 'en');
+		cy.checkScreenshot('home', 'pl');
 	});
 });

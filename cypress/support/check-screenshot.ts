@@ -1,6 +1,6 @@
 import { Options } from 'cypress-image-snapshot';
 
-type Language = string;
+type Language = 'pl' | 'en';
 
 interface MatchImageSnapshotOptions {
 	snapshotOptions?: Options;
