@@ -82,6 +82,20 @@
 							"extractLicenses": false,
 							"sourceMap": true,
 							"namedChunks": true
+						},
+						"mockDocker": {
+							"fileReplacements": [
+								{
+									"replace": "src/environments/environment.ts",
+									"with": "src/environments/environment.mock.docker.ts"
+								}
+							],
+							"buildOptimizer": false,
+							"optimization": false,
+							"vendorChunk": true,
+							"extractLicenses": false,
+							"sourceMap": true,
+							"namedChunks": true
 						}
 					},
 					"defaultConfiguration": "production"
@@ -97,6 +111,10 @@
 						},
 						"mock": {
 							"browserTarget": "frontend:build:mock",
+							"port": 4201
+						},
+						"mockDocker": {
+							"browserTarget": "frontend:build:mockDocker",
 							"port": 4201
 						}
 					},
