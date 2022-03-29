@@ -83,11 +83,11 @@
 							"sourceMap": true,
 							"namedChunks": true
 						},
-						"mockDocker": {
+						"mockE2e": {
 							"fileReplacements": [
 								{
 									"replace": "src/environments/environment.ts",
-									"with": "src/environments/environment.mock.docker.ts"
+									"with": "src/environments/environment.mock.e2e.ts"
 								}
 							],
 							"buildOptimizer": false,
@@ -113,8 +113,8 @@
 							"browserTarget": "frontend:build:mock",
 							"port": 4201
 						},
-						"mockDocker": {
-							"browserTarget": "frontend:build:mockDocker",
+						"mockE2e": {
+							"browserTarget": "frontend:build:mockE2e",
 							"port": 4201
 						}
 					},
