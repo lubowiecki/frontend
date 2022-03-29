@@ -13,9 +13,9 @@
 		"lint:angular": "ng lint --fix",
 		"lint:styles": "stylelint **/*.scss --fix -i=.gitignore",
 		"test:unit": "ng test",
-		"test:mock:e2e": "docker build -t lil/cypress/included:9.5.3 . && docker run -it --rm -v \"%cd%\":/e2e lil/cypress/included:9.5.3 --config-file cypress.frontend.json",
+		"test:mock:e2e": "docker build -t lil/cypress/included:9.5.3 . && docker run -it --rm --add-host host.docker.internal:host-gateway -v \"%cd%\":/e2e lil/cypress/included:9.5.3 --config-file cypress.frontend.json",
 		"test:docs:unit": "ng test docs",
-		"test:docs:e2e": "docker build -t lil/cypress/included:9.5.3 . && docker run -it --rm -v \"%cd%\":/e2e lil/cypress/included:9.5.3 --config-file cypress.docs.json",
+		"test:docs:e2e": "docker build -t lil/cypress/included:9.5.3 . && docker run -it --rm --add-host host.docker.internal:host-gateway -v \"%cd%\":/e2e lil/cypress/included:9.5.3 --config-file cypress.docs.json",
 		"analyze:bundle": "npm run build:prod -- --stats-json && npx webpack-bundle-analyzer dist/frontend/stats.json --port 4002",
 		"translate:build": "translate build --source=\"./src/app/**/*+(.ts|.html)\" --i18n=./src/app/core/translation/i18n/ --langs=pl --langs=en",
 		"dtos:build": "openapi b typescript --dist=./src/app/api/dtos"
