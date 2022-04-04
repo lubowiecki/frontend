@@ -1,7 +1,7 @@
 import { always, ValueObject } from '@lubowiecki/ts-utility';
 import { DateTime } from 'luxon';
 
-import { IsoDateDto } from '@rest/dtos/models';
+import { IsoDateDto } from '@api/dtos/models';
 
 import { IsoDateProps } from './iso-date-props';
 import { isIsoDateProps } from './is-iso-date-props';

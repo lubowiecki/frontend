@@ -4,7 +4,7 @@ import {
 
 import { IsoDateWithTime } from '@core/date/value-objects/iso-date-with-time';
 import { IsoDate } from '@core/date/value-objects/iso-date';
-import { UserDto } from '@rest/dtos/models';
+import { UserDto } from '@api/dtos/models';
 
 import { UserProps } from './user-props';
 import { isUserProps } from './is-user-props';
@@ -29,6 +29,10 @@ export class User extends ValueObject<UserProps> {
 			creationDate: IsoDateWithTime.fromDto(dto.creationDate),
 			updateDate: isDefined(dto.updateDate) ? IsoDateWithTime.fromDto(dto.updateDate) : null,
 		});
+	}
+
+	static fromString(value: string): User {
+		return this.fromDto(JSON.parse(value));
 	}
 
 	get id(): UserId {
@@ -67,5 +71,9 @@ export class User extends ValueObject<UserProps> {
 			creationDate: this.creationDate.toDto(),
 			updateDate: this.updateDate?.toDto(),
 		};
+	}
+
+	toString(): string {
+		return JSON.stringify(this.toDto());
 	}
 }

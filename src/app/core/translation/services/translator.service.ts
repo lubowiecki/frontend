@@ -75,8 +75,8 @@ export class Translator {
 	private getInitialLanguage(): TranslationLanguage {
 		const browserLanguage: Maybe<TranslationLanguage> = this.getBrowserLanguage();
 
-		if (isTranslationLanguageEnum(browserLanguage)) {
-			return TranslationLanguage.create({ lang: browserLanguage });
+		if (browserLanguage instanceof TranslationLanguage) {
+			return browserLanguage;
 		}
 
 		return this.getDefaultLanguage();

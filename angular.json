@@ -82,6 +82,20 @@
 							"extractLicenses": false,
 							"sourceMap": true,
 							"namedChunks": true
+						},
+						"mockE2e": {
+							"fileReplacements": [
+								{
+									"replace": "src/environments/environment.ts",
+									"with": "src/environments/environment.mock.e2e.ts"
+								}
+							],
+							"buildOptimizer": false,
+							"optimization": false,
+							"vendorChunk": true,
+							"extractLicenses": false,
+							"sourceMap": true,
+							"namedChunks": true
 						}
 					},
 					"defaultConfiguration": "production"
@@ -97,6 +111,10 @@
 						},
 						"mock": {
 							"browserTarget": "frontend:build:mock",
+							"port": 4201
+						},
+						"mockE2e": {
+							"browserTarget": "frontend:build:mockE2e",
 							"port": 4201
 						}
 					},

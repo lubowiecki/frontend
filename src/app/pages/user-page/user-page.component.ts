@@ -1,6 +1,7 @@
 import { Component, ChangeDetectionStrategy, OnDestroy } from '@angular/core';
 import { Observable, Subject, Subscription } from 'rxjs';
 import { Maybe } from '@lubowiecki/ts-utility';
+import { webSocket } from 'rxjs/webSocket';
 
 import { RestUserService } from '@core/user/services/rest-user.service';
 import { User } from '@core/user/value-objects/user';
