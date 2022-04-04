@@ -15,4 +15,4 @@ export const isUserProps = (obj: unknown): obj is UserProps =>
 	(!isDefined(obj.content) || isInstanceOf(IsoDateWithTime, obj.updateDate)) &&
 	isInstanceOf(IsoDate)(obj.year) &&
 	isOfType(OfType.string, obj.firstname) &&
-	isOfType(OfType.string)(obj.lastname);
+	isOfType(OfType.string, obj.lastname);
