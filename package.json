@@ -57,7 +57,7 @@
 		"@lubowiecki/eslint-plugin-assertions": "^1.0.2",
 		"@lubowiecki/ngx-schematics": "^13.0.2",
 		"@lubowiecki/node-openapi": "^1.0.2",
-		"@lubowiecki/stylelint-config-base": "^1.0.2",
+		"@lubowiecki/stylelint-config-base": "^1.0.3",
 		"@types/cypress-image-snapshot": "^3.1.6",
 		"@types/jasmine": "~3.10.0",
 		"@types/luxon": "^2.3.1",

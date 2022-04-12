@@ -1,5 +1,5 @@
 @use "@angular/material" as mat;
-@use "~src/styles/vendor/material" as palette;
+@use "~src/styles/vendor/material-theme" as theme;
 
 .mat-progress-spinner {
 	&.is-inline {
@@ -14,5 +14,5 @@
 }
 
 .mat-accent .mat-progress-spinner circle {
-	stroke: mat.get-contrast-color-from-palette(palette.$sedn-accent, 500);
+	stroke: mat.get-contrast-color-from-palette(theme.$sedn-accent, 500);
 }
