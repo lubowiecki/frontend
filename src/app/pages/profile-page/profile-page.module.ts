@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { UserDetailsFormModule } from 'src/app/core/user/components/user-details-form/user-details-form.module';
 import { customMatDatepickerIntl } from 'src/app/core/vendor/angular-material-config/datepicker/datepicker-intl-provider';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 import { ProfilePageComponent } from './profile-page.component';
 import { ProfilePageRoutingModule } from './profile-page-routing.module';
@@ -12,6 +13,7 @@ import { ProfilePageRoutingModule } from './profile-page-routing.module';
 	],
 	imports: [
 		CommonModule,
+		MatProgressSpinnerModule,
 		ProfilePageRoutingModule,
 		UserDetailsFormModule,
 	],

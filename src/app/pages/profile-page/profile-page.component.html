@@ -1,4 +1,11 @@
 <app-user-details-form
-	[user]="user$ | async"
+	*ngIf="user$ | async as user"
+	[user]="user"
 	[readonly]="true"
 ></app-user-details-form>
+
+<mat-progress-spinner
+	*ngIf="isFetchingGetUser$ | async"
+	mode="indeterminate"
+	color="primary"
+></mat-progress-spinner>

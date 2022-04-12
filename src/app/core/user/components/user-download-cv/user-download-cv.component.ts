@@ -3,8 +3,8 @@ import { Maybe } from '@lubowiecki/ts-utility';
 import { BehaviorSubject, Observable } from 'rxjs';
 
 import { FileDownload } from '@core/file/value-objects/file-download';
-import { RestUserService } from '@core/user/services/rest-user.service';
 import { User } from '@core/user/value-objects/user';
+import { RestUserCvGetService } from '@core/user/services/rest-user-cv-get.service';
 
 @Component({
 	selector: 'app-user-download-cv',
@@ -17,14 +17,14 @@ export class UserDownloadCvComponent {
 
 	#file: BehaviorSubject<Maybe<FileDownload>> = new BehaviorSubject<Maybe<FileDownload>>(null);
 
-	constructor(private restUserService: RestUserService) { }
+	constructor(private restUserCvGetService: RestUserCvGetService) { }
 
 	getFile$(): Observable<Maybe<FileDownload>> {
 		return this.#file.asObservable();
 	}
 
 	download(): void {
-		this.restUserService.getUserCv$(this.user.id).subscribe((file) => {
+		this.restUserCvGetService.getUserCv$(this.user.id).subscribe((file) => {
 			this.#file.next(file);
 			file.saveLocally();
 		});
