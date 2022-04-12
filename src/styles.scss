@@ -1,9 +1,7 @@
-@use "styles/abstract/constants/colors";
+@use "styles/abstract";
 
-@use "styles/vendor/fonts";
-@use "styles/vendor/material";
-@use "styles/vendor/tailwind";
+@use "styles/vendor";
 
-@use "styles/base/base";
+@use "styles/base";
 
-@use "styles/components/spinner";
+@use "styles/components";
