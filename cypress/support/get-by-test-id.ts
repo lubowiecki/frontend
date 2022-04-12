@@ -9,7 +9,7 @@ declare global {
 	namespace Cypress {
 		interface Chainable {
 			/**
-			 * Custom command to select DOM elementof document by test-id attribute.
+			 * Custom command to select DOM element of document by test-id attribute.
 			 *
 			 * @example cy.getByTestId('btnLogin')
 			 */

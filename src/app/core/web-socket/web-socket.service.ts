@@ -3,6 +3,8 @@ import { io, Socket } from 'socket.io-client';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { Maybe } from '@lubowiecki/ts-utility';
 
+import { environment } from '@environment';
+
 import { WebSocketEventType } from '../../api/dtos/models';
 
 type WebSocketEventsMap = {
@@ -18,7 +20,7 @@ export class WebSocketService {
 	constructor() { }
 
 	open(token: string): void {
-		this.#socket$.next(io('ws://localhost:8080/v1', {
+		this.#socket$.next(io(environment.webSocketUri, {
 			auth: {
 				token,
 			},
