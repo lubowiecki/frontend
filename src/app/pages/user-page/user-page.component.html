@@ -12,7 +12,7 @@
 </ng-container>
 
 <mat-progress-spinner
-	*ngIf="isFetchingGetUser$ | async"
+	*ngIf="isFetching$ | async"
 	mode="indeterminate"
 	color="primary"
 ></mat-progress-spinner>

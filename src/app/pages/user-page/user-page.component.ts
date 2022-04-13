@@ -8,6 +8,9 @@ import { DateWithTimeService } from '@core/date/services/date-with-time.service'
 import { UserId } from '@core/user/value-objects/user-id';
 import { RestUserPutService } from '@core/user/services/rest-user-put.service';
 import { RestUserGetService } from '@core/user/services/rest-user-get.service';
+import { RestQuery } from '@api/rest/rest-query';
+
+import { UserPageDialogsService } from './user-page-dialogs/services/user-page-dialogs.service';
 
 @Component({
 	selector: 'app-user-page',
@@ -18,7 +21,10 @@ import { RestUserGetService } from '@core/user/services/rest-user-get.service';
 export class UserPageComponent implements OnDestroy {
 	user$: Observable<User>;
 
-	isFetchingGetUser$ = this.restUserGetService.getIsFetching$();
+	isFetching$: Observable<boolean> = RestQuery.isFetchingAny$([
+		this.restUserGetService.isFetching$(),
+		this.restUserPutService.isFetching$(),
+	]);
 
 	relativeUpdateDate: Maybe<string>;
 
@@ -30,6 +36,7 @@ export class UserPageComponent implements OnDestroy {
 		private restUserGetService: RestUserGetService,
 		private restUserPutService: RestUserPutService,
 		private dateService: DateWithTimeService,
+		private userPageDialogsService: UserPageDialogsService,
 	) {
 		this.user$ = this.restUserGetService.getUser$(
 			UserId.create({
@@ -37,7 +44,7 @@ export class UserPageComponent implements OnDestroy {
 			}),
 		);
 
-		this.#subscriptions.add(this.getRelativeUpdateDate());
+		this.#subscriptions.add(this.#getRelativeUpdateDate());
 	}
 
 	ngOnDestroy(): void {
@@ -49,10 +56,12 @@ export class UserPageComponent implements OnDestroy {
 			this.#updateDate$.next(user.updateDate);
 		}
 
-		this.restUserPutService.putUser$(user).subscribe();
+		this.restUserPutService.putUser$(user).subscribe(() => {
+			this.userPageDialogsService.openDialog();
+		});
 	}
 
-	getRelativeUpdateDate(): Subscription {
+	#getRelativeUpdateDate(): Subscription {
 		return this.dateService
 			.getRelativeDate$(this.#updateDate$)
 			.subscribe((date) => {

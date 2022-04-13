@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 
 import { WebSocketEventType } from '@api/dtos/models';
-import { WebSocketService } from '@core/web-socket/web-socket.service';
+import { WebSocketService } from '@api/web-socket/web-socket.service';
 
 import { User } from '../value-objects/user';
 
@@ -10,7 +10,7 @@ import { User } from '../value-objects/user';
 })
 export class WebSocketUserService {
 	constructor(private webSocketService: WebSocketService) {
-		this.webSocketService.getSocket$().subscribe((socket) => {
+		this.webSocketService.socket$().subscribe((socket) => {
 			if (socket) {
 				socket.on(WebSocketEventType.UserCreated, (x: string) => console.log(User.fromString(x)));
 			}
@@ -18,10 +18,10 @@ export class WebSocketUserService {
 	}
 
 	emitUserCreate(data: string) {
-		this.webSocketService.getSocketValue()?.emit(WebSocketEventType.UserCreate, data);
+		this.webSocketService.value()?.emit(WebSocketEventType.UserCreate, data);
 	}
 
 	emitUserUpdate(data: string) {
-		this.webSocketService.getSocketValue()?.emit(WebSocketEventType.UserUpdate, data);
+		this.webSocketService.value()?.emit(WebSocketEventType.UserUpdate, data);
 	}
 }

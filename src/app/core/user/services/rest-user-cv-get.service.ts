@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { map, Observable } from 'rxjs';
 
 import { FileDownload } from '@core/file/value-objects/file-download';
-import { RestQuery } from '@core/rest/rest-query';
+import { RestQuery } from '@api/rest/rest-query';
 import { environment } from '@environment';
 
 import { UserId } from '../value-objects/user-id';
@@ -25,7 +25,7 @@ export class RestUserCvGetService extends RestQuery {
 					responseType: 'blob',
 				}),
 		).pipe(
-			map((event: HttpEvent<Blob>) => FileDownload.fromEvent(event)),
+			map((event: HttpEvent<Blob>) => FileDownload.fromHttpEvent(event)),
 		);
 	}
 }

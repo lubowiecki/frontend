@@ -20,5 +20,6 @@
 	"languageSwitcher.lang.en": "English",
 	"languageSwitcher.lang.pl": "Polish",
 	"page.profile.title": "Profil",
-	"page.user.title": "Użytkownik"
+	"page.user.title": "Użytkownik",
+	"userPage.dialog.title": "Dane użytkownika zostały zapisane"
 }

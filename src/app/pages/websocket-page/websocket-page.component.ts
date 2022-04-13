@@ -3,7 +3,7 @@ import {
 } from '@angular/core';
 
 import { WebSocketUserService } from '@core/user/services/web-socket-user.service';
-import { WebSocketService } from '@core/web-socket/web-socket.service';
+import { WebSocketService } from '@api/web-socket/web-socket.service';
 
 @Component({
 	selector: 'app-websocket-page',

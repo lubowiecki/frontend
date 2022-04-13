@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { User } from '@core/user/value-objects/user';
 import { UserId } from '@core/user/value-objects/user-id';
 import { RestUserGetService } from '@core/user/services/rest-user-get.service';
+import { RestQuery } from '@api/rest/rest-query';
 
 @Component({
 	selector: 'app-profile-page',
@@ -14,7 +15,7 @@ import { RestUserGetService } from '@core/user/services/rest-user-get.service';
 export class ProfilePageComponent {
 	user$: Observable<User>;
 
-	isFetchingGetUser$ = this.restUserGetService.getIsFetching$();
+	isFetchingGetUser$ = RestQuery.isFetchingAny$([this.restUserGetService.isFetching$()]);
 
 	constructor(private restUserGetService: RestUserGetService) {
 		this.user$ = this.restUserGetService.getUser$(UserId.create({

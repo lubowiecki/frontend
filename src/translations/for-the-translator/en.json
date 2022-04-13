@@ -20,5 +20,6 @@
 	"languageSwitcher.lang.en": "Angielski",
 	"languageSwitcher.lang.pl": "Polski",
 	"page.profile.title": "Profile",
-	"page.user.title": "User"
+	"page.user.title": "User",
+	"userPage.dialog.title": "User data has been saved"
 }
