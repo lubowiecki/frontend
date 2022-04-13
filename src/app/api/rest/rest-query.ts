@@ -1,11 +1,18 @@
-import { BehaviorSubject, finalize, Observable } from 'rxjs';
+import * as R from 'ramda';
+import {
+	BehaviorSubject, combineLatest, finalize, map, Observable,
+} from 'rxjs';
 
 export abstract class RestQuery {
 	#isFetching$ = new BehaviorSubject(false);
 
+	static isFetchingAny$(sources$: Observable<boolean>[]): Observable<boolean> {
+		return combineLatest(sources$).pipe(map((states) => R.any((state) => state === true, states)));
+	}
+
 	constructor() { }
 
-	getIsFetching$(): Observable<boolean> {
+	isFetching$(): Observable<boolean> {
 		return this.#isFetching$.asObservable();
 	}
 

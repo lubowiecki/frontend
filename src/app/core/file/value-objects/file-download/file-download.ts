@@ -17,7 +17,7 @@ export class FileDownload extends ValueObject<FileDownloadProps> {
 		return new FileDownload(props);
 	}
 
-	static fromEvent(event: HttpEvent<Blob>): FileDownload {
+	static fromHttpEvent(event: HttpEvent<Blob>): FileDownload {
 		let type: string = '';
 		let name: Maybe<string> = null;
 		let progress: number = 0;

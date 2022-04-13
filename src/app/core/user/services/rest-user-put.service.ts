@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { map, Observable } from 'rxjs';
 
 import { UserDto } from '@api/dtos/models';
-import { RestQuery } from '@core/rest/rest-query';
+import { RestQuery } from '@api/rest/rest-query';
 import { environment } from '@environment';
 
 import { User } from '../value-objects/user';
@@ -20,6 +20,8 @@ export class RestUserPutService extends RestQuery {
 		return this.query$(
 			this.httpClient
 				.put<UserDto>(`${environment.restUri}/user/${user.id.id}`, user.toDto()),
-		).pipe(map((userDto) => User.fromDto(userDto)));
+		).pipe(
+			map((userDto) => User.fromDto(userDto)),
+		);
 	}
 }

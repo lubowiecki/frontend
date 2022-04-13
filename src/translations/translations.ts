@@ -21,4 +21,5 @@ export interface Translations {
 	'languageSwitcher.lang.pl': string;
 	'page.profile.title': string;
 	'page.user.title': string;
+	'userPage.dialog.title': string;
 }

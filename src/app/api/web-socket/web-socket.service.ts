@@ -5,7 +5,7 @@ import { Maybe } from '@lubowiecki/ts-utility';
 
 import { environment } from '@environment';
 
-import { WebSocketEventType } from '../../api/dtos/models';
+import { WebSocketEventType } from '../dtos/models';
 
 type WebSocketEventsMap = {
 	[event in WebSocketEventType]: (...args: any[]) => void
@@ -36,11 +36,11 @@ export class WebSocketService {
 		this.#socket$.next(null);
 	}
 
-	getSocket$(): Observable<Maybe<Socket<WebSocketEventsMap>>> {
+	socket$(): Observable<Maybe<Socket<WebSocketEventsMap>>> {
 		return this.#socket$.asObservable();
 	}
 
-	getSocketValue(): Maybe<Socket<WebSocketEventsMap>> {
+	value(): Maybe<Socket<WebSocketEventsMap>> {
 		return this.#socket$.getValue();
 	}
 }

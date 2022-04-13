@@ -1,13 +1,14 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { UserDetailsFormModule } from 'src/app/core/user/components/user-details-form/user-details-form.module';
-import { customMatDatepickerIntl } from 'src/app/core/vendor/angular-material-config/datepicker/datepicker-intl-provider';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
+import { UserDetailsFormModule } from '@core/user/components/user-details-form/user-details-form.module';
+import { customMatDatepickerIntl } from '@core/vendor/angular-material-config/datepicker/datepicker-intl-provider';
 import { UserDownloadCvModule } from '@core/user/components/user-download-cv/user-download-cv.module';
 
 import { UserPageRoutingModule } from './user-page-routing.module';
 import { UserPageComponent } from './user-page.component';
+import { UserPageDialogsModule } from './user-page-dialogs/user-page-dialogs.module';
 
 @NgModule({
 	declarations: [
@@ -19,6 +20,7 @@ import { UserPageComponent } from './user-page.component';
 		UserPageRoutingModule,
 		UserDetailsFormModule,
 		UserDownloadCvModule,
+		UserPageDialogsModule,
 	],
 	providers: [customMatDatepickerIntl],
 })
