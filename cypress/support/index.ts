@@ -1,12 +1,6 @@
-import { addMatchImageSnapshotCommand } from 'cypress-image-snapshot/command';
+import { VisualRegression } from '@cypress/helpers/visual-regression';
+import { TestId } from '@cypress/helpers/test-id';
+import 'cypress-axe';
 
-import './get-by-test-id';
-import './find-by-test-id';
-import './check-screenshot';
-
-addMatchImageSnapshotCommand({
-	customSnapshotsDir: 'cypress/screenshots',
-	failureThreshold: 0,
-	failureThresholdType: 'percent',
-	customDiffConfig: { threshold: 0 },
-});
+VisualRegression.addCommands();
+TestId.addCommands();
