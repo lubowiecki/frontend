@@ -40,7 +40,7 @@ export class UserPageComponent implements OnDestroy {
 	) {
 		this.user$ = this.restUserGetService.getUser$(
 			UserId.create({
-				id: '10000000-aaaa-dddd-ffff-000000000000',
+				id: '00000000-aaaa-dddd-ffff-000000000000',
 			}),
 		);
 
