@@ -5,5 +5,5 @@ services:
             - "host.docker.internal:host-gateway"
         volumes:
             - ".:/e2e"
-        image: "lil/cypress/included:10.3.0"
+        image: "lil/cypress/included:10.3.1"
         command: "--config-file cypress.frontend.config.ts"

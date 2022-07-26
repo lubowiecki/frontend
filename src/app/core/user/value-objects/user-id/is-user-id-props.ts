@@ -1,7 +1,3 @@
-import { isObject, isOfType, OfType } from '@lubowiecki/ts-utility';
+import { UserIdProps, UserIdPropsSchema } from './user-id-props';
 
-import { UserIdProps } from './user-id-props';
-
-export const isUserIdProps = (obj: unknown): obj is UserIdProps =>
-	isObject(obj) &&
-	isOfType(OfType.string, obj.id);
+export const isUserIdProps = (obj: unknown): obj is UserIdProps => UserIdPropsSchema.safeParse(obj).success;

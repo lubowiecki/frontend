@@ -13,11 +13,11 @@
 		"lint:angular": "ng lint --fix",
 		"lint:styles": "stylelint **/*.scss --fix -i=.gitignore",
 		"test:unit": "ng test",
-		"test:mock:e2e": "docker build -t lil/cypress/included:10.3.0 . && docker run -it --rm --add-host host.docker.internal:host-gateway -v \"%cd%\":/e2e lil/cypress/included:10.3.0 --config-file cypress.frontend.config.ts",
-		"test:mock:e2e:compose": "docker build -t lil/cypress/included:10.3.0 . && docker compose up && docker compose rm -fsv",
+		"test:mock:e2e": "docker build -t lil/cypress/included:10.3.1 . && docker run -it --rm --add-host host.docker.internal:host-gateway -v \"%cd%\":/e2e lil/cypress/included:10.3.1 --config-file cypress.frontend.config.ts",
+		"test:mock:e2e:compose": "docker build -t lil/cypress/included:10.3.1 . && docker compose up && docker compose rm -fsv",
 		"test:docs:unit": "ng test docs",
-		"test:docs:e2e": "docker build -t lil/cypress/included:10.3.0 . && docker run -it --rm --add-host host.docker.internal:host-gateway -v \"%cd%\":/e2e lil/cypress/included:10.3.0 --config-file cypress.docs.config.ts",
-		"test:docs:e2e:compose": "docker build -t lil/cypress/included:10.3.0 . && docker compose -f cypress.docs.docker-compose.yml up && docker compose -f cypress.docs.docker-compose.yml rm -fsv",
+		"test:docs:e2e": "docker build -t lil/cypress/included:10.3.1 . && docker run -it --rm --add-host host.docker.internal:host-gateway -v \"%cd%\":/e2e lil/cypress/included:10.3.1 --config-file cypress.docs.config.ts",
+		"test:docs:e2e:compose": "docker build -t lil/cypress/included:10.3.1 . && docker compose -f cypress.docs.docker-compose.yml up && docker compose -f cypress.docs.docker-compose.yml rm -fsv",
 		"analyze:bundle": "npm run build:prod -- --stats-json && npx webpack-bundle-analyzer dist/frontend/stats.json --port 4002",
 		"translate:build": "translate build --source=\"./src/app/**/*+(.ts|.html)\" --i18n=./src/app/core/translation/i18n/ --langs=pl --langs=en",
 		"dtos:build": "openapi b typescript --dist=./src/app/api/dtos"
@@ -43,6 +43,7 @@
 		"rxjs": "~7.5.0",
 		"socket.io-client": "^4.5.1",
 		"tslib": "^2.3.0",
+		"zod": "^3.17.10",
 		"zone.js": "~0.11.4"
 	},
 	"devDependencies": {
@@ -57,7 +58,7 @@
 		"@cypress/schematic": "^2.0.0",
 		"@lubowiecki/eslint-config-base": "^1.0.6",
 		"@lubowiecki/eslint-plugin-assertions": "^1.0.5",
-		"@lubowiecki/ngx-schematics": "^14.1.1",
+		"@lubowiecki/ngx-schematics": "^14.2.0",
 		"@lubowiecki/node-openapi": "^1.0.6",
 		"@lubowiecki/stylelint-config-base": "^1.0.6",
 		"@types/jasmine": "~4.0.0",

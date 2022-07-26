@@ -28,4 +28,11 @@ export class VisualRegression {
 
 		Cypress.Commands.add('checkScreenshot', checkScreenshot);
 	}
+
+	/**
+	 * Generate html report
+	 */
+	static generateReport(): void {
+		cy.task('generateReport');
+	}
 }

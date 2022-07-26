@@ -4,3 +4,7 @@ import 'cypress-axe';
 
 VisualRegression.addCommands();
 TestId.addCommands();
+
+after(() => {
+	VisualRegression.generateReport();
+});
