@@ -63,7 +63,7 @@ export class UserDetailsFormComponent {
 				),
 				updateDate: isDefined(this.formGroup.value.updateDate) ?
 					IsoDateWithTime.fromDto(this.formGroup.value.updateDate) :
-					undefined,
+					null,
 			});
 
 			this.userChange.emit(updatedUser);
