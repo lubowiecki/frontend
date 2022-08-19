@@ -6,13 +6,24 @@ import {
 	Output,
 } from '@angular/core';
 import {
-	isDefined, Maybe,
+	always, isDefined, Maybe,
 } from '@lubowiecki/ts-utility';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {
+	FormBuilder, FormControl, FormGroup, Validators,
+} from '@angular/forms';
 
 import { User } from '@core/user/value-objects/user';
 import { IsoDate } from '@core/date/value-objects/iso-date';
 import { IsoDateWithTime } from '@core/date/value-objects/iso-date-with-time';
+import { IsoDateWithTimeDto } from '@api/dtos/models';
+
+interface UserForm {
+	firstname: FormControl<string>;
+	lastname: FormControl<string>;
+	year: FormControl<Date | null>;
+	creationDate: FormControl<IsoDateWithTimeDto | null>;
+	updateDate: FormControl<IsoDateWithTimeDto | null>;
+}
 
 @Component({
 	selector: 'app-user-details-form',
@@ -40,27 +51,28 @@ export class UserDetailsFormComponent {
 
 	@Output() userChange = new EventEmitter<User>();
 
-	formGroup: FormGroup;
+	protected formGroup: FormGroup<UserForm>;
 
 	constructor(private fb: FormBuilder) {
-		this.formGroup = this.fb.group({
-			firstname: ['', [Validators.minLength(3)]],
-			lastname: [''],
-			year: [null],
-			creationDate: [null],
-			updateDate: [null],
+		this.formGroup = this.fb.group<UserForm>({
+			firstname: this.fb.nonNullable.control('', [Validators.minLength(3)]),
+			lastname: this.fb.nonNullable.control(''),
+			year: this.fb.control(null, [Validators.required]),
+			creationDate: this.fb.control(null, [Validators.required]),
+			updateDate: this.fb.control(null),
 		});
 	}
 
-	update(): void {
-		if (this.#user instanceof User) {
+	protected update(): void {
+		if (this.#user instanceof User && this.formGroup.valid) {
+			always(isDefined(this.formGroup.value.year), 'oikuf9s4');
+			always(isDefined(this.formGroup.value.creationDate), 'k4ofpr6w');
+
 			const updatedUser = User.create({
 				...this.#user.getProps(),
 				...this.formGroup.value,
 				year: IsoDate.fromJsDate(this.formGroup.value.year),
-				creationDate: IsoDateWithTime.fromDto(
-					this.formGroup.value.creationDate,
-				),
+				creationDate: IsoDateWithTime.fromDto(this.formGroup.value.creationDate),
 				updateDate: isDefined(this.formGroup.value.updateDate) ?
 					IsoDateWithTime.fromDto(this.formGroup.value.updateDate) :
 					null,
@@ -68,5 +80,9 @@ export class UserDetailsFormComponent {
 
 			this.userChange.emit(updatedUser);
 		}
+	}
+
+	protected reset(): void {
+		this.formGroup.reset();
 	}
 }

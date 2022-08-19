@@ -1,4 +1,5 @@
 export interface Translations {
+	'common.action.reset': string;
 	'common.action.update': string;
 	'datepicker.calendarLabel': string;
 	'datepicker.nextMonthLabel': string;
