@@ -1,4 +1,5 @@
 {
+	"common.action.reset": "Reset",
 	"common.action.update": "Update",
 	"datepicker.calendarLabel": "Calendar",
 	"datepicker.nextMonthLabel": "Next month",

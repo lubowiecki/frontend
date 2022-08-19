@@ -53,9 +53,19 @@
 		</mat-form-field>
 	</div>
 
+	<button (click)="reset()">
+		{{ "common.action.reset" | translate }}
+	</button>
+
 	<div *ngIf="!readonly" class="my-md">
 		<button (click)="update()">
 			{{ "common.action.update" | translate }}
 		</button>
 	</div>
+	<dl>
+		<dt>Valid</dt>
+		<dd>{{ formGroup.valid }}</dd>
+		<dt>Value</dt>
+		<dd>{{ formGroup.value | json }}</dd>
+	</dl>
 </ng-container>

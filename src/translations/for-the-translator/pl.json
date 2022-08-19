@@ -1,4 +1,5 @@
 {
+	"common.action.reset": "Wyczyść",
 	"common.action.update": "Aktualizuj",
 	"datepicker.calendarLabel": "Kalendarz",
 	"datepicker.nextMonthLabel": "Następny miesiąc",
