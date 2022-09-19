@@ -1,5 +1,5 @@
 import { HttpEventType } from '@angular/common/http';
-import { Maybe } from '@lubowiecki/ts-utility';
+import { Maybe } from '@opi_pib/ts-utility';
 
 export interface FileDownloadProps {
 	state: HttpEventType;

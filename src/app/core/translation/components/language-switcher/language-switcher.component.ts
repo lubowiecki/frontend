@@ -1,7 +1,7 @@
 import {
 	ChangeDetectionStrategy, Component, EventEmitter, Input, Output,
 } from '@angular/core';
-import { Maybe } from '@lubowiecki/ts-utility';
+import { Maybe } from '@opi_pib/ts-utility';
 
 import { TranslationLanguage } from '@core/translation/value-objects/translation-language';
 

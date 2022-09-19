@@ -1,4 +1,4 @@
-import { isOfType, OfType } from '@lubowiecki/ts-utility';
+import { isOfType, OfType } from '@opi_pib/ts-utility';
 import * as R from 'ramda';
 
 import { IsoDateDto } from '@api/dtos/models';

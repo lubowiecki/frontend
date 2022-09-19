@@ -2,7 +2,7 @@ import { HttpEventType } from '@angular/common/http';
 import {
 	isDefined,
 	isInstanceOf, isObject, isOfType, OfType,
-} from '@lubowiecki/ts-utility';
+} from '@opi_pib/ts-utility';
 import * as R from 'ramda';
 
 import { FileDownloadProps } from './file-download-props';

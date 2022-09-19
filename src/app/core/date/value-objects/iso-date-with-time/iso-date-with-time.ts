@@ -1,4 +1,4 @@
-import { always, Maybe, ValueObject } from '@lubowiecki/ts-utility';
+import { always, Maybe, ValueObject } from '@opi_pib/ts-utility';
 import { DateTime } from 'luxon';
 import { TranslationLanguage } from 'src/app/core/translation/value-objects/translation-language';
 

@@ -1,7 +1,7 @@
 import {
 	Component, ChangeDetectionStrategy, Input, Output, EventEmitter,
 } from '@angular/core';
-import { Maybe } from '@lubowiecki/ts-utility';
+import { Maybe } from '@opi_pib/ts-utility';
 
 import { FileDownload } from '@core/file/value-objects/file-download';
 

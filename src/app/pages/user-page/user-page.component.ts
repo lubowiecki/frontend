@@ -1,6 +1,6 @@
 import { Component, ChangeDetectionStrategy, OnDestroy } from '@angular/core';
 import { Observable, Subject, Subscription } from 'rxjs';
-import { Maybe } from '@lubowiecki/ts-utility';
+import { Maybe } from '@opi_pib/ts-utility';
 
 import { User } from '@core/user/value-objects/user';
 import { IsoDateWithTime } from '@core/date/value-objects/iso-date-with-time';

@@ -1,4 +1,4 @@
-import { isObject } from '@lubowiecki/ts-utility';
+import { isObject } from '@opi_pib/ts-utility';
 import { DateTime } from 'luxon';
 
 import { IsoDateWithTimeProps } from './iso-date-with-time-props';
