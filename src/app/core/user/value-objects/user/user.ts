@@ -1,6 +1,6 @@
 import {
 	always, isDefined, Maybe, ValueObject,
-} from '@lubowiecki/ts-utility';
+} from '@opi_pib/ts-utility';
 
 import { IsoDateWithTime } from '@core/date/value-objects/iso-date-with-time';
 import { IsoDate } from '@core/date/value-objects/iso-date';

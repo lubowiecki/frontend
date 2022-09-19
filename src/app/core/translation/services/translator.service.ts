@@ -1,9 +1,9 @@
 import { Inject, Injectable } from '@angular/core';
-import { TranslationParams } from '@lubowiecki/node-translate/dist/models/translation-params';
+import { TranslationParams } from '@opi_pib/node-translate/dist/models/translation-params';
 import { TranslateService } from '@ngx-translate/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { distinctUntilChanged, map } from 'rxjs/operators';
-import { always, Maybe } from '@lubowiecki/ts-utility';
+import { always, Maybe } from '@opi_pib/ts-utility';
 
 import { TranslationKey } from '@translations/translation-key';
 

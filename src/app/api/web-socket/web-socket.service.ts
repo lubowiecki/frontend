@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { io, Socket } from 'socket.io-client';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { Maybe } from '@lubowiecki/ts-utility';
+import { Maybe } from '@opi_pib/ts-utility';
 
 import { environment } from '@environment';
 

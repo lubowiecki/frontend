@@ -1,4 +1,4 @@
-import { always, ValueObject } from '@lubowiecki/ts-utility';
+import { always, ValueObject } from '@opi_pib/ts-utility';
 
 import { TranslationKey } from '@translations/translation-key';
 

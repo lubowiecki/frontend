@@ -7,7 +7,7 @@ import {
 } from '@angular/core';
 import {
 	always, isDefined, Maybe,
-} from '@lubowiecki/ts-utility';
+} from '@opi_pib/ts-utility';
 import {
 	FormBuilder, FormControl, FormGroup, Validators,
 } from '@angular/forms';

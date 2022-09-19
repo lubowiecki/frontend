@@ -1,5 +1,5 @@
 import { Component, ChangeDetectionStrategy, Input } from '@angular/core';
-import { Maybe } from '@lubowiecki/ts-utility';
+import { Maybe } from '@opi_pib/ts-utility';
 import { ProgressSpinnerMode } from '@angular/material/progress-spinner';
 import { ThemePalette } from '@angular/material/core';
 

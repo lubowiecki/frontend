@@ -1,7 +1,7 @@
 import { HttpEvent, HttpEventType } from '@angular/common/http';
 import {
 	always, isOfType, Maybe, OfType, ValueObject,
-} from '@lubowiecki/ts-utility';
+} from '@opi_pib/ts-utility';
 
 import { FileDownloadProps } from './file-download-props';
 import { isFileDownloadProps } from './is-file-download-props';
