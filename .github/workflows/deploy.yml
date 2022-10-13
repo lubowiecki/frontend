@@ -34,5 +34,5 @@ jobs:
         uses: denoland/deployctl@v1
         with:
           project: "lubowiecki-frontend"
-          entrypoint: "index.html"
+          entrypoint: "deno.js"
           root: dist/frontend
