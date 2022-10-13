@@ -19,6 +19,10 @@ async function handleRequest(request) {
 			},
 		});
 	}
+
+	const file = await Deno.readFile(request.url);
+
+	return new Response(file);
 }
 
 serve(handleRequest);
