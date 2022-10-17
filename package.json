@@ -41,7 +41,7 @@
 		"@opi_pib/stylelint-config-base": "^1.0.1",
 		"luxon": "^3.0.3",
 		"ramda": "^0.28.0",
-		"rxjs": "~7.5.0",
+		"rxjs": "~7.5.7",
 		"socket.io-client": "^4.5.2",
 		"tslib": "^2.3.0",
 		"zod": "^3.19.1",
