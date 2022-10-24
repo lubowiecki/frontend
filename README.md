@@ -25,3 +25,7 @@ https://tailwindcss.com/docs/guides/angular
 `npm run start:docs:e2e`
 
 `npm run test:docs:e2e`
+
+### Server
+
+`deno run --allow-net --allow-read --watch src/deno.js`
