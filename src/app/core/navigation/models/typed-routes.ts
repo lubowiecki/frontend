@@ -10,7 +10,7 @@ type TypedPath = {
 
 export interface TypedRoutes extends Record<Paths, TypedPath> {
 	[Paths.Root]: {
-		path: ''
+		path: '';
 	},
 	[Paths.Panel]: {
 		path: 'panel';
