@@ -1,6 +1,4 @@
-# Frontend
-
-## Config
+# Config
 
 `ng add @angular-eslint/schematics`
 
@@ -12,20 +10,32 @@
 
 https://tailwindcss.com/docs/guides/angular
 
-## E2e tests
+# E2e tests
 
-### Frontend
+## Frontend
 
 `npm run start:mock:e2e`
 
 `npm run test:mock:e2e`
 
-### Docs
+## Docs
 
 `npm run start:docs:e2e`
 
 `npm run test:docs:e2e`
 
-### Server
+# Server
 
 `deno run --allow-net --allow-read --watch src/deno.js`
+
+# Best practises
+
+## Routing
+
+### Use queryParams instead of route params
+
+Bad
+`'/product-details/:id'`
+
+Good
+`'/product-details?id=1'`

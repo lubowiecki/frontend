@@ -1,22 +1,25 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
+import { Paths } from '@core/navigation/models/paths';
+import { TypedRoutes } from '@core/navigation/models/typed-routes';
+
+const routeRoot: TypedRoutes[Paths.Root] = {
+	path: '',
+};
+
+const routePanel: TypedRoutes[Paths.Panel] = {
+	path: 'panel',
+};
+
 const routes: Routes = [
 	{
-		path: '',
+		path: routeRoot.path,
 		loadChildren: () => import('@pages/profile-page/profile-page.module').then((m) => m.ProfilePageModule),
 	},
 	{
-		path: 'user',
-		loadChildren: () => import('@pages/user-page/user-page.module').then((m) => m.UserPageModule),
-	},
-	{
-		path: 'websocket',
-		loadChildren: () => import('@pages/websocket-page/websocket-page.module').then((m) => m.WebsocketPageModule),
-	},
-	{
-		path: 'eventsource',
-		loadChildren: () => import('@pages/eventsource-page/eventsource-page.module').then((m) => m.EventsourcePageModule),
+		path: routePanel.path,
+		loadChildren: () => import('@pages/panel-page/panel-page.module').then((m) => m.PanelPageModule),
 	},
 ];
 
