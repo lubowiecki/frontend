@@ -1,0 +1,19 @@
+<ul class="flex space-x-sm mb-md">
+	<li>
+		<a [routerLink]="paths.User" routerLinkActive="active">
+			{{ "page.user.title" | translate }}
+		</a>
+	</li>
+	<li>
+		<a [routerLink]="paths.Websocket" routerLinkActive="active">
+			websocket
+		</a>
+	</li>
+	<li>
+		<a [routerLink]="paths.Eventsource" routerLinkActive="active">
+			eventsource
+		</a>
+	</li>
+</ul>
+
+<router-outlet></router-outlet>
