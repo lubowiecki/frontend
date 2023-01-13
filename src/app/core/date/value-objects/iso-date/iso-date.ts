@@ -1,19 +1,19 @@
 import { always, ValueObject } from '@opi_pib/ts-utility';
 import { DateTime } from 'luxon';
 
-import { IsoDateDto } from '@api/dtos/models';
+import { IsoDateDto } from '@api/rest/models';
 
 import { IsoDateProps } from './iso-date-props';
 import { isIsoDateProps } from './is-iso-date-props';
 import { isIsoDateDto } from './is-iso-date-dto';
 
 export class IsoDate extends ValueObject<IsoDateProps> {
-	constructor(protected readonly props: IsoDateProps) {
+	constructor(protected override readonly props: IsoDateProps) {
 		super(props);
 	}
 
 	static create(props: IsoDateProps): IsoDate {
-		always(isIsoDateProps(props), 'hjek2l61');
+		always(isIsoDateProps(props), '8xckoi54');
 
 		return new IsoDate(props);
 	}

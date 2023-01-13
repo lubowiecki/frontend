@@ -1,20 +1,17 @@
 {
 	"root": true,
 	"ignorePatterns": [
-		"src/app/rest/dtos",
+		"src/api",
 		"src/app/core/translation/i18n",
-		"deno.js"
+		"projects/**/*"
 	],
 	"overrides": [
 		{
 			"files": ["*.ts"],
-			"parserOptions": {
-				"project": ["tsconfig.json"],
-				"createDefaultProgram": true
-			},
 			"extends": [
-				"plugin:cypress/recommended",
+				"eslint:recommended",
 				"@opi_pib/base",
+				"plugin:@typescript-eslint/recommended",
 				"plugin:@angular-eslint/recommended",
 				"plugin:@angular-eslint/template/process-inline-templates"
 			],

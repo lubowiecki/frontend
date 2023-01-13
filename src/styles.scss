@@ -1,7 +1,10 @@
-@use "styles/abstract";
+@charset "UTF-8";
 
-@use "styles/vendor";
+@use "abstract/colors";
 
-@use "styles/base";
+@use "vendor/material";
+@use "vendor/tailwind";
 
-@use "styles/components";
+@use "base/base";
+
+@use "components/spinner";

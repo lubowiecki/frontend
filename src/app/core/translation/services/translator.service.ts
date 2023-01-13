@@ -16,24 +16,24 @@ import { isTranslationLanguageEnum, TranslationLanguageEnum } from '../models/tr
 	providedIn: 'root',
 })
 export class Translator {
-	private langChange$: BehaviorSubject<TranslationLanguage>;
+	#langChange$: BehaviorSubject<TranslationLanguage>;
 
 	constructor(
 		private translateService: TranslateService,
 		@Inject(TRANSLATION_CONFIG) private translationConfig: TranslationConfig,
-	) {}
+	) { }
 
 	init(): void {
 		this.translateService.addLangs(this.translationConfig.availableLanguages);
 
 		const initialLanguage: TranslationLanguage = this.getInitialLanguage();
 
-		this.langChange$ = new BehaviorSubject(initialLanguage);
+		this.#langChange$ = new BehaviorSubject(initialLanguage);
 		this.translateService.onLangChange.pipe(map(({ lang }) => {
 			always(isTranslationLanguageEnum(lang), 'vkhipgca');
 
 			return TranslationLanguage.create({ lang });
-		})).subscribe(this.langChange$);
+		})).subscribe(this.#langChange$);
 
 		this.translateService.setDefaultLang(initialLanguage.toDto());
 		this.translateService.use(initialLanguage.toDto());
@@ -69,7 +69,7 @@ export class Translator {
 	}
 
 	getCurrentLanguage$(): Observable<TranslationLanguage> {
-		return this.langChange$.asObservable().pipe(distinctUntilChanged());
+		return this.#langChange$.asObservable().pipe(distinctUntilChanged());
 	}
 
 	private getInitialLanguage(): TranslationLanguage {
@@ -90,7 +90,7 @@ export class Translator {
 		return TranslationLanguage.create({ lang });
 	}
 
-	private getBrowserLanguage(): Maybe<TranslationLanguage > {
+	private getBrowserLanguage(): Maybe<TranslationLanguage> {
 		const browserLanguage = this.translateService.getBrowserLang();
 
 		if (isTranslationLanguageEnum(browserLanguage)) {

@@ -1,26 +1,26 @@
 import { HttpEvent, HttpEventType } from '@angular/common/http';
 import {
-	always, isOfType, Maybe, OfType, ValueObject,
+	always, Is, Maybe, ValueObject,
 } from '@opi_pib/ts-utility';
 
 import { FileDownloadProps } from './file-download-props';
 import { isFileDownloadProps } from './is-file-download-props';
 
 export class FileDownload extends ValueObject<FileDownloadProps> {
-	constructor(protected readonly props: FileDownloadProps) {
+	constructor(protected override readonly props: FileDownloadProps) {
 		super(props);
 	}
 
 	static create(props: FileDownloadProps): FileDownload {
-		always(isFileDownloadProps(props), 'o258mwg1');
+		always(isFileDownloadProps(props), '60puczxj');
 
 		return new FileDownload(props);
 	}
 
 	static fromHttpEvent(event: HttpEvent<Blob>): FileDownload {
-		let type: string = '';
+		let type = '';
 		let name: Maybe<string> = null;
-		let progress: number = 0;
+		let progress = 0;
 		let content: Maybe<Blob> = null;
 
 		if (event.type === HttpEventType.Response) {
@@ -29,7 +29,7 @@ export class FileDownload extends ValueObject<FileDownloadProps> {
 			progress = 100;
 
 			content = event.body ? new Blob([event.body], { type }) : null;
-		} else if (event.type === HttpEventType.DownloadProgress && isOfType(OfType.number, event.total)) {
+		} else if (event.type === HttpEventType.DownloadProgress && Is.number(event.total)) {
 			progress = Math.floor((event.loaded / event.total) * 100);
 		}
 

@@ -1,9 +1,11 @@
 import { HttpEventType } from '@angular/common/http';
-import { Maybe } from '@opi_pib/ts-utility';
+import { z } from 'zod';
 
-export interface FileDownloadProps {
-	state: HttpEventType;
-	progress: number;
-	content: Maybe<Blob>;
-	name: Maybe<string>;
-}
+export const FileDownloadPropsSchema = z.object({
+	state: z.nativeEnum(HttpEventType),
+	progress: z.number(),
+	content: z.instanceof(Blob).nullable(),
+	name: z.string().nullable(),
+});
+
+export type FileDownloadProps = z.infer<typeof FileDownloadPropsSchema>;

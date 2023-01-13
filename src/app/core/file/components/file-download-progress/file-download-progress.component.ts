@@ -14,13 +14,11 @@ import { FileDownload } from '@core/file/value-objects/file-download';
 export class FileDownloadProgressComponent {
 	@Input() file: Maybe<FileDownload>;
 
-	@Input() diameter: number;
-
-	@Input() strokeWidth: number = 15;
+	@Input() strokeWidth = 15;
 
 	@Input() color: ThemePalette = 'primary';
 
-	@Input() inline: boolean = true;
+	@Input() inline = true;
 
 	mode: ProgressSpinnerMode = 'determinate';
 }

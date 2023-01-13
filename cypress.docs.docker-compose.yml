@@ -1,9 +1,0 @@
-version: "3.3"
-services:
-    e2e-firefox:
-        extra_hosts:
-            - "host.docker.internal:host-gateway"
-        volumes:
-            - ".:/e2e"
-        image: "lil/cypress/included:10.3.1"
-        command: "--config-file cypress.docs.config.ts"

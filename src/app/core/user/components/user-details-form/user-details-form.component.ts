@@ -6,7 +6,7 @@ import {
 	Output,
 } from '@angular/core';
 import {
-	always, isDefined, Maybe,
+	always, Is, Maybe,
 } from '@opi_pib/ts-utility';
 import {
 	FormBuilder, FormControl, FormGroup, Validators,
@@ -15,7 +15,7 @@ import {
 import { User } from '@core/user/value-objects/user';
 import { IsoDate } from '@core/date/value-objects/iso-date';
 import { IsoDateWithTime } from '@core/date/value-objects/iso-date-with-time';
-import { IsoDateWithTimeDto } from '@api/dtos/models';
+import { IsoDateWithTimeDto } from '@api/rest/models';
 
 interface UserForm {
 	firstname: FormControl<string>;
@@ -47,7 +47,7 @@ export class UserDetailsFormComponent {
 		}
 	}
 
-	@Input() readonly: boolean;
+	@Input() readonly = false;
 
 	@Output() userChange = new EventEmitter<User>();
 
@@ -65,15 +65,15 @@ export class UserDetailsFormComponent {
 
 	protected update(): void {
 		if (this.#user instanceof User && this.formGroup.valid) {
-			always(isDefined(this.formGroup.value.year), 'oikuf9s4');
-			always(isDefined(this.formGroup.value.creationDate), 'k4ofpr6w');
+			always(Is.defined(this.formGroup.value.year), 'oikuf9s4');
+			always(Is.defined(this.formGroup.value.creationDate), 'k4ofpr6w');
 
 			const updatedUser = User.create({
 				...this.#user.getProps(),
 				...this.formGroup.value,
 				year: IsoDate.fromJsDate(this.formGroup.value.year),
 				creationDate: IsoDateWithTime.fromDto(this.formGroup.value.creationDate),
-				updateDate: isDefined(this.formGroup.value.updateDate) ?
+				updateDate: Is.defined(this.formGroup.value.updateDate) ?
 					IsoDateWithTime.fromDto(this.formGroup.value.updateDate) :
 					null,
 			});

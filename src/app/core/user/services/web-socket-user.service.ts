@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 
-import { WebSocketEventType } from '@api/dtos/models';
+import { WebSocketEventType } from '@api/rest/models';
 import { WebSocketService } from '@api/web-socket/web-socket.service';
 
 import { User } from '../value-objects/user';
@@ -17,11 +17,11 @@ export class WebSocketUserService {
 		});
 	}
 
-	emitUserCreate(data: string) {
+	emitUserCreate(data: string): void {
 		this.webSocketService.value()?.emit(WebSocketEventType.UserCreate, data);
 	}
 
-	emitUserUpdate(data: string) {
+	emitUserUpdate(data: string): void {
 		this.webSocketService.value()?.emit(WebSocketEventType.UserUpdate, data);
 	}
 }
