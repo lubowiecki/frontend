@@ -1,10 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map, Observable } from 'rxjs';
+import { RestQuery } from '@opi_pib/ngx-utility';
 
-import { UserDto } from '@api/dtos/models';
-import { RestQuery } from '@api/rest/rest-query';
 import { environment } from '@environment';
+import { UserDto } from '@api/rest/models';
 
 import { User } from '../value-objects/user';
 

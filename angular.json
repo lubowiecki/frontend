@@ -17,9 +17,6 @@
 			"schematics": {
 				"@schematics/angular:component": {
 					"style": "scss"
-				},
-				"@schematics/angular:application": {
-					"strict": true
 				}
 			},
 			"root": "",
@@ -32,19 +29,24 @@
 						"outputPath": "dist/frontend",
 						"index": "src/index.html",
 						"main": "src/main.ts",
-						"polyfills": "src/polyfills.ts",
+						"polyfills": ["zone.js"],
 						"tsConfig": "tsconfig.app.json",
 						"inlineStyleLanguage": "scss",
-						"assets": [
-							"src/favicon.ico",
-							"src/assets",
-							"src/deno.js"
-						],
+						"assets": ["src/favicon.ico", "src/assets"],
 						"styles": ["src/styles.scss"],
+						"stylePreprocessorOptions": {
+							"includePaths": ["./src/styles"]
+						},
 						"scripts": []
 					},
 					"configurations": {
 						"production": {
+							"fileReplacements": [
+								{
+									"replace": "src/environments/environment.ts",
+									"with": "src/environments/environment.prod.ts"
+								}
+							],
 							"budgets": [
 								{
 									"type": "initial",
@@ -55,12 +57,6 @@
 									"type": "anyComponentStyle",
 									"maximumWarning": "2kb",
 									"maximumError": "4kb"
-								}
-							],
-							"fileReplacements": [
-								{
-									"replace": "src/environments/environment.ts",
-									"with": "src/environments/environment.prod.ts"
 								}
 							],
 							"outputHashing": "all"
@@ -86,20 +82,6 @@
 							"extractLicenses": false,
 							"sourceMap": true,
 							"namedChunks": true
-						},
-						"mockE2e": {
-							"fileReplacements": [
-								{
-									"replace": "src/environments/environment.ts",
-									"with": "src/environments/environment.mock.e2e.ts"
-								}
-							],
-							"buildOptimizer": false,
-							"optimization": false,
-							"vendorChunk": true,
-							"extractLicenses": false,
-							"sourceMap": true,
-							"namedChunks": true
 						}
 					},
 					"defaultConfiguration": "production"
@@ -116,10 +98,6 @@
 						"mock": {
 							"browserTarget": "frontend:build:mock",
 							"port": 4201
-						},
-						"mockE2e": {
-							"browserTarget": "frontend:build:mockE2e",
-							"port": 4201
 						}
 					},
 					"defaultConfiguration": "development"
@@ -133,23 +111,12 @@
 				"test": {
 					"builder": "@angular-devkit/build-angular:karma",
 					"options": {
-						"main": "src/test.ts",
-						"polyfills": "src/polyfills.ts",
+						"polyfills": ["zone.js", "zone.js/testing"],
 						"tsConfig": "tsconfig.spec.json",
-						"karmaConfig": "karma.conf.js",
 						"inlineStyleLanguage": "scss",
 						"assets": ["src/favicon.ico", "src/assets"],
 						"styles": ["src/styles.scss"],
 						"scripts": []
-					}
-				},
-				"e2e": {
-					"builder": "@cypress/schematic:cypress",
-					"options": {
-						"devServerTarget": "",
-						"watch": false,
-						"headless": true,
-						"configFile": "cypress.frontend.json"
 					}
 				},
 				"lint": {
@@ -159,127 +126,9 @@
 					}
 				}
 			}
-		},
-		"docs": {
-			"projectType": "application",
-			"schematics": {
-				"@schematics/angular:component": {
-					"style": "scss"
-				},
-				"@schematics/angular:application": {
-					"strict": true
-				}
-			},
-			"root": "projects/docs",
-			"sourceRoot": "projects/docs/src",
-			"prefix": "app",
-			"architect": {
-				"build": {
-					"builder": "@angular-devkit/build-angular:browser",
-					"options": {
-						"outputPath": "dist/docs",
-						"index": "projects/docs/src/index.html",
-						"main": "projects/docs/src/main.ts",
-						"polyfills": "projects/docs/src/polyfills.ts",
-						"tsConfig": "projects/docs/tsconfig.app.json",
-						"inlineStyleLanguage": "scss",
-						"assets": [
-							"projects/docs/src/favicon.ico",
-							"projects/docs/src/assets"
-						],
-						"styles": ["src/styles.scss"],
-						"scripts": []
-					},
-					"configurations": {
-						"production": {
-							"budgets": [
-								{
-									"type": "initial",
-									"maximumWarning": "500kb",
-									"maximumError": "1mb"
-								},
-								{
-									"type": "anyComponentStyle",
-									"maximumWarning": "2kb",
-									"maximumError": "4kb"
-								}
-							],
-							"fileReplacements": [
-								{
-									"replace": "projects/docs/src/environments/environment.ts",
-									"with": "projects/docs/src/environments/environment.prod.ts"
-								}
-							],
-							"outputHashing": "all"
-						},
-						"development": {
-							"buildOptimizer": false,
-							"optimization": false,
-							"vendorChunk": true,
-							"extractLicenses": false,
-							"sourceMap": true,
-							"namedChunks": true
-						}
-					},
-					"defaultConfiguration": "production"
-				},
-				"serve": {
-					"builder": "@angular-devkit/build-angular:dev-server",
-					"configurations": {
-						"production": {
-							"browserTarget": "docs:build:production"
-						},
-						"development": {
-							"browserTarget": "docs:build:development"
-						}
-					},
-					"defaultConfiguration": "development"
-				},
-				"extract-i18n": {
-					"builder": "@angular-devkit/build-angular:extract-i18n",
-					"options": {
-						"browserTarget": "docs:build"
-					}
-				},
-				"test": {
-					"builder": "@angular-devkit/build-angular:karma",
-					"options": {
-						"main": "projects/docs/src/test.ts",
-						"polyfills": "projects/docs/src/polyfills.ts",
-						"tsConfig": "projects/docs/tsconfig.spec.json",
-						"karmaConfig": "projects/docs/karma.conf.js",
-						"inlineStyleLanguage": "scss",
-						"assets": [
-							"projects/docs/src/favicon.ico",
-							"projects/docs/src/assets"
-						],
-						"styles": ["src/styles.scss"],
-						"scripts": []
-					}
-				},
-				"e2e": {
-					"builder": "@cypress/schematic:cypress",
-					"options": {
-						"devServerTarget": "",
-						"watch": false,
-						"headless": true,
-						"configFile": "cypress.docs.json"
-					}
-				},
-				"lint": {
-					"builder": "@angular-eslint/builder:lint",
-					"options": {
-						"lintFilePatterns": [
-							"projects/docs/**/*.ts",
-							"projects/docs/**/*.html"
-						]
-					}
-				}
-			}
 		}
 	},
-	"defaultProject": "frontend",
 	"cli": {
-		"defaultCollection": "@angular-eslint/schematics"
+		"schematicCollections": ["@angular-eslint/schematics"]
 	}
 }

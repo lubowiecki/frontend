@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { MatDatepickerIntl } from '@angular/material/datepicker';
-import { Translator } from 'src/app/core/translation/services/translator.service';
+
+import { Translator } from '@core/translation/services/translator.service';
 
 @Injectable({ providedIn: 'root' })
 export class CustomMatDatepickerIntl extends MatDatepickerIntl {

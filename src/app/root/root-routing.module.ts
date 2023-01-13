@@ -19,7 +19,7 @@ const routes: Routes = [
 	},
 	{
 		path: routePanel.path,
-		loadChildren: () => import('@pages/panel-page/panel-page.module').then((m) => m.PanelPageModule),
+		loadChildren: () => import('@pages/panel/panel-page/panel-page.module').then((m) => m.PanelPageModule),
 	},
 ];
 

@@ -1,12 +1,12 @@
 import { always, ValueObject } from '@opi_pib/ts-utility';
 
-import { UuidDto } from '@api/dtos/models';
+import { UuidDto } from '@api/rest/models';
 
 import { UserIdProps } from './user-id-props';
 import { isUserIdProps } from './is-user-id-props';
 
 export class UserId extends ValueObject<UserIdProps> {
-	constructor(protected readonly props: UserIdProps) {
+	constructor(protected override readonly props: UserIdProps) {
 		super(props);
 	}
 

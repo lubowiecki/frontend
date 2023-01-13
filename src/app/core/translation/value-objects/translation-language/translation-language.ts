@@ -1,19 +1,19 @@
 import { always, ValueObject } from '@opi_pib/ts-utility';
 
+import { TranslationLanguageEnum } from '@core/translation/models/translation-language-enum';
 import { TranslationKey } from '@translations/translation-key';
 
 import { TranslationLanguageProps } from './translation-language-props';
 import { isTranslationLanguageProps } from './is-translation-language-props';
 import { translationLanguageMap } from './translation-language-map';
-import { TranslationLanguageEnum } from '../../models/translation-language-enum';
 
 export class TranslationLanguage extends ValueObject<TranslationLanguageProps> {
-	constructor(protected readonly props: TranslationLanguageProps) {
+	constructor(protected override readonly props: TranslationLanguageProps) {
 		super(props);
 	}
 
 	static create(props: TranslationLanguageProps): TranslationLanguage {
-		always(isTranslationLanguageProps(props), 'fryb3t71');
+		always(isTranslationLanguageProps(props), 'z4gzlad6');
 
 		return new TranslationLanguage(props);
 	}

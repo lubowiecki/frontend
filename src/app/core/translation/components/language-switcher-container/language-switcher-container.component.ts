@@ -1,5 +1,5 @@
 import {
-	ChangeDetectionStrategy, Component, OnInit,
+	ChangeDetectionStrategy, Component,
 } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
@@ -13,12 +13,10 @@ import { TranslationLanguage } from '@core/translation/value-objects/translation
 	styleUrls: ['./language-switcher-container.component.scss'],
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class LanguageSwitcherContainerComponent implements OnInit {
+export class LanguageSwitcherContainerComponent {
 	languageToSwitch$: Observable<TranslationLanguage>;
 
-	constructor(private translator: Translator) {}
-
-	ngOnInit(): void {
+	constructor(private translator: Translator) {
 		this.languageToSwitch$ = this.getLanguageToSwitch$();
 	}
 

@@ -1,9 +1,9 @@
 import { HttpClient, HttpEvent } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map, Observable } from 'rxjs';
+import { RestQuery } from '@opi_pib/ngx-utility';
 
 import { FileDownload } from '@core/file/value-objects/file-download';
-import { RestQuery } from '@api/rest/rest-query';
 import { environment } from '@environment';
 
 import { UserId } from '../value-objects/user-id';

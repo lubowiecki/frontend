@@ -3,6 +3,7 @@ import * as R from 'ramda';
 import { checkScreenshot } from './check-screenshot';
 import { Options } from './options';
 
+// eslint-disable-next-line @typescript-eslint/no-var-requires
 const compareSnapshotCommand = require('cypress-image-diff-js/dist/command');
 
 export class VisualRegression {
@@ -20,7 +21,7 @@ export class VisualRegression {
 	 */
 	static addCommands(options: Options = {}): void {
 		const defaultOptions: Options = {
-			blackout: ['app-language-switcher'],
+			blackout: ['.statistics_filters__item input'],
 			capture: 'fullPage',
 		};
 

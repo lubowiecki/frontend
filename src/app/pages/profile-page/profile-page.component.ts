@@ -1,10 +1,10 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { Observable } from 'rxjs';
+import { RestQuery } from '@opi_pib/ngx-utility';
 
 import { User } from '@core/user/value-objects/user';
 import { UserId } from '@core/user/value-objects/user-id';
 import { RestUserGetService } from '@core/user/services/rest-user-get.service';
-import { RestQuery } from '@api/rest/rest-query';
 
 @Component({
 	selector: 'app-profile-page',
@@ -15,7 +15,7 @@ import { RestQuery } from '@api/rest/rest-query';
 export class ProfilePageComponent {
 	user$: Observable<User>;
 
-	isFetchingGetUser$ = RestQuery.isFetchingAny$([this.restUserGetService.isFetching$()]);
+	isFetchingGetUser$ = RestQuery.isProcessingAny$([this.restUserGetService.isProcessing$()]);
 
 	constructor(private restUserGetService: RestUserGetService) {
 		this.user$ = this.restUserGetService.getUser$(UserId.create({

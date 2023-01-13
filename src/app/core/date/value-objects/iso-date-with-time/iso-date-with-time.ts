@@ -1,20 +1,20 @@
 import { always, Maybe, ValueObject } from '@opi_pib/ts-utility';
 import { DateTime } from 'luxon';
-import { TranslationLanguage } from 'src/app/core/translation/value-objects/translation-language';
 
-import { IsoDateWithTimeDto } from '@api/dtos/models';
+import { IsoDateWithTimeDto } from '@api/rest/models';
+import { TranslationLanguage } from '@core/translation/value-objects/translation-language';
 
 import { IsoDateWithTimeProps } from './iso-date-with-time-props';
 import { isIsoDateWithTimeProps } from './is-iso-date-with-time-props';
 import { isIsoDateWithTimeDto } from './is-iso-date-with-time-dto';
 
 export class IsoDateWithTime extends ValueObject<IsoDateWithTimeProps> {
-	constructor(protected readonly props: IsoDateWithTimeProps) {
+	constructor(protected override readonly props: IsoDateWithTimeProps) {
 		super(props);
 	}
 
 	static create(props: IsoDateWithTimeProps): IsoDateWithTime {
-		always(isIsoDateWithTimeProps(props), '4mbyz55k');
+		always(isIsoDateWithTimeProps(props), 'eo1uzfwi');
 
 		return new IsoDateWithTime(props);
 	}

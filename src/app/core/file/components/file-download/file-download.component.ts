@@ -12,7 +12,7 @@ import { FileDownload } from '@core/file/value-objects/file-download';
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FileDownloadComponent {
-	@Input() label: string;
+	@Input() label = '';
 
 	@Input() file: Maybe<FileDownload>;
 

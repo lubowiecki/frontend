@@ -2,6 +2,7 @@
 	"extends": "../tsconfig.json",
 	"include": ["**/*.ts"],
 	"compilerOptions": {
+		"target": "es2017",
 		"sourceMap": false,
 		"types": ["cypress", "node"]
 	}

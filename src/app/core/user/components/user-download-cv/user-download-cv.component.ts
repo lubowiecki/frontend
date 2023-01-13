@@ -1,10 +1,11 @@
 import { Component, ChangeDetectionStrategy, Input } from '@angular/core';
-import { Maybe } from '@opi_pib/ts-utility';
+import { Is, Maybe } from '@opi_pib/ts-utility';
 import { BehaviorSubject, Observable } from 'rxjs';
 
 import { FileDownload } from '@core/file/value-objects/file-download';
 import { User } from '@core/user/value-objects/user';
 import { RestUserCvGetService } from '@core/user/services/rest-user-cv-get.service';
+import { UserId } from '@core/user/value-objects/user-id';
 
 @Component({
 	selector: 'app-user-download-cv',
@@ -13,7 +14,7 @@ import { RestUserCvGetService } from '@core/user/services/rest-user-cv-get.servi
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class UserDownloadCvComponent {
-	@Input() user: User;
+	@Input() user: Maybe<User>;
 
 	#file: BehaviorSubject<Maybe<FileDownload>> = new BehaviorSubject<Maybe<FileDownload>>(null);
 
@@ -24,9 +25,13 @@ export class UserDownloadCvComponent {
 	}
 
 	download(): void {
-		this.restUserCvGetService.getUserCv$(this.user.id).subscribe((file) => {
-			this.#file.next(file);
-			file.saveLocally();
-		});
+		const id: Maybe<UserId> = this.user?.id;
+
+		if (Is.defined(id)) {
+			this.restUserCvGetService.getUserCv$(id).subscribe((file) => {
+				this.#file.next(file);
+				file.saveLocally();
+			});
+		}
 	}
 }
