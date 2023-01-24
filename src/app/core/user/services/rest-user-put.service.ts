@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map, Observable } from 'rxjs';
 import { RestQuery } from '@opi_pib/ngx-utility';
@@ -17,9 +17,17 @@ export class RestUserPutService extends RestQuery {
 	}
 
 	putUser$(user: User): Observable<User> {
+		const params = new HttpParams({
+			fromObject: {
+				userId: user.id.id,
+			},
+		});
+
 		return this.query$(
 			this.httpClient
-				.put<UserDto>(`${environment.restUri}/user/${user.id.id}`, user.toDto()),
+				.put<UserDto>(`${environment.restUri}/user`, user.toDto(), {
+					params,
+				}),
 		).pipe(
 			map((userDto) => User.fromDto(userDto)),
 		);

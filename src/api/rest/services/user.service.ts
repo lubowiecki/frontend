@@ -26,7 +26,7 @@ export class UserService extends BaseService {
   /**
    * Path part for operation getUser
    */
-  static readonly GetUserPath = '/user/{userId}';
+  static readonly GetUserPath = '/user';
 
   /**
    * Get user
@@ -48,7 +48,7 @@ export class UserService extends BaseService {
 
     const rb = new RequestBuilder(this.rootUrl, UserService.GetUserPath, 'get');
     if (params) {
-      rb.path('userId', params.userId, {});
+      rb.query('userId', params.userId, {});
     }
 
     return this.http.request(rb.build({
@@ -89,7 +89,7 @@ export class UserService extends BaseService {
   /**
    * Path part for operation updateUser
    */
-  static readonly UpdateUserPath = '/user/{userId}';
+  static readonly UpdateUserPath = '/user';
 
   /**
    * Update user
@@ -112,7 +112,7 @@ export class UserService extends BaseService {
 
     const rb = new RequestBuilder(this.rootUrl, UserService.UpdateUserPath, 'put');
     if (params) {
-      rb.path('userId', params.userId, {});
+      rb.query('userId', params.userId, {});
       rb.body(params.body, 'application/json');
     }
 
@@ -155,7 +155,7 @@ export class UserService extends BaseService {
   /**
    * Path part for operation getUserCv
    */
-  static readonly GetUserCvPath = '/user/cv/{userId}';
+  static readonly GetUserCvPath = '/user/cv';
 
   /**
    * Returns the CV.
@@ -179,7 +179,7 @@ export class UserService extends BaseService {
 
     const rb = new RequestBuilder(this.rootUrl, UserService.GetUserCvPath, 'get');
     if (params) {
-      rb.path('userId', params.userId, {});
+      rb.query('userId', params.userId, {});
     }
 
     return this.http.request(rb.build({
