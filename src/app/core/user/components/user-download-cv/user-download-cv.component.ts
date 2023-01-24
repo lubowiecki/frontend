@@ -6,6 +6,7 @@ import { FileDownload } from '@core/file/value-objects/file-download';
 import { User } from '@core/user/value-objects/user';
 import { RestUserCvGetService } from '@core/user/services/rest-user-cv-get.service';
 import { UserId } from '@core/user/value-objects/user-id';
+import { UserService } from '@api/rest/services';
 
 @Component({
 	selector: 'app-user-download-cv',
@@ -18,7 +19,10 @@ export class UserDownloadCvComponent {
 
 	#file: BehaviorSubject<Maybe<FileDownload>> = new BehaviorSubject<Maybe<FileDownload>>(null);
 
-	constructor(private restUserCvGetService: RestUserCvGetService) { }
+	constructor(
+		private restUserCvGetService: RestUserCvGetService,
+		private userService: UserService,
+	) { }
 
 	getFile$(): Observable<Maybe<FileDownload>> {
 		return this.#file.asObservable();

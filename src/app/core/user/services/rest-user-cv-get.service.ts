@@ -1,4 +1,4 @@
-import { HttpClient, HttpEvent } from '@angular/common/http';
+import { HttpClient, HttpEvent, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map, Observable } from 'rxjs';
 import { RestQuery } from '@opi_pib/ngx-utility';
@@ -17,12 +17,19 @@ export class RestUserCvGetService extends RestQuery {
 	}
 
 	getUserCv$(userId: UserId): Observable<FileDownload> {
+		const params = new HttpParams({
+			fromObject: {
+				userId: userId.id,
+			},
+		});
+
 		return this.query$(
 			this.httpClient
-				.get(`${environment.restUri}/user/cv/${userId.id}`, {
+				.get(`${environment.restUri}/user/cv`, {
 					reportProgress: true,
 					observe: 'events',
 					responseType: 'blob',
+					params,
 				}),
 		).pipe(
 			map((event: HttpEvent<Blob>) => FileDownload.fromHttpEvent(event)),
