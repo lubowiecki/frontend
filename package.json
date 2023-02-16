@@ -31,7 +31,7 @@
 		"@ngx-translate/core": "^14.0.0",
 		"@ngx-translate/http-loader": "^7.0.0",
 		"@opi_pib/ngx-utility": "^15.1.3",
-		"@opi_pib/node-translate": "^1.1.2",
+		"@opi_pib/node-translate": "^1.1.3",
 		"@opi_pib/ts-utility": "^1.1.5",
 		"luxon": "^3.2.1",
 		"ramda": "^0.28.0",
