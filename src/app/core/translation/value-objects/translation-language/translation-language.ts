@@ -1,8 +1,8 @@
 import { always, ValueObject } from '@opi_pib/ts-utility';
 
-import { TranslationLanguageEnum } from '@core/translation/models/translation-language-enum';
 import { TranslationKey } from '@translations/translation-key';
 
+import { TranslationLanguageEnum } from '../../models/translation-language-enum';
 import { TranslationLanguageProps } from './translation-language-props';
 import { isTranslationLanguageProps } from './is-translation-language-props';
 import { translationLanguageMap } from './translation-language-map';
@@ -34,7 +34,7 @@ export class TranslationLanguage extends ValueObject<TranslationLanguageProps> {
 		return translationLanguageMap[this.toDto()].translationKey;
 	}
 
-	getLanguageToSwitch(): TranslationLanguage {
+	getLanguageToSelect(): TranslationLanguage {
 		return this.equals(TranslationLanguage.createPl()) ? TranslationLanguage.createEn() : TranslationLanguage.createPl();
 	}
 }

@@ -1,6 +1,6 @@
 import { z } from 'zod';
 
-import { TranslationLanguageEnum } from '@core/translation/models/translation-language-enum';
+import { TranslationLanguageEnum } from '../../models/translation-language-enum';
 
 export const TranslationLanguagePropsSchema = z.object({
 	lang: z.nativeEnum(TranslationLanguageEnum),

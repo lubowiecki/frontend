@@ -1,19 +1,19 @@
 import { Injectable } from '@angular/core';
 import { MatDatepickerIntl } from '@angular/material/datepicker';
 
-import { Translator } from '@core/translation/services/translator.service';
+import { Translator } from '@core/translation';
 
 @Injectable({ providedIn: 'root' })
-export class CustomMatDatepickerIntl extends MatDatepickerIntl {
+export class MatDatepickerTranslator extends MatDatepickerIntl {
 	constructor(private translator: Translator) {
 		super();
 
 		this.translator.getCurrentLanguage$().subscribe(() => {
-			this.translate();
+			this.#translate();
 		});
 	}
 
-	private translate(): void {
+	#translate(): void {
 		this.calendarLabel = this.translator.instant('datepicker.calendarLabel');
 		this.openCalendarLabel = this.translator.instant('datepicker.openCalendarLabel');
 		this.prevMonthLabel = this.translator.instant('datepicker.prevMonthLabel');

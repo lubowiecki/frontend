@@ -1,18 +1,26 @@
 import { Component, ChangeDetectionStrategy, Input } from '@angular/core';
 import { Is, Maybe } from '@opi_pib/ts-utility';
 import { BehaviorSubject, Observable } from 'rxjs';
+import { CommonModule } from '@angular/common';
 
 import { FileDownload } from '@core/file/value-objects/file-download';
 import { User } from '@core/user/value-objects/user';
 import { RestUserCvGetService } from '@core/user/services/rest-user-cv-get.service';
 import { UserId } from '@core/user/value-objects/user-id';
-import { UserService } from '@api/rest/services';
+import { TranslationModule } from '@core/translation';
+import { FileDownloadComponent } from '@core/file/components/file-download/file-download.component';
 
 @Component({
 	selector: 'app-user-download-cv',
 	templateUrl: './user-download-cv.component.html',
 	styleUrls: ['./user-download-cv.component.scss'],
 	changeDetection: ChangeDetectionStrategy.OnPush,
+	standalone: true,
+	imports: [
+		CommonModule,
+		TranslationModule,
+		FileDownloadComponent,
+	],
 })
 export class UserDownloadCvComponent {
 	@Input() user: Maybe<User>;
@@ -21,14 +29,13 @@ export class UserDownloadCvComponent {
 
 	constructor(
 		private restUserCvGetService: RestUserCvGetService,
-		private userService: UserService,
 	) { }
 
-	getFile$(): Observable<Maybe<FileDownload>> {
+	protected getFile$(): Observable<Maybe<FileDownload>> {
 		return this.#file.asObservable();
 	}
 
-	download(): void {
+	protected download(): void {
 		const id: Maybe<UserId> = this.user?.id;
 
 		if (Is.defined(id)) {

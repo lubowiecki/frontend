@@ -1,4 +1,4 @@
 <app-language-switcher
-	[languageToSwitch]="languageToSwitch$ | async"
-	(languageSelect)="onLanguageSelect($event)"
+	[select]="languageToSelect$ | async"
+	(selected)="onLanguageSelect($event)"
 ></app-language-switcher>

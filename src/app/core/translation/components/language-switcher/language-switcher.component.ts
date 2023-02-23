@@ -2,23 +2,28 @@ import {
 	ChangeDetectionStrategy, Component, EventEmitter, Input, Output,
 } from '@angular/core';
 import { Maybe } from '@opi_pib/ts-utility';
+import { CommonModule } from '@angular/common';
+import { MatButtonModule } from '@angular/material/button';
 
-import { TranslationLanguage } from '@core/translation/value-objects/translation-language';
+import { TranslationModule } from '../../translation.module';
+import { TranslationLanguage } from '../../value-objects/translation-language';
 
 @Component({
 	selector: 'app-language-switcher',
 	templateUrl: './language-switcher.component.html',
 	styleUrls: ['./language-switcher.component.scss'],
 	changeDetection: ChangeDetectionStrategy.OnPush,
+	standalone: true,
+	imports: [CommonModule, MatButtonModule, TranslationModule],
 })
 export class LanguageSwitcherComponent {
-	@Input() languageToSwitch: Maybe<TranslationLanguage>;
+	@Input() select: Maybe<TranslationLanguage>;
 
-	@Output() languageSelect = new EventEmitter<TranslationLanguage>();
+	@Output() selected = new EventEmitter<TranslationLanguage>();
 
-	onLanguageSelect(language: Maybe<TranslationLanguage>): void {
+	protected onSelect(language: Maybe<TranslationLanguage>): void {
 		if (language instanceof TranslationLanguage) {
-			this.languageSelect.emit(language);
+			this.selected.emit(language);
 		}
 	}
 }

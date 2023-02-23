@@ -4,7 +4,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatDatepickerModule } from '@angular/material/datepicker';
-import { TranslationModule } from 'src/app/core/translation/translation.module';
+
+import { TranslationModule } from '@core/translation';
 
 import { UserDetailsFormComponent } from './user-details-form.component';
 

@@ -3,30 +3,34 @@ import {
 } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { CommonModule } from '@angular/common';
 
-import { Translator } from '@core/translation/services/translator.service';
-import { TranslationLanguage } from '@core/translation/value-objects/translation-language';
+import { Translator } from '../../services/translator.service';
+import { TranslationLanguage } from '../../value-objects/translation-language';
+import { LanguageSwitcherComponent } from '../language-switcher/language-switcher.component';
 
 @Component({
 	selector: 'app-language-switcher-container',
 	templateUrl: './language-switcher-container.component.html',
 	styleUrls: ['./language-switcher-container.component.scss'],
 	changeDetection: ChangeDetectionStrategy.OnPush,
+	standalone: true,
+	imports: [CommonModule, LanguageSwitcherComponent],
 })
 export class LanguageSwitcherContainerComponent {
-	languageToSwitch$: Observable<TranslationLanguage>;
+	protected languageToSelect$: Observable<TranslationLanguage>;
 
 	constructor(private translator: Translator) {
-		this.languageToSwitch$ = this.getLanguageToSwitch$();
+		this.languageToSelect$ = this.#getLanguageToSelect$();
 	}
 
-	onLanguageSelect(language: TranslationLanguage): void {
+	protected onLanguageSelect(language: TranslationLanguage): void {
 		this.translator.setLanguage(language);
 	}
 
-	private getLanguageToSwitch$(): Observable<TranslationLanguage> {
+	#getLanguageToSelect$(): Observable<TranslationLanguage> {
 		return this.translator
 			.getCurrentLanguage$()
-			.pipe(map((currentLanguage) => currentLanguage.getLanguageToSwitch()));
+			.pipe(map((currentLanguage) => currentLanguage.getLanguageToSelect()));
 	}
 }

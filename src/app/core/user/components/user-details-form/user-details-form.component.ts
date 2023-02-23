@@ -65,16 +65,17 @@ export class UserDetailsFormComponent {
 
 	protected update(): void {
 		if (this.#user instanceof User && this.formGroup.valid) {
-			always(Is.defined(this.formGroup.value.year), 'oikuf9s4');
-			always(Is.defined(this.formGroup.value.creationDate), 'k4ofpr6w');
+			const { value } = this.formGroup;
+			always(Is.defined(value.year), 'oikuf9s4');
+			always(Is.defined(value.creationDate), 'k4ofpr6w');
 
 			const updatedUser = User.create({
 				...this.#user.getProps(),
-				...this.formGroup.value,
-				year: IsoDate.fromJsDate(this.formGroup.value.year),
-				creationDate: IsoDateWithTime.fromDto(this.formGroup.value.creationDate),
-				updateDate: Is.defined(this.formGroup.value.updateDate) ?
-					IsoDateWithTime.fromDto(this.formGroup.value.updateDate) :
+				...value,
+				year: IsoDate.fromJsDate(value.year),
+				creationDate: IsoDateWithTime.fromDto(value.creationDate),
+				updateDate: Is.defined(value.updateDate) ?
+					IsoDateWithTime.fromDto(value.updateDate) :
 					null,
 			});
 
