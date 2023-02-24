@@ -1,1 +1,1 @@
-export { MatDatepickerIntlProvider } from './datepicker/datepicker-intl-provider';
+export { MatDatepickerIntlModule } from './datepicker/mat-datepicker-intl.module';

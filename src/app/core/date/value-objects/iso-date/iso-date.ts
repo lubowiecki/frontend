@@ -24,10 +24,10 @@ export class IsoDate extends ValueObject<IsoDateProps> {
 		return this.create({ date: DateTime.fromISO(dto) });
 	}
 
-	static fromJsDate(jsDate: Date): IsoDate {
-		always(jsDate instanceof Date, 'thjx2or7');
+	static fromDateTime(date: DateTime): IsoDate {
+		always(date instanceof DateTime, 'thjx2or7');
 
-		return this.create({ date: DateTime.fromJSDate(jsDate) });
+		return this.create({ date });
 	}
 
 	get date(): DateTime {
@@ -38,7 +38,7 @@ export class IsoDate extends ValueObject<IsoDateProps> {
 		return this.date.toISODate();
 	}
 
-	toJsDate(): Date {
-		return this.date.toJSDate();
+	toView(): string {
+		return this.date.toLocaleString();
 	}
 }

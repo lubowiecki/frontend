@@ -1,17 +1,22 @@
 import { NgModule } from '@angular/core';
-import { LuxonDateAdapter, MatLuxonDateModule, MAT_LUXON_DATE_ADAPTER_OPTIONS } from '@angular/material-luxon-adapter';
+import {
+	LuxonDateAdapter, MatLuxonDateAdapterOptions, MatLuxonDateModule, MAT_LUXON_DATE_ADAPTER_OPTIONS,
+} from '@angular/material-luxon-adapter';
 import { DateAdapter } from '@angular/material/core';
 
 import { Translator } from '@core/translation';
+
+const options: MatLuxonDateAdapterOptions = {
+	firstDayOfWeek: 1,
+	useUtc: false,
+};
 
 @NgModule({
 	imports: [MatLuxonDateModule],
 	providers: [
 		{
 			provide: MAT_LUXON_DATE_ADAPTER_OPTIONS,
-			useValue: {
-				firstDayOfWeek: 1,
-			},
+			useValue: options,
 		},
 	],
 })

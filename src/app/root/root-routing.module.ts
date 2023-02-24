@@ -12,10 +12,18 @@ const routePanel: TypedRoutes[Paths.Panel] = {
 	path: 'panel',
 };
 
+const routeDates: TypedRoutes[Paths.Dates] = {
+	path: 'dates',
+};
+
 const routes: Routes = [
 	{
 		path: routeRoot.path,
 		loadChildren: () => import('@pages/profile-page/profile-page.module').then((m) => m.ProfilePageModule),
+	},
+	{
+		path: routeDates.path,
+		loadChildren: () => import('@pages/dates-page/dates-page-routing.module'),
 	},
 	{
 		path: routePanel.path,

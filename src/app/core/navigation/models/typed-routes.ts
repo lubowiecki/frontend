@@ -12,6 +12,9 @@ export interface TypedRoutes extends Record<Paths, TypedPath> {
 	[Paths.Root]: {
 		path: '';
 	},
+	[Paths.Dates]: {
+		path: 'dates';
+	},
 	[Paths.Panel]: {
 		path: 'panel';
 		data?: {

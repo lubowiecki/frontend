@@ -19,6 +19,12 @@ export class IsoDateWithTime extends ValueObject<IsoDateWithTimeProps> {
 		return new IsoDateWithTime(props);
 	}
 
+	static fromDateTime(date: DateTime): IsoDateWithTime {
+		always(date instanceof DateTime, '9i2k3vua');
+
+		return this.create({ date });
+	}
+
 	static fromDto(dto: IsoDateWithTimeDto): IsoDateWithTime {
 		always(isIsoDateWithTimeDto(dto), 'szt19626');
 
@@ -30,7 +36,11 @@ export class IsoDateWithTime extends ValueObject<IsoDateWithTimeProps> {
 	}
 
 	toDto(): IsoDateWithTimeDto {
-		return this.date.toISO({ includeOffset: false, suppressMilliseconds: true });
+		return this.date.toUTC().toISO({ includeOffset: true, suppressMilliseconds: true });
+	}
+
+	toView(): string {
+		return this.date.toLocaleString(DateTime.DATETIME_SHORT_WITH_SECONDS);
 	}
 
 	formatRelative(lang: TranslationLanguage): Maybe<string> {
