@@ -1,5 +1,6 @@
 import { always, ValueObject } from '@opi_pib/ts-utility';
 import { DateTime } from 'luxon';
+import { ValidatorFn } from '@angular/forms';
 
 import { IsoDateDto } from '@api/rest/models';
 
@@ -30,8 +31,16 @@ export class IsoDate extends ValueObject<IsoDateProps> {
 		return this.create({ date });
 	}
 
+	static validator(): ValidatorFn {
+		return (control) => (!isIsoDateDto(control?.value) ? { pattern: true } : null);
+	}
+
 	get date(): DateTime {
 		return this.props.date;
+	}
+
+	get isValid(): boolean {
+		return this.props.date.isValid;
 	}
 
 	toDto(): IsoDateDto {

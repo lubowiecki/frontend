@@ -1,0 +1,34 @@
+<table>
+	<thead>
+		<tr>
+			<th>Source</th>
+			<th>Current</th>
+			<th>London</th>
+			<th>Warsaw</th>
+			<th>Current Dto</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>{{ dateWithTimeUtcSource }}</td>
+			<td>{{ dateWithTimeUtc.toView() }}</td>
+			<td>1.01.2022, 08:00:00</td>
+			<td>1.01.2022, 09:00:00</td>
+			<td>{{ dateWithTimeUtc.toDto() }}</td>
+		</tr>
+		<tr class="bg-gray-200">
+			<td>{{ dateWithTimeZoneSource }}</td>
+			<td>{{ dateWithTimeZone.toView() }}</td>
+			<td>1.01.2022, 06:00:00</td>
+			<td>1.01.2022, 07:00:00</td>
+			<td>{{ dateWithTimeZone.toDto() }}</td>
+		</tr>
+		<tr class="bg-red-200">
+			<td>{{ dateWithTimeLocalSource }}</td>
+			<td>{{ dateWithTimeLocal.toView() }}</td>
+			<td>1.01.2022, 08:00:00</td>
+			<td>1.01.2022, 08:00:00</td>
+			<td>{{ dateWithTimeLocal.toDto() }}</td>
+		</tr>
+	</tbody>
+</table>

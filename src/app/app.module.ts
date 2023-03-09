@@ -12,7 +12,6 @@ import { RootComponent } from './root/root.component';
 import { RootModule } from './root/root.module';
 
 @NgModule({
-	declarations: [],
 	imports: [
 		BrowserModule,
 		BrowserAnimationsModule,

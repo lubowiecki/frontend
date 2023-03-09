@@ -25,14 +25,24 @@ export class IsoDateWithTime extends ValueObject<IsoDateWithTimeProps> {
 		return this.create({ date });
 	}
 
-	static fromDto(dto: IsoDateWithTimeDto): IsoDateWithTime {
+	static fromDto(dto: IsoDateWithTimeDto, forceUtc = false): IsoDateWithTime {
 		always(isIsoDateWithTimeDto(dto), 'szt19626');
 
-		return this.create({ date: DateTime.fromISO(dto) });
+		let date = DateTime.fromISO(dto);
+
+		if (forceUtc) {
+			date = date.toUTC();
+		}
+
+		return this.create({ date });
 	}
 
 	get date(): DateTime {
 		return this.props.date;
+	}
+
+	get isValid(): boolean {
+		return this.props.date.isValid;
 	}
 
 	toDto(): IsoDateWithTimeDto {
