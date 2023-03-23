@@ -5,7 +5,8 @@ import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { CommonModule } from '@angular/common';
 
-import { Translator } from '../../services/translator.service';
+import { I18nService } from '@core/i18n';
+
 import { TranslationLanguage } from '../../value-objects/translation-language';
 import { LanguageSwitcherComponent } from '../language-switcher/language-switcher.component';
 
@@ -20,16 +21,16 @@ import { LanguageSwitcherComponent } from '../language-switcher/language-switche
 export class LanguageSwitcherContainerComponent {
 	protected languageToSelect$: Observable<TranslationLanguage>;
 
-	constructor(private translator: Translator) {
+	constructor(private i18nService: I18nService) {
 		this.languageToSelect$ = this.#getLanguageToSelect$();
 	}
 
 	protected onLanguageSelect(language: TranslationLanguage): void {
-		this.translator.setLanguage(language);
+		this.i18nService.setLanguage(language);
 	}
 
 	#getLanguageToSelect$(): Observable<TranslationLanguage> {
-		return this.translator
+		return this.i18nService
 			.getCurrentLanguage$()
 			.pipe(map((currentLanguage) => currentLanguage.getLanguageToSelect()));
 	}

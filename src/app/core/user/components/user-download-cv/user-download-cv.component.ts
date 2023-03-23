@@ -7,8 +7,8 @@ import { FileDownload } from '@core/file/value-objects/file-download';
 import { User } from '@core/user/value-objects/user';
 import { RestUserCvGetService } from '@core/user/services/rest-user-cv-get.service';
 import { UserId } from '@core/user/value-objects/user-id';
-import { TranslationModule } from '@core/translation';
 import { FileDownloadComponent } from '@core/file/components/file-download/file-download.component';
+import { I18nModule } from '@core/i18n';
 
 @Component({
 	selector: 'app-user-download-cv',
@@ -18,7 +18,7 @@ import { FileDownloadComponent } from '@core/file/components/file-download/file-
 	standalone: true,
 	imports: [
 		CommonModule,
-		TranslationModule,
+		I18nModule,
 		FileDownloadComponent,
 	],
 })

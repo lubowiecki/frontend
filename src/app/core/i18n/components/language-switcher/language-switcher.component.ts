@@ -5,7 +5,8 @@ import { Maybe } from '@opi_pib/ts-utility';
 import { CommonModule } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
 
-import { TranslationModule } from '../../translation.module';
+import { I18nModule } from '@core/i18n';
+
 import { TranslationLanguage } from '../../value-objects/translation-language';
 
 @Component({
@@ -14,7 +15,7 @@ import { TranslationLanguage } from '../../value-objects/translation-language';
 	styleUrls: ['./language-switcher.component.scss'],
 	changeDetection: ChangeDetectionStrategy.OnPush,
 	standalone: true,
-	imports: [CommonModule, MatButtonModule, TranslationModule],
+	imports: [CommonModule, MatButtonModule, I18nModule],
 })
 export class LanguageSwitcherComponent {
 	@Input() select: Maybe<TranslationLanguage>;

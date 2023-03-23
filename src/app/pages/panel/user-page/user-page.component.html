@@ -16,3 +16,9 @@
 	mode="indeterminate"
 	color="primary"
 ></mat-progress-spinner>
+
+<div>{{ today | date : undefined : undefined : locale.toString() }}</div>
+
+<div>
+	{{ today | i18nDate }}
+</div>

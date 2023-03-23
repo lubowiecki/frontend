@@ -1,4 +1,6 @@
-import { Component, ChangeDetectionStrategy, OnDestroy } from '@angular/core';
+import {
+	Component, ChangeDetectionStrategy, OnDestroy, Inject, LOCALE_ID,
+} from '@angular/core';
 import { Observable, Subject, Subscription } from 'rxjs';
 import { Maybe } from '@opi_pib/ts-utility';
 import { RestQuery } from '@opi_pib/ngx-utility';
@@ -32,7 +34,10 @@ export class UserPageComponent implements OnDestroy {
 
 	#subscriptions = new Subscription();
 
+	today = Date.now();
+
 	constructor(
+		@Inject(LOCALE_ID) protected locale: string,
 		private restUserGetService: RestUserGetService,
 		private restUserPutService: RestUserPutService,
 		private dateService: DateWithTimeService,

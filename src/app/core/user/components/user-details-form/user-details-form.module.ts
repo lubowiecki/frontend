@@ -4,8 +4,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { ReactiveFormsModule } from '@angular/forms';
 
-import { TranslationModule } from '@core/translation';
 import { MatDatepickerIntlModule } from '@core/vendor/angular-material';
+import { I18nModule } from '@core/i18n';
 
 import { UserDetailsFormComponent } from './user-details-form.component';
 
@@ -22,7 +22,7 @@ import { UserDetailsFormComponent } from './user-details-form.component';
 		MatFormFieldModule,
 		MatInputModule,
 		MatDatepickerIntlModule,
-		TranslationModule,
+		I18nModule,
 	],
 })
 export class UserDetailsFormModule { }

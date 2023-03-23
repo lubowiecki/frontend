@@ -1,7 +1,6 @@
 import { TranslationKey } from '@translations/translation-key';
+import { TranslationLanguageEnum } from '@translations/translation-languages';
 import { t } from '@translations/translation-marker';
-
-import { TranslationLanguageEnum } from '../../models/translation-language-enum';
 
 type TranslationLanguageMap = {
 	[key in TranslationLanguageEnum]: {
@@ -10,11 +9,10 @@ type TranslationLanguageMap = {
 };
 
 export const translationLanguageMap: TranslationLanguageMap = {
-	[TranslationLanguageEnum.Pl]: {
+	pl: {
 		translationKey: t('languageSwitcher.lang.pl'),
 	},
-
-	[TranslationLanguageEnum.En]: {
+	en: {
 		translationKey: t('languageSwitcher.lang.en'),
 	},
 };
