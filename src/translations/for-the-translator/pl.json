@@ -20,6 +20,9 @@
 	"languageSwitcher.label": "Zmień język",
 	"languageSwitcher.lang.en": "English",
 	"languageSwitcher.lang.pl": "Polish",
+	"messages.0": "Brak wiadomości",
+	"messages.1": "Jedna wiadomość",
+	"messages.other": "{{count}} wiadomości",
 	"page.profile.title": "Profil",
 	"page.user.title": "Użytkownik",
 	"userPage.dialog.title": "Dane użytkownika zostały zapisane"

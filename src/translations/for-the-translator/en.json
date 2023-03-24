@@ -20,6 +20,9 @@
 	"languageSwitcher.label": "Change language",
 	"languageSwitcher.lang.en": "Angielski",
 	"languageSwitcher.lang.pl": "Polski",
+	"messages.0": "No messages",
+	"messages.1": "One message",
+	"messages.other": "{{count}} messages",
 	"page.profile.title": "Profile",
 	"page.user.title": "User",
 	"userPage.dialog.title": "User data has been saved"

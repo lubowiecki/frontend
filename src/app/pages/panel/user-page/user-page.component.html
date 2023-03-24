@@ -26,3 +26,13 @@
 <div>
 	{{ 1.2345 | i18nCurrency }}
 </div>
+
+<div>
+	{{
+		messages.length
+			| translatePlural : messageMapping
+			| translate : { count: messages.length }
+	}}
+</div>
+
+<button (click)="addMessage()">add message</button>

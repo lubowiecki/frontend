@@ -8,8 +8,4 @@ export class I18nLocaleId extends String {
 	override toString(): string {
 		return this.i18nService.getCurrentLanguage().toDto();
 	}
-
-	override valueOf(): string {
-		return this.toString();
-	}
 }

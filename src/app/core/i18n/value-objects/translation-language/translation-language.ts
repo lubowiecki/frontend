@@ -18,14 +18,6 @@ export class TranslationLanguage extends ValueObject<TranslationLanguageProps> {
 		return new TranslationLanguage(props);
 	}
 
-	static createPl(): TranslationLanguage {
-		return this.create({ lang: TranslationLanguageEnum.Pl });
-	}
-
-	static createEn(): TranslationLanguage {
-		return this.create({ lang: TranslationLanguageEnum.En });
-	}
-
 	toDto(): TranslationLanguageEnum {
 		return this.props.lang;
 	}
@@ -35,6 +27,9 @@ export class TranslationLanguage extends ValueObject<TranslationLanguageProps> {
 	}
 
 	getLanguageToSelect(): TranslationLanguage {
-		return this.equals(TranslationLanguage.createPl()) ? TranslationLanguage.createEn() : TranslationLanguage.createPl();
+		const pl = TranslationLanguage.create({ lang: TranslationLanguageEnum.Pl });
+		const en = TranslationLanguage.create({ lang: TranslationLanguageEnum.En });
+
+		return this.equals(pl) ? en : pl;
 	}
 }

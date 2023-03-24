@@ -11,7 +11,8 @@ import { DateWithTimeService } from '@core/date/services/date-with-time.service'
 import { UserId } from '@core/user/value-objects/user-id';
 import { RestUserPutService } from '@core/user/services/rest-user-put.service';
 import { RestUserGetService } from '@core/user/services/rest-user-get.service';
-import { I18nLocaleId } from '@core/i18n/i18n-localeId';
+import { TranslationKey } from '@translations/translation-key';
+import { t } from '@translations/translation-marker';
 
 import { UserPageDialogsService } from './user-page-dialogs/services/user-page-dialogs.service';
 
@@ -36,6 +37,10 @@ export class UserPageComponent implements OnDestroy {
 	#subscriptions = new Subscription();
 
 	today = Date.now();
+
+	messages: string[] = [];
+
+	messageMapping: {[k: string]: TranslationKey} = { '=0': t('messages.0'), '=1': t('messages.1'), other: t('messages.other') };
 
 	constructor(
 		@Inject(LOCALE_ID) protected locale: string,
@@ -73,5 +78,9 @@ export class UserPageComponent implements OnDestroy {
 			.subscribe((date) => {
 				this.relativeUpdateDate = date;
 			});
+	}
+
+	addMessage() {
+		this.messages.push('next');
 	}
 }

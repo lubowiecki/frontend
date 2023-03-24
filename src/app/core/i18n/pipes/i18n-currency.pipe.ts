@@ -44,6 +44,8 @@ export class I18nCurrencyPipe extends CurrencyPipe implements PipeTransform {
 		digitsInfo?: DigitsInfoType,
 		locale?: LocaleType,
 	): TransformType {
+		console.log(this.localeId);
+		console.log(this.localeId.toString());
 		locale = locale || this.localeId.toString();
 		return super.transform(value, currencyCode, display, digitsInfo, locale);
 	}
