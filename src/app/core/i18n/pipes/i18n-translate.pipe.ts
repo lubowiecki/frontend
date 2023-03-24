@@ -9,7 +9,7 @@ type NgxTranslatePipeWithoutTransform = new (
 	_ref: ChangeDetectorRef
 ) => {
 	[P in Exclude<keyof TranslatePipe, 'transform'>]: TranslatePipe[P];
-} & { transform(query: Maybe<TranslationKey>, ...args: unknown[]): string }; // TODO translationKey import
+} & { transform(query: Maybe<TranslationKey>, ...args: unknown[]): string };
 
 const NgxTranslatePipeWithoutTransformClass = TranslatePipe as NgxTranslatePipeWithoutTransform;
 

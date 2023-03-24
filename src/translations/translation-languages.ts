@@ -7,4 +7,7 @@ export const TranslationLanguageEnum = {
 	En: 'en' as TranslationLanguageEnum,
 };
 
+export const isTranslationLanguageEnum = (value: unknown): value is TranslationLanguageEnum =>
+	Object.values(TranslationLanguageEnum).includes(value as TranslationLanguageEnum);
+
 export const languages: TranslationLanguageEnum[] = ['pl','en'];

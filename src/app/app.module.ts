@@ -8,7 +8,6 @@ import { I18nRootModule } from '@core/i18n';
 import { I18N_CONFIG } from '@core/i18n/i18n.config';
 import { AngularMaterialConfigModule } from '@core/vendor/angular-material/angular-material-config.module';
 import { environment } from '@environment';
-import { TranslationLanguageEnum } from '@translations/translation-languages';
 
 import { RootComponent } from './root/root.component';
 import { RootModule } from './root/root.module';
@@ -28,9 +27,7 @@ import { RootModule } from './root/root.module';
 	providers: [
 		{
 			provide: I18N_CONFIG,
-			useValue: {
-				defaultLanguage: TranslationLanguageEnum.Pl,
-			},
+			useValue: { },
 		},
 	],
 	bootstrap: [RootComponent],

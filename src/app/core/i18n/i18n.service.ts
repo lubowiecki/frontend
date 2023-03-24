@@ -1,4 +1,4 @@
-import { Inject, Injectable } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { TranslationParams } from '@opi_pib/node-translate/dist/models/translation-params';
 import { always, Maybe } from '@opi_pib/ts-utility';
@@ -7,10 +7,8 @@ import {
 } from 'rxjs';
 
 import { TranslationKey } from '@translations/translation-key';
-import { languages, TranslationLanguageEnum } from '@translations/translation-languages';
+import { isTranslationLanguageEnum, languages, TranslationLanguageEnum } from '@translations/translation-languages';
 
-import { I18nConfig, I18N_CONFIG } from './i18n.config';
-import { isTranslationLanguageEnum } from './is-translation-language-enum';
 import { TranslationLanguage } from './value-objects/translation-language';
 
 @Injectable({
@@ -21,7 +19,6 @@ export class I18nService {
 
 	constructor(
 		private translateService: TranslateService,
-		@Inject(I18N_CONFIG) private config: I18nConfig,
 	) { }
 
 	init(): void {
@@ -51,7 +48,7 @@ export class I18nService {
 		return this.translateService.stream(key as string | string[], interpolateParams);
 	}
 
-	instant(key: TranslationKey, interpolateParams?: TranslationParams): string | any {
+	instant(key: TranslationKey, interpolateParams?: TranslationParams): string {
 		return this.translateService.instant(key, interpolateParams);
 	}
 
@@ -82,7 +79,7 @@ export class I18nService {
 	}
 
 	#getDefaultLanguage(): TranslationLanguage {
-		const lang: TranslationLanguageEnum = this.config.defaultLanguage;
+		const lang: TranslationLanguageEnum = languages[0];
 
 		always(isTranslationLanguageEnum(lang), 'q38b0w3s');
 
