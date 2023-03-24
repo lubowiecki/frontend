@@ -15,10 +15,10 @@ const NgxTranslatePipeWithoutTransformClass = TranslatePipe as NgxTranslatePipeW
 
 @Pipe({
 	name: 'translate',
-	pure: false,
 	standalone: true,
+	pure: false,
 })
-export class I18nPipe extends NgxTranslatePipeWithoutTransformClass implements PipeTransform {
+export class I18nTranslatePipe extends NgxTranslatePipeWithoutTransformClass implements PipeTransform {
 	constructor(translate: TranslateService, _ref: ChangeDetectorRef) {
 		super(translate, _ref);
 	}

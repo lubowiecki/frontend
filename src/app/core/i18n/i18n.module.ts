@@ -2,14 +2,13 @@ import { NgModule } from '@angular/core';
 import { TranslateModule } from '@ngx-translate/core';
 
 import { i18nModuleConfig } from './i18n-module.config';
-import { I18nPipe } from './i18n.pipe';
+import { i18nPipes } from './pipes';
 
 @NgModule({
 	imports: [
-		TranslateModule.forChild(i18nModuleConfig), I18nPipe,
+		TranslateModule.forChild(i18nModuleConfig),
+		...i18nPipes,
 	],
-	exports: [
-		I18nPipe,
-	],
+	exports: i18nPipes,
 })
 export class I18nModule { }

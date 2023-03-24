@@ -11,6 +11,7 @@ import { DateWithTimeService } from '@core/date/services/date-with-time.service'
 import { UserId } from '@core/user/value-objects/user-id';
 import { RestUserPutService } from '@core/user/services/rest-user-put.service';
 import { RestUserGetService } from '@core/user/services/rest-user-get.service';
+import { I18nLocaleId } from '@core/i18n/i18n-localeId';
 
 import { UserPageDialogsService } from './user-page-dialogs/services/user-page-dialogs.service';
 
