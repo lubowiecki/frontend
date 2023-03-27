@@ -1,14 +1,14 @@
 import { HttpClient } from '@angular/common/http';
 import { MissingTranslationHandler, TranslateLoader, TranslateModuleConfig } from '@ngx-translate/core';
 
-import { CustomMissingTranslationHandler } from './classes/custom-missing-translation-handler';
-import { LazyTranslateLoader } from './classes/lazy-translate-loader';
+import { I18nMissingTranslationHandler } from './i18n-missing-translation-handler';
+import { I18nTranslateLoader } from './i18n-translate-loader';
 
 export const i18nModuleConfig: TranslateModuleConfig = {
-	missingTranslationHandler: { provide: MissingTranslationHandler, useClass: CustomMissingTranslationHandler },
+	missingTranslationHandler: { provide: MissingTranslationHandler, useClass: I18nMissingTranslationHandler },
 	loader: {
 		provide: TranslateLoader,
-		useClass: LazyTranslateLoader,
+		useClass: I18nTranslateLoader,
 		deps: [HttpClient],
 	},
 	useDefaultLang: false,

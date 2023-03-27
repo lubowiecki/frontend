@@ -27,7 +27,9 @@ import { RootModule } from './root/root.module';
 	providers: [
 		{
 			provide: I18N_CONFIG,
-			useValue: { },
+			useValue: {
+				logMissingTranslations: !environment.production,
+			},
 		},
 	],
 	bootstrap: [RootComponent],

@@ -25,11 +25,4 @@ export class TranslationLanguage extends ValueObject<TranslationLanguageProps> {
 	getTranslationKey(): TranslationKey {
 		return translationLanguageMap[this.toDto()].translationKey;
 	}
-
-	getLanguageToSelect(): TranslationLanguage {
-		const pl = TranslationLanguage.create({ lang: TranslationLanguageEnum.Pl });
-		const en = TranslationLanguage.create({ lang: TranslationLanguageEnum.En });
-
-		return this.equals(pl) ? en : pl;
-	}
 }

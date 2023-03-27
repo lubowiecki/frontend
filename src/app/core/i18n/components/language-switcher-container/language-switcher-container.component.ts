@@ -1,9 +1,8 @@
 import {
 	ChangeDetectionStrategy, Component,
 } from '@angular/core';
-import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
 import { CommonModule } from '@angular/common';
+import { map, Observable } from 'rxjs';
 
 import { I18nService } from '@core/i18n';
 
@@ -19,19 +18,19 @@ import { LanguageSwitcherComponent } from '../language-switcher/language-switche
 	imports: [CommonModule, LanguageSwitcherComponent],
 })
 export class LanguageSwitcherContainerComponent {
-	protected languageToSelect$: Observable<TranslationLanguage>;
+	otherLanguages$: Observable<TranslationLanguage[]>;
 
 	constructor(private i18nService: I18nService) {
-		this.languageToSelect$ = this.#getLanguageToSelect$();
+		this.otherLanguages$ = this.#getOtherLanguages$();
+	}
+
+	#getOtherLanguages$(): Observable<TranslationLanguage[]> {
+		return this.i18nService.getCurrentLanguage$().pipe(
+			map((currentLang) => this.i18nService.getAvailableLanguages().filter((lang) => !lang.equals(currentLang))),
+		);
 	}
 
 	protected onLanguageSelect(language: TranslationLanguage): void {
 		this.i18nService.setLanguage(language);
-	}
-
-	#getLanguageToSelect$(): Observable<TranslationLanguage> {
-		return this.i18nService
-			.getCurrentLanguage$()
-			.pipe(map((currentLanguage) => currentLanguage.getLanguageToSelect()));
 	}
 }

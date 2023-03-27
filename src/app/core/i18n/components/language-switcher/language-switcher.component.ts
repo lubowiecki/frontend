@@ -18,7 +18,7 @@ import { TranslationLanguage } from '../../value-objects/translation-language';
 	imports: [CommonModule, MatButtonModule, I18nModule],
 })
 export class LanguageSwitcherComponent {
-	@Input() select: Maybe<TranslationLanguage>;
+	@Input() languages: Maybe<TranslationLanguage[]>;
 
 	@Output() selected = new EventEmitter<TranslationLanguage>();
 

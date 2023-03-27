@@ -1,10 +1,11 @@
-import { Injectable } from '@angular/core';
+import { Inject, Injectable } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { TranslationParams } from '@opi_pib/node-translate/dist/models/translation-params';
 import { always, Maybe } from '@opi_pib/ts-utility';
 import {
-	BehaviorSubject, distinctUntilChanged, map, Observable,
+	BehaviorSubject, distinctUntilChanged, map, Observable, tap,
 } from 'rxjs';
+import { DOCUMENT } from '@angular/common';
 
 import { TranslationKey } from '@translations/translation-key';
 import { isTranslationLanguageEnum, languages, TranslationLanguageEnum } from '@translations/translation-languages';
@@ -18,34 +19,46 @@ export class I18nService {
 	#langChange$: BehaviorSubject<TranslationLanguage>;
 
 	constructor(
+		@Inject(DOCUMENT) private document: Document,
 		private translateService: TranslateService,
 	) { }
 
-	init(): void {
+	forRoot(): void {
 		this.translateService.addLangs(languages);
 
 		const initialLanguage: TranslationLanguage = this.#getInitialLanguage();
 
-		this.#langChange$ = new BehaviorSubject(initialLanguage);
-		this.translateService.onLangChange.pipe(map(({ lang }) => {
-			always(isTranslationLanguageEnum(lang), 'vkhipgca');
-
-			return TranslationLanguage.create({ lang });
-		})).subscribe(this.#langChange$);
-
 		this.translateService.setDefaultLang(initialLanguage.toDto());
 		this.translateService.use(initialLanguage.toDto());
+		this.#langChange$ = new BehaviorSubject(initialLanguage);
+
+		this.translateService.onLangChange.pipe(
+			map(({ lang }) => {
+				always(isTranslationLanguageEnum(lang), 'vkhipgca');
+
+				return TranslationLanguage.create({ lang });
+			}),
+			tap((lang) => {
+				this.document.documentElement.lang = lang.toDto();
+			}),
+		).subscribe(this.#langChange$);
 	}
 
-	translate$(key: TranslationKey, interpolateParams?: TranslationParams): Observable<string>;
+	translate$(
+		key: TranslationKey,
+		interpolateParams?: TranslationParams
+	): Observable<string>;
 
-	translate$(key: TranslationKey[], interpolateParams?: TranslationParams): Observable<{ [k in TranslationKey]: string }>;
+	translate$(
+		key: TranslationKey[],
+		interpolateParams?: TranslationParams
+	): Observable<{ [k in TranslationKey]: string }>;
 
 	translate$(
 		key: TranslationKey | TranslationKey[],
 		interpolateParams?: TranslationParams,
 	): Observable<string> | Observable<{ [k in TranslationKey]: string }> {
-		return this.translateService.stream(key as string | string[], interpolateParams);
+		return this.translateService.stream(key, interpolateParams);
 	}
 
 	instant(key: TranslationKey, interpolateParams?: TranslationParams): string {
@@ -66,6 +79,10 @@ export class I18nService {
 
 	getCurrentLanguage$(): Observable<TranslationLanguage> {
 		return this.#langChange$.asObservable().pipe(distinctUntilChanged());
+	}
+
+	getAvailableLanguages(): TranslationLanguage[] {
+		return languages.map((lang) => TranslationLanguage.create({ lang }));
 	}
 
 	#getInitialLanguage(): TranslationLanguage {
