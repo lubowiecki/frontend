@@ -1,7 +1,7 @@
 import { MissingTranslationHandler, MissingTranslationHandlerParams } from '@ngx-translate/core';
 import { Inject, Injectable } from '@angular/core';
 
-import { I18nConfig, I18N_CONFIG } from './i18n.config';
+import { I18N_CONFIG, I18nConfig } from './i18n.config';
 
 @Injectable()
 export class I18nMissingTranslationHandler implements MissingTranslationHandler {

@@ -19,6 +19,7 @@ export interface Translations {
 	'label.year': string;
 	'languageSwitcher.label': string;
 	'languageSwitcher.lang.en': string;
+	'languageSwitcher.lang.en-us': string;
 	'languageSwitcher.lang.pl': string;
 	'messages.0': string;
 	'messages.1': string;

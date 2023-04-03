@@ -1,6 +1,5 @@
 import { Inject, Injectable } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
-import { TranslationParams } from '@opi_pib/node-translate/dist/models/translation-params';
 import { always, Maybe } from '@opi_pib/ts-utility';
 import {
 	BehaviorSubject, distinctUntilChanged, map, Observable, tap,
@@ -8,9 +7,11 @@ import {
 import { DOCUMENT } from '@angular/common';
 
 import { TranslationKey } from '@translations/translation-key';
-import { isTranslationLanguageEnum, languages, TranslationLanguageEnum } from '@translations/translation-languages';
+import { isTranslationLanguageEnum, TranslationLanguageEnum } from '@translations/translation-languages';
 
 import { TranslationLanguage } from './value-objects/translation-language';
+import { TranslationParams } from '../ngx-translate/translation-params';
+import { I18N_CONFIG, I18nConfig } from './i18n.config';
 
 @Injectable({
 	providedIn: 'root',
@@ -19,12 +20,13 @@ export class I18nService {
 	#langChange$: BehaviorSubject<TranslationLanguage>;
 
 	constructor(
+		@Inject(I18N_CONFIG) private config: I18nConfig,
 		@Inject(DOCUMENT) private document: Document,
 		private translateService: TranslateService,
 	) { }
 
 	forRoot(): void {
-		this.translateService.addLangs(languages);
+		this.translateService.addLangs(this.config.languages);
 
 		const initialLanguage: TranslationLanguage = this.#getInitialLanguage();
 
@@ -82,7 +84,7 @@ export class I18nService {
 	}
 
 	getAvailableLanguages(): TranslationLanguage[] {
-		return languages.map((lang) => TranslationLanguage.create({ lang }));
+		return this.config.languages.map((lang) => TranslationLanguage.create({ lang }));
 	}
 
 	#getInitialLanguage(): TranslationLanguage {
@@ -96,7 +98,7 @@ export class I18nService {
 	}
 
 	#getDefaultLanguage(): TranslationLanguage {
-		const lang: TranslationLanguageEnum = languages[0];
+		const lang: TranslationLanguageEnum = this.config.languages[0];
 
 		always(isTranslationLanguageEnum(lang), 'q38b0w3s');
 

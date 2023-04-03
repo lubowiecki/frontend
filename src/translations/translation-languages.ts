@@ -1,13 +1,9 @@
 export type TranslationLanguageEnum =
 	| 'pl'
-	| 'en';
+	| 'en'
+	| 'en-US';
 
-export const TranslationLanguageEnum = {
-	Pl: 'pl' as TranslationLanguageEnum,
-	En: 'en' as TranslationLanguageEnum,
-};
+export const languages: TranslationLanguageEnum[] = ['pl','en','en-US'];
 
 export const isTranslationLanguageEnum = (value: unknown): value is TranslationLanguageEnum =>
-	Object.values(TranslationLanguageEnum).includes(value as TranslationLanguageEnum);
-
-export const languages: TranslationLanguageEnum[] = ['pl','en'];
+	languages.includes(value as TranslationLanguageEnum);

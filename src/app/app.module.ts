@@ -5,7 +5,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { ApiModule } from '@api/rest/api.module';
 import { I18nRootModule } from '@core/i18n';
-import { I18N_CONFIG } from '@core/i18n/i18n.config';
 import { AngularMaterialConfigModule } from '@core/vendor/angular-material/angular-material-config.module';
 import { environment } from '@environment';
 
@@ -23,14 +22,6 @@ import { RootModule } from './root/root.module';
 			rootUrl: environment.restUri,
 		}),
 		RootModule,
-	],
-	providers: [
-		{
-			provide: I18N_CONFIG,
-			useValue: {
-				logMissingTranslations: !environment.production,
-			},
-		},
 	],
 	bootstrap: [RootComponent],
 })
