@@ -4,7 +4,7 @@ import {
 } from '@angular/core';
 import { Is, Maybe } from '@opi_pib/ts-utility';
 
-import { I18nLocaleId } from '../i18n-localeId';
+import { I18nLocaleId } from '../core/i18n-localeId';
 
 type TransformType = ReturnType<DatePipe['transform']>;
 type FormatType = Parameters<DatePipe['transform']>[1];

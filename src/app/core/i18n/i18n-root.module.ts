@@ -1,43 +1,39 @@
-import { Inject, NgModule } from '@angular/core';
-import { registerLocaleData } from '@angular/common';
+import {
+	ModuleWithProviders, NgModule, Optional, SkipSelf,
+} from '@angular/core';
 import { TranslateModule } from '@ngx-translate/core';
-import pl from '@angular/common/locales/pl';
 
-import { environment } from '@environment';
-import { languages } from '@translations/translation-languages';
-
-import { I18nLocaleIdProvider } from './i18n-localeId.provider';
-import { i18nModuleConfig } from './i18n-module.config';
+import { i18nModuleConfig } from './core/i18n-module.config';
 import { I18nService } from './i18n.service';
-import { I18N_CONFIG, I18nConfig } from './i18n.config';
-
-function registerLocales(locales: any[] = []) {
-	locales.forEach((locale) => registerLocaleData(locale));
-}
+import { I18N_CONFIG, I18nConfig } from './core/i18n.config';
+import { I18nLocaleIdProvider } from './core/i18n-localeId';
 
 @NgModule({
 	imports: [
 		TranslateModule.forRoot(i18nModuleConfig),
 	],
-	providers: [
-		I18nLocaleIdProvider,
-		{
-			provide: I18N_CONFIG,
-			useValue: {
-				logMissingTranslations: !environment.production,
-				languages,
-				localesToRegister: [pl],
-				pathToTranslationsFolder: './translations',
-			},
-		},
-	],
 })
 export class I18nRootModule {
+	static forRoot(params: I18nConfig): ModuleWithProviders<I18nRootModule> {
+		return {
+			ngModule: I18nRootModule,
+			providers: [
+				I18nLocaleIdProvider,
+				{
+					provide: I18N_CONFIG,
+					useValue: params,
+				},
+			],
+		};
+	}
+
 	constructor(
-		@Inject(I18N_CONFIG) private config: I18nConfig,
+		@Optional() @SkipSelf() parentModule: I18nRootModule,
 		private i18nService: I18nService,
 	) {
-		registerLocales(this.config.localesToRegister);
+		if (parentModule) {
+			throw new Error('I18nRootModule is already loaded. Import in your base AppModule only.');
+		}
 		this.i18nService.forRoot();
 	}
 }

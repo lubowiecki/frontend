@@ -1,6 +1,0 @@
-move i18n.config.ts, i18n-missing-translation-handler.ts to library
-
-
-@opi_pib/ngx-translate
-or
-@opi_pib/ngx-i18n

@@ -21,6 +21,7 @@ export interface Translations {
 	'languageSwitcher.lang.en': string;
 	'languageSwitcher.lang.en-us': string;
 	'languageSwitcher.lang.pl': string;
+	'languageSwitcher.lang.pl-pl': string;
 	'messages.0': string;
 	'messages.1': string;
 	'messages.other': string;

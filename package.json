@@ -13,7 +13,7 @@
 		"lint:angular": "ng lint --fix",
 		"lint:styles": "stylelint **/*.scss --fix -i=.gitignore",
 		"analyze:bundle": "npm run build:prod -- --stats-json && npx webpack-bundle-analyzer dist/frontend/stats.json --port 4002",
-		"translate:build": "translate build --source=\"./src/app/**/*+(.ts|.html)\" --i18n=./src/app/core/i18n/translations/ --langs=pl --langs=en --langs=en-US",
+		"translate:build": "translate build --source=\"./src/app/**/*+(.ts|.html)\" --i18n=./src/app/core/i18n/translations/ --langs=pl --langs=en --langs=en-US --langs=pl-PL",
 		"dtos:build": "openapi b typescript --dist=./src/api/rest --typesOnly=false"
 	},
 	"private": true,

@@ -4,14 +4,14 @@ import { always, Maybe } from '@opi_pib/ts-utility';
 import {
 	BehaviorSubject, distinctUntilChanged, map, Observable, tap,
 } from 'rxjs';
-import { DOCUMENT } from '@angular/common';
+import { DOCUMENT, registerLocaleData } from '@angular/common';
 
 import { TranslationKey } from '@translations/translation-key';
 import { isTranslationLanguageEnum, TranslationLanguageEnum } from '@translations/translation-languages';
 
 import { TranslationLanguage } from './value-objects/translation-language';
-import { TranslationParams } from '../ngx-translate/translation-params';
-import { I18N_CONFIG, I18nConfig } from './i18n.config';
+import { TranslationParams } from './core/translation-params';
+import { I18N_CONFIG, I18nConfig } from './core/i18n.config';
 
 @Injectable({
 	providedIn: 'root',
@@ -26,6 +26,7 @@ export class I18nService {
 	) { }
 
 	forRoot(): void {
+		this.#registerLocales(this.config.localesToRegister);
 		this.translateService.addLangs(this.config.languages);
 
 		const initialLanguage: TranslationLanguage = this.#getInitialLanguage();
@@ -44,6 +45,10 @@ export class I18nService {
 				this.document.documentElement.lang = lang.toDto();
 			}),
 		).subscribe(this.#langChange$);
+	}
+
+	#registerLocales(locales: any[] = []): void {
+		locales.forEach((locale) => registerLocaleData(locale));
 	}
 
 	translate$(

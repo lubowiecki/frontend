@@ -18,4 +18,7 @@ export const translationLanguageMap: TranslationLanguageMap = {
 	'en-US': {
 		translationKey: t('languageSwitcher.lang.en-us'),
 	},
+	'pl-PL': {
+		translationKey: t('languageSwitcher.lang.pl-pl'),
+	},
 };
