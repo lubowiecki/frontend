@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { Observable } from 'rxjs';
 
-type TranslationParams = Record<string, any>;
+import { TranslationParams } from './translation-params';
 
 @Injectable({
 	providedIn: 'root',
