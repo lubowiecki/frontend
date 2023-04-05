@@ -7,7 +7,7 @@ import { TranslationLanguageEnum } from '@translations/translation-languages';
 
 class I18nTranslateLoader implements TranslateLoader {
 	getTranslation(lang: TranslationLanguageEnum): Observable<string> {
-		return from(import(`../translations/${lang}.json`));
+		return from(import(`./translations/${lang}.json`));
 	}
 }
 

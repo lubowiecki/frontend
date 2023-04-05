@@ -4,21 +4,21 @@ import { Is, Maybe } from '@opi_pib/ts-utility';
 
 import { TranslationKey } from '@translations/translation-key';
 
-type NgxTranslatePipeWithoutTransform = new (
+type I18nTranslatePipeBaseType = new (
 	translate: TranslateService,
 	_ref: ChangeDetectorRef
 ) => {
 	[P in Exclude<keyof TranslatePipe, 'transform'>]: TranslatePipe[P];
 } & { transform(query: Maybe<TranslationKey>, ...args: unknown[]): string };
 
-const NgxTranslatePipeWithoutTransformClass = TranslatePipe as NgxTranslatePipeWithoutTransform;
+const I18nTranslatePipeBase = TranslatePipe as I18nTranslatePipeBaseType;
 
 @Pipe({
 	name: 'translate',
 	standalone: true,
 	pure: false,
 })
-export class I18nTranslatePipe extends NgxTranslatePipeWithoutTransformClass implements PipeTransform {
+export class I18nTranslatePipe extends I18nTranslatePipeBase implements PipeTransform {
 	constructor(translate: TranslateService, _ref: ChangeDetectorRef) {
 		super(translate, _ref);
 	}

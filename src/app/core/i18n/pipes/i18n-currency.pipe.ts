@@ -3,7 +3,7 @@ import {
 	Inject, LOCALE_ID, Pipe, PipeTransform,
 } from '@angular/core';
 
-import { I18nLocaleId } from '../core/i18n-localeId';
+import { I18nLocaleId } from '../i18n-localeId';
 
 type TransformType = ReturnType<CurrencyPipe['transform']>;
 type CurrencyCodeType = Parameters<CurrencyPipe['transform']>[1];

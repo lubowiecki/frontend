@@ -2,12 +2,14 @@ import { always, ValueObject } from '@opi_pib/ts-utility';
 
 import { TranslationKey } from '@translations/translation-key';
 import { TranslationLanguageEnum } from '@translations/translation-languages';
+import { TranslationLanguageBase } from '@core/ngx-i18n/translation-language-base';
 
 import { TranslationLanguageProps } from './translation-language-props';
 import { isTranslationLanguageProps } from './is-translation-language-props';
 import { translationLanguageMap } from './translation-language-map';
 
-export class TranslationLanguage extends ValueObject<TranslationLanguageProps> {
+export class TranslationLanguage extends ValueObject<TranslationLanguageProps>
+	implements TranslationLanguageBase<TranslationLanguageEnum, TranslationKey> {
 	constructor(protected override readonly props: TranslationLanguageProps) {
 		super(props);
 	}

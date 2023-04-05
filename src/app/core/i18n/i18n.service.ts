@@ -8,22 +8,24 @@ import { DOCUMENT, registerLocaleData } from '@angular/common';
 
 import { TranslationKey } from '@translations/translation-key';
 import { isTranslationLanguageEnum, TranslationLanguageEnum } from '@translations/translation-languages';
+import { I18nServiceBase } from '@core/ngx-i18n/i18n.service.base';
 
-import { TranslationLanguage } from './value-objects/translation-language';
-import { TranslationParams } from './core/translation-params';
-import { I18N_CONFIG, I18nConfig } from './core/i18n.config';
+import { TranslationLanguage } from './translation-language';
+import { I18N_CONFIG, I18nConfig } from './i18n.config';
 
 @Injectable({
 	providedIn: 'root',
 })
-export class I18nService {
+export class I18nService extends I18nServiceBase<TranslationKey, TranslationLanguage> {
 	#langChange$: BehaviorSubject<TranslationLanguage>;
 
 	constructor(
-		@Inject(I18N_CONFIG) private config: I18nConfig,
-		@Inject(DOCUMENT) private document: Document,
-		private translateService: TranslateService,
-	) { }
+		protected override translateService: TranslateService,
+		@Inject(DOCUMENT) protected document: Document,
+		@Inject(I18N_CONFIG) protected config: I18nConfig,
+	) {
+		super(translateService);
+	}
 
 	forRoot(): void {
 		this.#registerLocales(this.config.localesToRegister);
@@ -49,27 +51,6 @@ export class I18nService {
 
 	#registerLocales(locales: any[] = []): void {
 		locales.forEach((locale) => registerLocaleData(locale));
-	}
-
-	translate$(
-		key: TranslationKey,
-		interpolateParams?: TranslationParams
-	): Observable<string>;
-
-	translate$(
-		key: TranslationKey[],
-		interpolateParams?: TranslationParams
-	): Observable<{ [k in TranslationKey]: string }>;
-
-	translate$(
-		key: TranslationKey | TranslationKey[],
-		interpolateParams?: TranslationParams,
-	): Observable<string> | Observable<{ [k in TranslationKey]: string }> {
-		return this.translateService.stream(key, interpolateParams);
-	}
-
-	instant(key: TranslationKey, interpolateParams?: TranslationParams): string {
-		return this.translateService.instant(key, interpolateParams);
 	}
 
 	setLanguage(lang: TranslationLanguage): void {

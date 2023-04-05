@@ -3,10 +3,10 @@ import {
 } from '@angular/core';
 import { TranslateModule } from '@ngx-translate/core';
 
-import { i18nModuleConfig } from './core/i18n-module.config';
+import { i18nModuleConfig } from './i18n-module.config';
 import { I18nService } from './i18n.service';
-import { I18N_CONFIG, I18nConfig } from './core/i18n.config';
-import { I18nLocaleIdProvider } from './core/i18n-localeId';
+import { I18N_CONFIG, I18nConfig } from './i18n.config';
+import { I18nLocaleIdProvider } from './i18n-localeId';
 
 @NgModule({
 	imports: [

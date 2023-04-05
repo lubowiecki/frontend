@@ -7,7 +7,7 @@ import { MatButtonModule } from '@angular/material/button';
 
 import { I18nModule } from '@core/i18n';
 
-import { TranslationLanguage } from '../../value-objects/translation-language';
+import { TranslationLanguage } from '../../translation-language';
 
 @Component({
 	selector: 'app-language-switcher',

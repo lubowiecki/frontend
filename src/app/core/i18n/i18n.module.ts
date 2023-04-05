@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { TranslateModule } from '@ngx-translate/core';
 
-import { i18nModuleConfig } from './core/i18n-module.config';
+import { i18nModuleConfig } from './i18n-module.config';
 import { i18nPipes } from './pipes';
 
 @NgModule({

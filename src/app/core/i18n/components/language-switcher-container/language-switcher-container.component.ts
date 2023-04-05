@@ -6,7 +6,7 @@ import { map, Observable } from 'rxjs';
 
 import { I18nService } from '@core/i18n';
 
-import { TranslationLanguage } from '../../value-objects/translation-language';
+import { TranslationLanguage } from '../../translation-language';
 import { LanguageSwitcherComponent } from '../language-switcher/language-switcher.component';
 
 @Component({

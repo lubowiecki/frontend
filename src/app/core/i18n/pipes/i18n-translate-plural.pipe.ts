@@ -1,6 +1,6 @@
-import { I18nPluralPipe, NgLocalization } from '@angular/common';
 import { Pipe, PipeTransform } from '@angular/core';
 
+import { I18nTranslatePluralPipeBase } from '@core/ngx-i18n/pipes/i18n-translate-plural-base.pipe';
 import { TranslationKey } from '@translations/translation-key';
 
 @Pipe({
@@ -8,16 +8,4 @@ import { TranslationKey } from '@translations/translation-key';
 	standalone: true,
 	pure: false,
 })
-export class I18nTranslatePluralPipe extends I18nPluralPipe implements PipeTransform {
-	constructor(
-		localization: NgLocalization,
-	) {
-		super(localization);
-	}
-
-	override transform(value: number | null | undefined, pluralMap: {
-        [count: string]: TranslationKey;
-    }, locale?: string): TranslationKey {
-		return super.transform(value, pluralMap, locale) as TranslationKey;
-	}
-}
+export class I18nTranslatePluralPipe extends I18nTranslatePluralPipeBase<TranslationKey> implements PipeTransform {}
