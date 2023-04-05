@@ -1,5 +1,3 @@
-export type TranslationParams = Record<string, any>;
-
 export type TranslationLanguageEnum =
 	| 'pl'
 	| 'en'
