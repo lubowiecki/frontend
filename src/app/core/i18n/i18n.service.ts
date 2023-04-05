@@ -4,6 +4,7 @@ import {
 	BehaviorSubject, distinctUntilChanged, map, Observable, tap,
 } from 'rxjs';
 import { DOCUMENT } from '@angular/common';
+import { always } from '@opi_pib/ts-utility';
 
 import { TranslationKey } from '@translations/translation-key';
 import { isTranslationLanguageEnum, TranslationLanguageEnum } from '@translations/translation-languages';
@@ -37,7 +38,11 @@ export class I18nService extends I18nServiceBase<TranslationKey, TranslationLang
 		this.#langChange$ = new BehaviorSubject(initialLanguage);
 
 		this.translateService.onLangChange.pipe(
-			map(({ lang }) => TranslationLanguage.create({ lang: lang as TranslationLanguageEnum })),
+			map(({ lang }) => {
+				always(isTranslationLanguageEnum(lang), 'u9um8kqu');
+
+				return TranslationLanguage.create({ lang });
+			}),
 			tap((lang) => {
 				this.document.documentElement.lang = lang.toDto();
 			}),
@@ -53,7 +58,11 @@ export class I18nService extends I18nServiceBase<TranslationKey, TranslationLang
 	}
 
 	getAvailableLanguages(): TranslationLanguage[] {
-		return this.translateService.getLangs().map((lang) => TranslationLanguage.create({ lang: lang as TranslationLanguageEnum }));
+		return this.translateService.getLangs().map((lang) => {
+			always(isTranslationLanguageEnum(lang), '5bpriqmx');
+
+			return TranslationLanguage.create({ lang });
+		});
 	}
 
 	#getInitialLanguage(): TranslationLanguage {
@@ -63,10 +72,6 @@ export class I18nService extends I18nServiceBase<TranslationKey, TranslationLang
 			return TranslationLanguage.create({ lang: browserLanguage });
 		}
 
-		return this.#getDefaultLanguage();
-	}
-
-	#getDefaultLanguage(): TranslationLanguage {
 		return this.getAvailableLanguages()[0];
 	}
 }
