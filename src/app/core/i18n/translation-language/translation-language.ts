@@ -20,6 +20,10 @@ export class TranslationLanguage extends ValueObject<TranslationLanguageProps>
 		return new TranslationLanguage(props);
 	}
 
+	static fromDto(lang: TranslationLanguageEnum): TranslationLanguage {
+		return this.create({ lang });
+	}
+
 	toDto(): TranslationLanguageEnum {
 		return this.props.lang;
 	}

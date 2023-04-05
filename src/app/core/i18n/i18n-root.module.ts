@@ -1,4 +1,5 @@
 import {
+	Inject,
 	ModuleWithProviders, NgModule, Optional, SkipSelf,
 } from '@angular/core';
 import { TranslateModule } from '@ngx-translate/core';
@@ -29,6 +30,7 @@ export class I18nRootModule {
 
 	constructor(
 		@Optional() @SkipSelf() parentModule: I18nRootModule,
+		@Inject(I18N_CONFIG) protected config: I18nConfig,
 		private i18nService: I18nService,
 	) {
 		if (parentModule) {
