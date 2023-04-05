@@ -4,7 +4,7 @@ import { I18nTranslatePluralPipeBase } from '@core/ngx-i18n/pipes/i18n-translate
 import { TranslationKey } from '@translations/translation-key';
 
 @Pipe({
-	name: 'translatePlural',
+	name: 'i18nPlural',
 	standalone: true,
 	pure: false,
 })

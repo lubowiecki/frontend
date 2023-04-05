@@ -2,7 +2,7 @@ import { I18nPluralPipe, NgLocalization } from '@angular/common';
 import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
-	name: 'translatePlural',
+	name: 'i18nPlural',
 	standalone: true,
 	pure: false,
 })

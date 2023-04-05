@@ -1,32 +1,11 @@
-import { ChangeDetectorRef, Pipe, PipeTransform } from '@angular/core';
-import { TranslateService, TranslatePipe } from '@ngx-translate/core';
-import { Is, Maybe } from '@opi_pib/ts-utility';
+import { Pipe, PipeTransform } from '@angular/core';
 
+import { I18nTranslatePipeBase } from '@core/ngx-i18n/pipes/i18n-translate-base.pipe';
 import { TranslationKey } from '@translations/translation-key';
-
-type I18nTranslatePipeBaseType = new (
-	translate: TranslateService,
-	_ref: ChangeDetectorRef
-) => {
-	[P in Exclude<keyof TranslatePipe, 'transform'>]: TranslatePipe[P];
-} & { transform(query: Maybe<TranslationKey>, ...args: unknown[]): string };
-
-const I18nTranslatePipeBase = TranslatePipe as I18nTranslatePipeBaseType;
 
 @Pipe({
 	name: 'translate',
 	standalone: true,
 	pure: false,
 })
-export class I18nTranslatePipe extends I18nTranslatePipeBase implements PipeTransform {
-	constructor(translate: TranslateService, _ref: ChangeDetectorRef) {
-		super(translate, _ref);
-	}
-
-	override transform(query: Maybe<TranslationKey>, ...args: unknown[]): string {
-		if (Is.string(query)) {
-			return super.transform(query, ...args);
-		}
-		return '';
-	}
-}
+export class I18nTranslatePipe extends I18nTranslatePipeBase<TranslationKey> implements PipeTransform { }

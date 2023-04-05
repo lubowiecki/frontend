@@ -32,9 +32,13 @@
 </div>
 
 <div>
+	{{ "page.user.title" | translate }}
+</div>
+
+<div>
 	{{
 		messages.length
-			| translatePlural : messageMapping
+			| i18nPlural : messageMapping
 			| translate : { count: messages.length }
 	}}
 </div>
