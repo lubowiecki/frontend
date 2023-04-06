@@ -2,7 +2,7 @@ import {
 	Inject, LOCALE_ID, Pipe, PipeTransform,
 } from '@angular/core';
 
-import { I18nDatePipeBase } from '@core/ngx-i18n/pipes/i18n-date-base.pipe';
+import { I18nDatePipeBase } from '@core/ngx-i18n/pipes';
 import { TranslationKey } from '@translations/translation-key';
 import { TranslationLanguageEnum } from '@translations/translation-languages';
 

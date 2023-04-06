@@ -6,7 +6,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 	standalone: true,
 	pure: false,
 })
-export class I18nTranslatePluralPipeBase<TranslationKey extends string> extends I18nPluralPipe implements PipeTransform {
+export class I18nPluralPipeBase<TranslationKey extends string> extends I18nPluralPipe implements PipeTransform {
 	constructor(
 		localization: NgLocalization,
 	) {
