@@ -1,6 +1,6 @@
 import { InjectionToken } from '@angular/core';
+import { I18nBaseConfig } from '@opi_pib/ngx-i18n';
 
-import { I18nBaseConfig } from '@core/ngx-i18n/i18n-base.config';
 import { TranslationLanguageEnum } from '@translations/translation-languages';
 
 export type I18nConfig = I18nBaseConfig<TranslationLanguageEnum>;

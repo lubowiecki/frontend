@@ -1,14 +1,20 @@
 import { Inject, Injectable } from '@angular/core';
-import { TranslateService } from '@ngx-translate/core';
 import {
-	BehaviorSubject, distinctUntilChanged, map, Observable, tap,
+	BehaviorSubject,
+	distinctUntilChanged,
+	map,
+	Observable,
+	tap,
 } from 'rxjs';
 import { DOCUMENT } from '@angular/common';
 import { always } from '@opi_pib/ts-utility';
+import { I18nServiceBase, TranslateService } from '@opi_pib/ngx-i18n';
 
 import { TranslationKey } from '@translations/translation-key';
-import { isTranslationLanguageEnum, TranslationLanguageEnum } from '@translations/translation-languages';
-import { I18nServiceBase } from '@core/ngx-i18n/i18n.service.base';
+import {
+	isTranslationLanguageEnum,
+	TranslationLanguageEnum,
+} from '@translations/translation-languages';
 
 import { TranslationLanguage } from './translation-language';
 import { I18N_CONFIG, I18nConfig } from './i18n.config';
@@ -16,7 +22,11 @@ import { I18N_CONFIG, I18nConfig } from './i18n.config';
 @Injectable({
 	providedIn: 'root',
 })
-export class I18nService extends I18nServiceBase<TranslationKey, TranslationLanguageEnum, TranslationLanguage> {
+export class I18nService extends I18nServiceBase<
+	TranslationKey,
+	TranslationLanguageEnum,
+	TranslationLanguage
+> {
 	#langChange$: BehaviorSubject<TranslationLanguage>;
 
 	constructor(
@@ -37,16 +47,18 @@ export class I18nService extends I18nServiceBase<TranslationKey, TranslationLang
 		this.translateService.use(initialLanguage.toDto());
 		this.#langChange$ = new BehaviorSubject(initialLanguage);
 
-		this.translateService.onLangChange.pipe(
-			map(({ lang }) => {
-				always(isTranslationLanguageEnum(lang), 'u9um8kqu');
+		this.translateService.onLangChange
+			.pipe(
+				map(({ lang }) => {
+					always(isTranslationLanguageEnum(lang), 'u9um8kqu');
 
-				return TranslationLanguage.create({ lang });
-			}),
-			tap((lang) => {
-				this.document.documentElement.lang = lang.toDto();
-			}),
-		).subscribe(this.#langChange$);
+					return TranslationLanguage.create({ lang });
+				}),
+				tap((lang) => {
+					this.document.documentElement.lang = lang.toDto();
+				}),
+			)
+			.subscribe(this.#langChange$);
 	}
 
 	getCurrentLanguage(): TranslationLanguage {

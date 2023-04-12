@@ -1,12 +1,11 @@
-import { MissingTranslationHandler, MissingTranslationHandlerParams } from '@ngx-translate/core';
 import { Inject, Injectable, Provider } from '@angular/core';
+import { MissingTranslationHandler, MissingTranslationHandlerParams } from '@opi_pib/ngx-i18n';
 
-import { I18N_CONFIG } from '../i18n/i18n.config';
-import { I18nBaseConfig } from './i18n-base.config';
+import { I18N_CONFIG, I18nConfig } from './i18n.config';
 
 @Injectable()
 class I18nMissingTranslationHandler implements MissingTranslationHandler {
-	constructor(@Inject(I18N_CONFIG) private config: I18nBaseConfig<any>) {}
+	constructor(@Inject(I18N_CONFIG) private config: I18nConfig) {}
 
 	handle(params: MissingTranslationHandlerParams): string {
 		if (this.config.logMissingTranslations) {

@@ -1,4 +1,4 @@
-import { always, ValueObject } from '@opi_pib/ts-utility';
+import { always, Is, ValueObject } from '@opi_pib/ts-utility';
 import { DateTime } from 'luxon';
 
 import { IsoDateDto } from '@api/rest/models';
@@ -35,7 +35,10 @@ export class IsoDate extends ValueObject<IsoDateProps> {
 	}
 
 	toDto(): IsoDateDto {
-		return this.date.toISODate();
+		const isoDate = this.date.toISODate();
+		always(Is.string(isoDate), 'jos7gqmx');
+
+		return isoDate;
 	}
 
 	toView(): string {
