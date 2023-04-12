@@ -4,7 +4,7 @@ import {
 } from '@angular/material-luxon-adapter';
 import { DateAdapter } from '@angular/material/core';
 
-import { Translator } from '@core/translation';
+import { I18nService } from '@core/i18n';
 
 const options: MatLuxonDateAdapterOptions = {
 	firstDayOfWeek: 1,
@@ -21,8 +21,8 @@ const options: MatLuxonDateAdapterOptions = {
 	],
 })
 export class MatDatepickerConfigModule {
-	constructor(private translator: Translator, private dateAdapter: DateAdapter<LuxonDateAdapter>) {
-		this.translator.getCurrentLanguage$().subscribe((lang) => {
+	constructor(private i18nService: I18nService, private dateAdapter: DateAdapter<LuxonDateAdapter>) {
+		this.i18nService.getCurrentLanguage$().subscribe((lang) => {
 			this.dateAdapter.setLocale(lang.toDto());
 		});
 	}

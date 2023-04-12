@@ -1,7 +1,0 @@
-{{ "languageSwitcher.label" | translate }}
-
-<button mat-button (click)="onSelect(select)">
-	<span *ngIf="select" [attr.lang]="select.toDto()">
-		{{ select.getTranslationKey() | translate }}
-	</span>
-</button>

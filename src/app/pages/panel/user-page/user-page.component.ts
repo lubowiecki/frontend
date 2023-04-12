@@ -1,4 +1,6 @@
-import { Component, ChangeDetectionStrategy, OnDestroy } from '@angular/core';
+import {
+	Component, ChangeDetectionStrategy, OnDestroy, Inject, LOCALE_ID,
+} from '@angular/core';
 import { Observable, Subject, Subscription } from 'rxjs';
 import { Maybe } from '@opi_pib/ts-utility';
 import { RestQuery } from '@opi_pib/ngx-utility';
@@ -9,6 +11,8 @@ import { DateWithTimeService } from '@core/date/services/date-with-time.service'
 import { UserId } from '@core/user/value-objects/user-id';
 import { RestUserPutService } from '@core/user/services/rest-user-put.service';
 import { RestUserGetService } from '@core/user/services/rest-user-get.service';
+import { TranslationKey } from '@translations/translation-key';
+import { t } from '@translations/translation-marker';
 
 import { UserPageDialogsService } from './user-page-dialogs/services/user-page-dialogs.service';
 
@@ -32,7 +36,14 @@ export class UserPageComponent implements OnDestroy {
 
 	#subscriptions = new Subscription();
 
+	today = Date.now();
+
+	messages: string[] = [];
+
+	messageMapping: {[k: string]: TranslationKey} = { '=0': t('messages.0'), '=1': t('messages.1'), other: t('messages.other') };
+
 	constructor(
+		@Inject(LOCALE_ID) protected locale: string,
 		private restUserGetService: RestUserGetService,
 		private restUserPutService: RestUserPutService,
 		private dateService: DateWithTimeService,
@@ -67,5 +78,9 @@ export class UserPageComponent implements OnDestroy {
 			.subscribe((date) => {
 				this.relativeUpdateDate = date;
 			});
+	}
+
+	addMessage() {
+		this.messages.push('next');
 	}
 }

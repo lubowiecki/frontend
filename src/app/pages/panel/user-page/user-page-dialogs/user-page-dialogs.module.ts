@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatDialogModule } from '@angular/material/dialog';
 
-import { TranslationModule } from '@core/translation';
+import { I18nModule } from '@core/i18n';
 
 import { UserPageDialogComponent } from './components/user-page-dialog/user-page-dialog.component';
 import { UserPageDialogsService } from './services/user-page-dialogs.service';
@@ -12,7 +12,7 @@ import { UserPageDialogsService } from './services/user-page-dialogs.service';
 	imports: [
 		CommonModule,
 		MatDialogModule,
-		TranslationModule,
+		I18nModule,
 	],
 	providers: [UserPageDialogsService],
 })

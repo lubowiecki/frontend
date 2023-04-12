@@ -1,0 +1,11 @@
+{{ "languageSwitcher.label" | translate }}
+
+<button
+	*ngFor="let language of languages"
+	mat-button
+	(click)="onSelect(language)"
+>
+	<span [attr.lang]="language.toDto()">
+		{{ language.getTranslationKey() | translate }}
+	</span>
+</button>

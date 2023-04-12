@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { TranslationModule } from '@core/translation';
+import { I18nModule } from '@core/i18n';
 
 import { PanelPageRoutingModule } from './panel-page-routing.module';
 import { PanelPageComponent } from './panel-page.component';
@@ -13,7 +13,7 @@ import { PanelPageComponent } from './panel-page.component';
 	imports: [
 		CommonModule,
 		PanelPageRoutingModule,
-		TranslationModule,
+		I18nModule,
 	],
 	exports: [
 		PanelPageComponent,
