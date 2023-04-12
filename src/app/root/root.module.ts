@@ -1,7 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { TranslationModule, LanguageSwitcherContainerComponent } from '@core/translation';
+import { LanguageSwitcherContainerComponent } from '@core/i18n/components/language-switcher-container/language-switcher-container.component';
+import { I18nModule } from '@core/i18n';
 
 import { RootComponent } from './root.component';
 import { RootRoutingModule } from './root-routing.module';
@@ -16,8 +17,8 @@ import { RootRoutingModule } from './root-routing.module';
 	imports: [
 		CommonModule,
 		RootRoutingModule,
-		TranslationModule,
 		LanguageSwitcherContainerComponent,
+		I18nModule,
 	],
 })
 export class RootModule { }

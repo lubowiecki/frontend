@@ -16,3 +16,31 @@
 	mode="indeterminate"
 	color="primary"
 ></mat-progress-spinner>
+
+<div>{{ today | date : undefined : undefined : locale.toString() }}</div>
+
+<div>
+	{{ today | i18nDate }}
+</div>
+
+<div>
+	{{ today | i18nDate : undefined : undefined : "pl-PL" }}
+</div>
+
+<div>
+	{{ 1.2345 | i18nCurrency }}
+</div>
+
+<div>
+	{{ "page.user.title" | translate }}
+</div>
+
+<div>
+	{{
+		messages.length
+			| i18nPlural : messageMapping
+			| translate : { count: messages.length }
+	}}
+</div>
+
+<button (click)="addMessage()">add message</button>
