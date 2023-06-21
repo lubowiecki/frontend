@@ -21,11 +21,11 @@ export class DatesWithTimeNativeComponent {
 	dateWithTimeUtcSource = '2022-01-01T08:00:00Z';
 
 	dateWithTimeUtc = IsoDateWithTime.fromDateTime(
-		DateTime.fromISO(this.dateWithTimeUtcSource, { zone: 'utc' }).toLocal()
+		DateTime.fromISO(this.dateWithTimeUtcSource).setZone('local')
 	);
 
 	dateWithTimeUtcControl = this.fb.control<Maybe<string>>(
-		this.dateWithTimeUtc.toDto()
+		this.dateWithTimeUtc.date.toFormat("yyyy-MM-dd'T'HH:mm:ss")
 	);
 
 	dateWithTimeUtcControlValue(): Maybe<IsoDateWithTime> {

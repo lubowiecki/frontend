@@ -44,7 +44,7 @@ export class DatesComponent {
 		return null;
 	}
 
-	dateWithTimeUtcDatepickerSource = '2022-01-01T00:00:00Z';
+	dateWithTimeUtcDatepickerSource = '2022-01-01T23:00:00Z';
 
 	dateWithTimeUtcDatepicker = IsoDateWithTime.fromDto(
 		this.dateWithTimeUtcDatepickerSource
