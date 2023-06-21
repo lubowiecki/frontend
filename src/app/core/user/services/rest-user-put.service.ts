@@ -24,12 +24,13 @@ export class RestUserPutService extends RestQuery {
 		});
 
 		return this.query$(
-			this.httpClient
-				.put<UserDto>(`${environment.restUri}/user`, user.toDto(), {
+			this.httpClient.put<UserDto>(
+				`${environment.restUri}/user`,
+				user.toDto(),
+				{
 					params,
-				}),
-		).pipe(
-			map((userDto) => User.fromDto(userDto)),
-		);
+				}
+			)
+		).pipe(map((userDto) => User.fromDto(userDto)));
 	}
 }

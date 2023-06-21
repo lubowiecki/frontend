@@ -4,5 +4,5 @@ export enum Paths {
 	Panel = '/panel',
 	User = '/panel/user',
 	Websocket = '/panel/websocket',
-	Eventsource = '/panel/eventsource'
+	Eventsource = '/panel/eventsource',
 }

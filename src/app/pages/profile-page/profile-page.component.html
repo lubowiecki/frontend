@@ -1,3 +1,5 @@
+<h1>{{ "page.profile.title" | translate }}</h1>
+
 <app-user-details-form
 	*ngIf="user$ | async as user"
 	[user]="user"

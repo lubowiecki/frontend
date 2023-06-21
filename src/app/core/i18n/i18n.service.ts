@@ -27,12 +27,12 @@ export class I18nService extends I18nServiceBase<
 	TranslationLanguageEnum,
 	TranslationLanguage
 > {
-	#langChange$: BehaviorSubject<TranslationLanguage>;
+	#langChange$!: BehaviorSubject<TranslationLanguage>;
 
 	constructor(
 		protected override translateService: TranslateService,
 		@Inject(DOCUMENT) protected document: Document,
-		@Inject(I18N_CONFIG) protected config: I18nConfig,
+		@Inject(I18N_CONFIG) protected config: I18nConfig
 	) {
 		super(translateService);
 	}
@@ -56,7 +56,7 @@ export class I18nService extends I18nServiceBase<
 				}),
 				tap((lang) => {
 					this.document.documentElement.lang = lang.toDto();
-				}),
+				})
 			)
 			.subscribe(this.#langChange$);
 	}

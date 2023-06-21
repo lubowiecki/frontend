@@ -1,6 +1,4 @@
-import {
-	always, Is, Maybe, ValueObject,
-} from '@opi_pib/ts-utility';
+import { always, Is, Maybe, ValueObject } from '@opi_pib/ts-utility';
 
 import { IsoDateWithTime } from '@core/date/value-objects/iso-date-with-time';
 import { IsoDate } from '@core/date/value-objects/iso-date';
@@ -27,7 +25,9 @@ export class User extends ValueObject<UserProps> {
 			id: UserId.create({ id: dto.id }),
 			year: IsoDate.fromDto(dto.year),
 			creationDate: IsoDateWithTime.fromDto(dto.creationDate),
-			updateDate: Is.defined(dto.updateDate) ? IsoDateWithTime.fromDto(dto.updateDate) : null,
+			updateDate: Is.defined(dto.updateDate)
+				? IsoDateWithTime.fromDto(dto.updateDate)
+				: null,
 		});
 	}
 

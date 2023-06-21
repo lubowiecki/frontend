@@ -1,5 +1,9 @@
 import {
-	Component, ChangeDetectionStrategy, OnDestroy, Inject, LOCALE_ID,
+	Component,
+	ChangeDetectionStrategy,
+	OnDestroy,
+	Inject,
+	LOCALE_ID,
 } from '@angular/core';
 import { Observable, Subject, Subscription } from 'rxjs';
 import { Maybe } from '@opi_pib/ts-utility';
@@ -40,19 +44,23 @@ export class UserPageComponent implements OnDestroy {
 
 	messages: string[] = [];
 
-	messageMapping: {[k: string]: TranslationKey} = { '=0': t('messages.0'), '=1': t('messages.1'), other: t('messages.other') };
+	messageMapping: { [k: string]: TranslationKey } = {
+		'=0': t('messages.0'),
+		'=1': t('messages.1'),
+		other: t('messages.other'),
+	};
 
 	constructor(
 		@Inject(LOCALE_ID) protected locale: string,
 		private restUserGetService: RestUserGetService,
 		private restUserPutService: RestUserPutService,
 		private dateService: DateWithTimeService,
-		private userPageDialogsService: UserPageDialogsService,
+		private userPageDialogsService: UserPageDialogsService
 	) {
 		this.user$ = this.restUserGetService.getUser$(
 			UserId.create({
 				id: '00000000-aaaa-dddd-ffff-000000000000',
-			}),
+			})
 		);
 
 		this.#subscriptions.add(this.#getRelativeUpdateDate());

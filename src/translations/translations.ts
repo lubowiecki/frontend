@@ -1,6 +1,6 @@
 export interface Translations {
-	'common.action.reset': string;
-	'common.action.update': string;
+	'action.reset': string;
+	'action.update': string;
 	'datepicker.calendarLabel': string;
 	'datepicker.nextMonthLabel': string;
 	'datepicker.nextMultiYearLabel': string;
@@ -11,6 +11,7 @@ export interface Translations {
 	'datepicker.prevYearLabel': string;
 	'datepicker.switchToMonthViewLabel': string;
 	'datepicker.switchToMultiYearViewLabel': string;
+	'dialog.user.title': string;
 	'label.creationDate': string;
 	'label.downloadFile': string;
 	'label.firstname': string;
@@ -18,14 +19,11 @@ export interface Translations {
 	'label.updateDate': string;
 	'label.year': string;
 	'languageSwitcher.label': string;
-	'languageSwitcher.lang.en': string;
 	'languageSwitcher.lang.en-us': string;
-	'languageSwitcher.lang.pl': string;
 	'languageSwitcher.lang.pl-pl': string;
 	'messages.0': string;
 	'messages.1': string;
 	'messages.other': string;
 	'page.profile.title': string;
 	'page.user.title': string;
-	'userPage.dialog.title': string;
 }

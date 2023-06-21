@@ -1,5 +1,8 @@
 import { Inject, Injectable, Provider } from '@angular/core';
-import { MissingTranslationHandler, MissingTranslationHandlerParams } from '@opi_pib/ngx-i18n';
+import {
+	MissingTranslationHandler,
+	MissingTranslationHandlerParams,
+} from '@opi_pib/ngx-i18n';
 
 import { I18N_CONFIG, I18nConfig } from './i18n.config';
 

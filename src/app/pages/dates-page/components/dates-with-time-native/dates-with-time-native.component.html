@@ -1,0 +1,27 @@
+<table>
+	<thead>
+		<tr>
+			<th>Source</th>
+			<th>Current</th>
+			<th>London</th>
+			<th>Warsaw</th>
+			<th>Current Dto</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr class="bg-gray-200">
+			<td>{{ dateWithTimeUtcSource }}</td>
+			<td>
+				<input
+					matInput
+					type="datetime-local"
+					[formControl]="dateWithTimeUtcControl"
+				/>
+			</td>
+			<td>{{ dateWithTimeUtcControlValue()?.toView() }}</td>
+			<td>{{ dateWithTimeUtcControlValue()?.toView() }}</td>
+			<td>{{ dateWithTimeUtcControlValue()?.toDto() }}</td>
+		</tr>
+	</tbody>
+</table>
+<p>Translations of native datepicker don't work</p>

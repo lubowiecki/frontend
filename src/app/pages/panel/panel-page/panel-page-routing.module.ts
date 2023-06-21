@@ -30,15 +30,24 @@ const routes: Routes = [
 			},
 			{
 				path: routeUser.path,
-				loadChildren: () => import('@pages/panel/user-page/user-page.module').then((m) => m.UserPageModule),
+				loadChildren: () =>
+					import('@pages/panel/user-page/user-page.module').then(
+						(m) => m.UserPageModule
+					),
 			},
 			{
 				path: routeWebsocket.path,
-				loadChildren: () => import('@pages/panel/websocket-page/websocket-page.module').then((m) => m.WebsocketPageModule),
+				loadChildren: () =>
+					import(
+						'@pages/panel/websocket-page/websocket-page.module'
+					).then((m) => m.WebsocketPageModule),
 			},
 			{
 				path: routeEventsource.path,
-				loadChildren: () => import('@pages/panel/eventsource-page/eventsource-page.module').then((m) => m.EventsourcePageModule),
+				loadChildren: () =>
+					import(
+						'@pages/panel/eventsource-page/eventsource-page.module'
+					).then((m) => m.EventsourcePageModule),
 			},
 		],
 	},
@@ -48,4 +57,4 @@ const routes: Routes = [
 	imports: [RouterModule.forChild(routes)],
 	exports: [RouterModule],
 })
-export class PanelPageRoutingModule { }
+export class PanelPageRoutingModule {}

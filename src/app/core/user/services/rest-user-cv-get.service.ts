@@ -24,15 +24,14 @@ export class RestUserCvGetService extends RestQuery {
 		});
 
 		return this.query$(
-			this.httpClient
-				.get(`${environment.restUri}/user/cv`, {
-					reportProgress: true,
-					observe: 'events',
-					responseType: 'blob',
-					params,
-				}),
+			this.httpClient.get(`${environment.restUri}/user/cv`, {
+				reportProgress: true,
+				observe: 'events',
+				responseType: 'blob',
+				params,
+			})
 		).pipe(
-			map((event: HttpEvent<Blob>) => FileDownload.fromHttpEvent(event)),
+			map((event: HttpEvent<Blob>) => FileDownload.fromHttpEvent(event))
 		);
 	}
 }

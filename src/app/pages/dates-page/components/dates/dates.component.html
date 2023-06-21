@@ -1,0 +1,61 @@
+<table>
+	<thead>
+		<tr>
+			<th>Source</th>
+			<th>Current</th>
+			<th>London</th>
+			<th>Warsaw</th>
+			<th>Current Dto</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>{{ dateLocalSource }}</td>
+			<td>{{ dateLocal.toView() }}</td>
+			<td>1.01.2022</td>
+			<td>1.01.2022</td>
+			<td>{{ dateLocal.toDto() }}</td>
+		</tr>
+		<tr>
+			<td>{{ dateLocalSource }}</td>
+			<td>
+				<mat-form-field>
+					<input
+						matInput
+						[matDatepicker]="datepickerLocal"
+						[formControl]="dateLocalControl"
+					/>
+					<mat-datepicker-toggle
+						matSuffix
+						[for]="datepickerLocal"
+					></mat-datepicker-toggle>
+					<mat-datepicker #datepickerLocal></mat-datepicker>
+				</mat-form-field>
+			</td>
+			<td>{{ dateLocalControlValue()?.toView() }}</td>
+			<td>{{ dateLocalControlValue()?.toView() }}</td>
+			<td>{{ dateLocalControlValue()?.toDto() }}</td>
+		</tr>
+		<tr>
+			<td>{{ dateWithTimeUtcDatepickerSource }}</td>
+			<td>
+				<mat-form-field>
+					<input
+						matInput
+						[matDatepicker]="datepickerUtc"
+						[formControl]="dateWithTimeUtcControl"
+					/>
+					<mat-datepicker-toggle
+						matSuffix
+						[for]="datepickerUtc"
+					></mat-datepicker-toggle>
+					<mat-datepicker #datepickerUtc></mat-datepicker>
+				</mat-form-field>
+			</td>
+			<td>{{ dateWithTimeUtcControlValue()?.toView() }}</td>
+			<td>{{ dateWithTimeUtcControlValue()?.toView() }}</td>
+			<td>{{ dateWithTimeUtcControlValue()?.toDto() }}</td>
+		</tr>
+	</tbody>
+</table>
+<p>Date with time provided will change according to active timezone</p>

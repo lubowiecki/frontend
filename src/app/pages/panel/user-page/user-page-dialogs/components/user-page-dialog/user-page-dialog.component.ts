@@ -6,4 +6,4 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
 	styleUrls: ['./user-page-dialog.component.scss'],
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class UserPageDialogComponent { }
+export class UserPageDialogComponent {}

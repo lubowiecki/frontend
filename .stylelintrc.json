@@ -1,3 +1,4 @@
 {
-	"extends": ["@opi_pib/stylelint-config-base"]
+	"extends": ["@opi_pib/stylelint-config-base"],
+	"rules": {}
 }

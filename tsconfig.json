@@ -7,7 +7,7 @@
 		"forceConsistentCasingInFileNames": true,
 		"strict": true,
 		"noImplicitOverride": true,
-		"noPropertyAccessFromIndexSignature": true,
+		"noPropertyAccessFromIndexSignature": false,
 		"noImplicitReturns": true,
 		"noFallthroughCasesInSwitch": true,
 		"sourceMap": true,
@@ -26,16 +26,13 @@
 			"@pages/*": ["./src/app/pages/*"],
 			"@api/*": ["./src/api/*"],
 			"@translations/*": ["./src/translations/*"],
-			"@cypress/*": ["./cypress/*"]
-		},
-		"strictPropertyInitialization": false
+			"@playwright/*": ["./playwright/*"]
+		}
 	},
 	"angularCompilerOptions": {
 		"enableI18nLegacyMessageIdFormat": false,
 		"strictInjectionParameters": true,
 		"strictInputAccessModifiers": true,
 		"strictTemplates": true
-	},
-	"include": ["src", "node_modules/cypress"],
-	"exclude": ["node_modules/cypress"]
+	}
 }

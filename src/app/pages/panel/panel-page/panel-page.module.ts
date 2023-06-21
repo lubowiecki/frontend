@@ -7,16 +7,8 @@ import { PanelPageRoutingModule } from './panel-page-routing.module';
 import { PanelPageComponent } from './panel-page.component';
 
 @NgModule({
-	declarations: [
-		PanelPageComponent,
-	],
-	imports: [
-		CommonModule,
-		PanelPageRoutingModule,
-		I18nModule,
-	],
-	exports: [
-		PanelPageComponent,
-	],
+	declarations: [PanelPageComponent],
+	imports: [CommonModule, PanelPageRoutingModule, I18nModule],
+	exports: [PanelPageComponent],
 })
-export class PanelPageModule { }
+export default class PanelPageModule {}

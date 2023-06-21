@@ -10,12 +10,8 @@ import { I18nModule } from '@core/i18n';
 import { UserDetailsFormComponent } from './user-details-form.component';
 
 @NgModule({
-	declarations: [
-		UserDetailsFormComponent,
-	],
-	exports: [
-		UserDetailsFormComponent,
-	],
+	declarations: [UserDetailsFormComponent],
+	exports: [UserDetailsFormComponent],
 	imports: [
 		CommonModule,
 		ReactiveFormsModule,
@@ -25,4 +21,4 @@ import { UserDetailsFormComponent } from './user-details-form.component';
 		I18nModule,
 	],
 })
-export class UserDetailsFormModule { }
+export class UserDetailsFormModule {}

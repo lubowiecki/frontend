@@ -19,15 +19,16 @@ const routeDates: TypedRoutes[Paths.Dates] = {
 const routes: Routes = [
 	{
 		path: routeRoot.path,
-		loadChildren: () => import('@pages/profile-page/profile-page.module').then((m) => m.ProfilePageModule),
+		loadChildren: () => import('@pages/profile-page/profile-page.module'),
 	},
 	{
 		path: routeDates.path,
-		loadChildren: () => import('@pages/dates-page/dates-page-routing.module'),
+		loadChildren: () =>
+			import('@pages/dates-page/dates-page-routing.module'),
 	},
 	{
 		path: routePanel.path,
-		loadChildren: () => import('@pages/panel/panel-page/panel-page.module').then((m) => m.PanelPageModule),
+		loadChildren: () => import('@pages/panel/panel-page/panel-page.module'),
 	},
 ];
 
@@ -35,4 +36,4 @@ const routes: Routes = [
 	imports: [RouterModule.forRoot(routes)],
 	exports: [RouterModule],
 })
-export class RootRoutingModule { }
+export class RootRoutingModule {}

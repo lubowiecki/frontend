@@ -42,8 +42,9 @@ export class UserService extends BaseService {
      * User id
      */
     userId: UuidDto;
-    context?: HttpContext
-  }
+  },
+  context?: HttpContext
+
 ): Observable<StrictHttpResponse<UserDto>> {
 
     const rb = new RequestBuilder(this.rootUrl, UserService.GetUserPath, 'get');
@@ -54,7 +55,7 @@ export class UserService extends BaseService {
     return this.http.request(rb.build({
       responseType: 'json',
       accept: 'application/json',
-      context: params?.context
+      context: context
     })).pipe(
       filter((r: any) => r instanceof HttpResponse),
       map((r: HttpResponse<any>) => {
@@ -66,7 +67,7 @@ export class UserService extends BaseService {
   /**
    * Get user
    *
-   * This method provides access to only to the response body.
+   * This method provides access only to the response body.
    * To access the full response (for headers, for example), `getUser$Response()` instead.
    *
    * This method doesn't expect any request body.
@@ -77,11 +78,12 @@ export class UserService extends BaseService {
      * User id
      */
     userId: UuidDto;
-    context?: HttpContext
-  }
+  },
+  context?: HttpContext
+
 ): Observable<UserDto> {
 
-    return this.getUser$Response(params).pipe(
+    return this.getUser$Response(params,context).pipe(
       map((r: StrictHttpResponse<UserDto>) => r.body as UserDto)
     );
   }
@@ -105,9 +107,10 @@ export class UserService extends BaseService {
      * User id
      */
     userId: UuidDto;
-    context?: HttpContext
     body: UserDto
-  }
+  },
+  context?: HttpContext
+
 ): Observable<StrictHttpResponse<UserDto>> {
 
     const rb = new RequestBuilder(this.rootUrl, UserService.UpdateUserPath, 'put');
@@ -119,7 +122,7 @@ export class UserService extends BaseService {
     return this.http.request(rb.build({
       responseType: 'json',
       accept: 'application/json',
-      context: params?.context
+      context: context
     })).pipe(
       filter((r: any) => r instanceof HttpResponse),
       map((r: HttpResponse<any>) => {
@@ -131,7 +134,7 @@ export class UserService extends BaseService {
   /**
    * Update user
    *
-   * This method provides access to only to the response body.
+   * This method provides access only to the response body.
    * To access the full response (for headers, for example), `updateUser$Response()` instead.
    *
    * This method sends `application/json` and handles request body of type `application/json`.
@@ -142,12 +145,13 @@ export class UserService extends BaseService {
      * User id
      */
     userId: UuidDto;
-    context?: HttpContext
     body: UserDto
-  }
+  },
+  context?: HttpContext
+
 ): Observable<UserDto> {
 
-    return this.updateUser$Response(params).pipe(
+    return this.updateUser$Response(params,context).pipe(
       map((r: StrictHttpResponse<UserDto>) => r.body as UserDto)
     );
   }
@@ -173,8 +177,9 @@ export class UserService extends BaseService {
      * User id
      */
     userId: UuidDto;
-    context?: HttpContext
-  }
+  },
+  context?: HttpContext
+
 ): Observable<StrictHttpResponse<Blob>> {
 
     const rb = new RequestBuilder(this.rootUrl, UserService.GetUserCvPath, 'get');
@@ -185,7 +190,7 @@ export class UserService extends BaseService {
     return this.http.request(rb.build({
       responseType: 'blob',
       accept: 'application/pdf',
-      context: params?.context
+      context: context
     })).pipe(
       filter((r: any) => r instanceof HttpResponse),
       map((r: HttpResponse<any>) => {
@@ -199,7 +204,7 @@ export class UserService extends BaseService {
    *
    * Get user
    *
-   * This method provides access to only to the response body.
+   * This method provides access only to the response body.
    * To access the full response (for headers, for example), `getUserCv$Response()` instead.
    *
    * This method doesn't expect any request body.
@@ -210,11 +215,12 @@ export class UserService extends BaseService {
      * User id
      */
     userId: UuidDto;
-    context?: HttpContext
-  }
+  },
+  context?: HttpContext
+
 ): Observable<Blob> {
 
-    return this.getUserCv$Response(params).pipe(
+    return this.getUserCv$Response(params,context).pipe(
       map((r: StrictHttpResponse<Blob>) => r.body as Blob)
     );
   }

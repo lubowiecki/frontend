@@ -16,20 +16,16 @@ import { I18nModule } from '@core/i18n';
 	styleUrls: ['./user-download-cv.component.scss'],
 	changeDetection: ChangeDetectionStrategy.OnPush,
 	standalone: true,
-	imports: [
-		CommonModule,
-		I18nModule,
-		FileDownloadComponent,
-	],
+	imports: [CommonModule, I18nModule, FileDownloadComponent],
 })
 export class UserDownloadCvComponent {
 	@Input() user: Maybe<User>;
 
-	#file: BehaviorSubject<Maybe<FileDownload>> = new BehaviorSubject<Maybe<FileDownload>>(null);
+	#file: BehaviorSubject<Maybe<FileDownload>> = new BehaviorSubject<
+		Maybe<FileDownload>
+	>(null);
 
-	constructor(
-		private restUserCvGetService: RestUserCvGetService,
-	) { }
+	constructor(private restUserCvGetService: RestUserCvGetService) {}
 
 	protected getFile$(): Observable<Maybe<FileDownload>> {
 		return this.#file.asObservable();
