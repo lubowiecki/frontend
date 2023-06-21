@@ -9,9 +9,7 @@ import { IsoDateWithTime } from '@core/date/value-objects/iso-date-with-time';
 	styleUrls: ['../../dates-page.component.scss'],
 	changeDetection: ChangeDetectionStrategy.OnPush,
 	standalone: true,
-	imports: [
-		CommonModule,
-	],
+	imports: [CommonModule],
 })
 export class DatesWithTimeComponent {
 	dateWithTimeUtcSource = '2022-01-01T08:00:00Z';

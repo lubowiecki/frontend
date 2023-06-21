@@ -9,11 +9,7 @@ import { UserPageDialogsService } from './services/user-page-dialogs.service';
 
 @NgModule({
 	declarations: [UserPageDialogComponent],
-	imports: [
-		CommonModule,
-		MatDialogModule,
-		I18nModule,
-	],
+	imports: [CommonModule, MatDialogModule, I18nModule],
 	providers: [UserPageDialogsService],
 })
-export class UserPageDialogsModule { }
+export class UserPageDialogsModule {}

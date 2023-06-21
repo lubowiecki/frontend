@@ -1,5 +1,8 @@
 import { NgModule } from '@angular/core';
-import { MatDatepickerIntl, MatDatepickerModule } from '@angular/material/datepicker';
+import {
+	MatDatepickerIntl,
+	MatDatepickerModule,
+} from '@angular/material/datepicker';
 
 import { MatDatepickerTranslator } from './datepicker-translator';
 
@@ -9,14 +12,10 @@ import { MatDatepickerTranslator } from './datepicker-translator';
  * angular issue:(https://github.com/angular/components/issues/18970)
  */
 @NgModule({
-	imports: [
-		MatDatepickerModule,
-	],
-	exports: [
-		MatDatepickerModule,
-	],
+	imports: [MatDatepickerModule],
+	exports: [MatDatepickerModule],
 	providers: [
 		{ provide: MatDatepickerIntl, useClass: MatDatepickerTranslator },
 	],
 })
-export class MatDatepickerIntlModule { }
+export class MatDatepickerIntlModule {}

@@ -1,5 +1,9 @@
 import {
-	ChangeDetectionStrategy, Component, EventEmitter, Input, Output,
+	ChangeDetectionStrategy,
+	Component,
+	EventEmitter,
+	Input,
+	Output,
 } from '@angular/core';
 import { Maybe } from '@opi_pib/ts-utility';
 import { CommonModule } from '@angular/common';

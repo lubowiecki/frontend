@@ -8,23 +8,24 @@ import { environment } from '@environment';
 import { WebSocketEventType } from '../rest/models';
 
 type WebSocketEventsMap = {
-	[event in WebSocketEventType]: (...args: any[]) => void
-}
+	[event in WebSocketEventType]: (...args: string[]) => void;
+};
 
 @Injectable({
 	providedIn: 'root',
 })
 export class WebSocketService {
-	#socket$: BehaviorSubject<Maybe<Socket<WebSocketEventsMap>>> = new BehaviorSubject<Maybe<Socket<WebSocketEventsMap>>>(null);
-
-	constructor() { }
+	#socket$: BehaviorSubject<Maybe<Socket<WebSocketEventsMap>>> =
+		new BehaviorSubject<Maybe<Socket<WebSocketEventsMap>>>(null);
 
 	open(token: string): void {
-		this.#socket$.next(io(environment.webSocketUri, {
-			auth: {
-				token,
-			},
-		}));
+		this.#socket$.next(
+			io(environment.webSocketUri, {
+				auth: {
+					token,
+				},
+			})
+		);
 	}
 
 	close(): void {

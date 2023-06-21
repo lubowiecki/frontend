@@ -5,12 +5,8 @@ import {
 	Input,
 	Output,
 } from '@angular/core';
-import {
-	always, Is, Maybe,
-} from '@opi_pib/ts-utility';
-import {
-	FormBuilder, FormGroup, Validators,
-} from '@angular/forms';
+import { always, Is, Maybe } from '@opi_pib/ts-utility';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { User } from '@core/user/value-objects/user';
 import { IsoDate } from '@core/date/value-objects/iso-date';
@@ -47,7 +43,9 @@ export class UserDetailsFormComponent {
 
 	constructor(private fb: FormBuilder) {
 		this.formGroup = this.fb.group<UserDetailsFormControls>({
-			firstname: this.fb.nonNullable.control('', [Validators.minLength(3)]),
+			firstname: this.fb.nonNullable.control('', [
+				Validators.minLength(3),
+			]),
 			lastname: this.fb.nonNullable.control(''),
 			year: this.fb.control(null, [Validators.required]),
 			creationDate: this.fb.control(null, [Validators.required]),
@@ -66,9 +64,9 @@ export class UserDetailsFormComponent {
 				...value,
 				year: IsoDate.fromDateTime(value.year),
 				creationDate: IsoDateWithTime.fromDto(value.creationDate),
-				updateDate: Is.defined(value.updateDate) ?
-					IsoDateWithTime.fromDto(value.updateDate) :
-					null,
+				updateDate: Is.defined(value.updateDate)
+					? IsoDateWithTime.fromDto(value.updateDate)
+					: null,
 			});
 
 			this.userChange.emit(updatedUser);

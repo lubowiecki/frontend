@@ -12,14 +12,10 @@ import { IsoDate } from '@core/date/value-objects/iso-date';
 	styleUrls: ['../../dates-page.component.scss'],
 	changeDetection: ChangeDetectionStrategy.OnPush,
 	standalone: true,
-	imports: [
-		CommonModule,
-		ReactiveFormsModule,
-		MatInputModule,
-	],
+	imports: [CommonModule, ReactiveFormsModule, MatInputModule],
 })
 export class DatesNativeComponent {
-	constructor(private fb: FormBuilder) { }
+	constructor(private fb: FormBuilder) {}
 
 	dateLocalSource = '2022-01-01';
 
@@ -30,7 +26,10 @@ export class DatesNativeComponent {
 	});
 
 	dateLocalControlValue(): Maybe<IsoDate> {
-		if (this.dateLocalControl.valid && Is.string(this.dateLocalControl.value)) {
+		if (
+			this.dateLocalControl.valid &&
+			Is.string(this.dateLocalControl.value)
+		) {
 			return IsoDate.fromDto(this.dateLocalControl.value);
 		}
 

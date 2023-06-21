@@ -25,7 +25,7 @@ import { MatDatepickerIntlModule } from '@core/vendor/angular-material';
 	],
 })
 export class DatesComponent {
-	constructor(private fb: FormBuilder) { }
+	constructor(private fb: FormBuilder) {}
 
 	dateLocalSource = '2022-01-01';
 
@@ -34,7 +34,10 @@ export class DatesComponent {
 	dateLocalControl = this.fb.control<Maybe<DateTime>>(this.dateLocal.date);
 
 	dateLocalControlValue(): Maybe<IsoDate> {
-		if (this.dateLocalControl.valid && this.dateLocalControl.value instanceof DateTime) {
+		if (
+			this.dateLocalControl.valid &&
+			this.dateLocalControl.value instanceof DateTime
+		) {
 			return IsoDate.fromDateTime(this.dateLocalControl.value);
 		}
 
@@ -43,13 +46,22 @@ export class DatesComponent {
 
 	dateWithTimeUtcDatepickerSource = '2022-01-01T00:00:00Z';
 
-	dateWithTimeUtcDatepicker = IsoDateWithTime.fromDto(this.dateWithTimeUtcDatepickerSource);
+	dateWithTimeUtcDatepicker = IsoDateWithTime.fromDto(
+		this.dateWithTimeUtcDatepickerSource
+	);
 
-	dateWithTimeUtcControl = this.fb.control<Maybe<DateTime>>(this.dateWithTimeUtcDatepicker.date);
+	dateWithTimeUtcControl = this.fb.control<Maybe<DateTime>>(
+		this.dateWithTimeUtcDatepicker.date
+	);
 
 	dateWithTimeUtcControlValue(): Maybe<IsoDateWithTime> {
-		if (this.dateWithTimeUtcControl.valid && this.dateWithTimeUtcControl.value instanceof DateTime) {
-			return IsoDateWithTime.fromDateTime(this.dateWithTimeUtcControl.value);
+		if (
+			this.dateWithTimeUtcControl.valid &&
+			this.dateWithTimeUtcControl.value instanceof DateTime
+		) {
+			return IsoDateWithTime.fromDateTime(
+				this.dateWithTimeUtcControl.value
+			);
 		}
 
 		return null;

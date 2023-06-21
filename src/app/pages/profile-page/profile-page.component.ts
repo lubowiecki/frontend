@@ -15,11 +15,15 @@ import { RestUserGetService } from '@core/user/services/rest-user-get.service';
 export class ProfilePageComponent {
 	user$: Observable<User>;
 
-	isFetchingGetUser$ = RestQuery.isProcessingAny$([this.restUserGetService.isProcessing$()]);
+	isFetchingGetUser$ = RestQuery.isProcessingAny$([
+		this.restUserGetService.isProcessing$(),
+	]);
 
 	constructor(private restUserGetService: RestUserGetService) {
-		this.user$ = this.restUserGetService.getUser$(UserId.create({
-			id: '00000000-aaaa-dddd-ffff-000000000000',
-		}));
+		this.user$ = this.restUserGetService.getUser$(
+			UserId.create({
+				id: '00000000-aaaa-dddd-ffff-000000000000',
+			})
+		);
 	}
 }

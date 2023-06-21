@@ -25,10 +25,9 @@ export class RestUserGetService extends RestQuery {
 		});
 
 		return this.query$(
-			this.httpClient
-				.get<UserDto>(`${environment.restUri}/user`, {
-					params,
-				}),
+			this.httpClient.get<UserDto>(`${environment.restUri}/user`, {
+				params,
+			})
 		).pipe(map((userDto) => User.fromDto(userDto)));
 	}
 }

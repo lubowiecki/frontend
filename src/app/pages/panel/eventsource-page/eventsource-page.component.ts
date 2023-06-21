@@ -6,4 +6,4 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
 	styleUrls: ['./eventsource-page.component.scss'],
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class EventsourcePageComponent { }
+export class EventsourcePageComponent {}

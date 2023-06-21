@@ -31,4 +31,4 @@ import { RootModule } from './root/root.module';
 	],
 	bootstrap: [RootComponent],
 })
-export class AppModule { }
+export class AppModule {}

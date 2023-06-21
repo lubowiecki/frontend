@@ -14,4 +14,4 @@ const routes: Routes = [
 	imports: [RouterModule.forChild(routes)],
 	exports: [RouterModule],
 })
-export default class DatesPageRoutingModule { }
+export default class DatesPageRoutingModule {}

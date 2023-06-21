@@ -18,4 +18,4 @@ import { DatesComponent } from './components/dates/dates.component';
 		DatesWithTimeNativeComponent,
 	],
 })
-export class DatesPageComponent { }
+export class DatesPageComponent {}

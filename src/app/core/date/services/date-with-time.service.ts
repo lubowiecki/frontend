@@ -10,14 +10,12 @@ import { IsoDateWithTime } from '../value-objects/iso-date-with-time';
 	providedIn: 'root',
 })
 export class DateWithTimeService {
-	constructor(private i18nService: I18nService) { }
+	constructor(private i18nService: I18nService) {}
 
 	getRelativeDate$(date$: Observable<IsoDateWithTime>) {
 		return combineLatest([
 			this.i18nService.getCurrentLanguage$(),
 			date$,
-		]).pipe(
-			map(([lang, date]) => date.formatRelative(lang)),
-		);
+		]).pipe(map(([lang, date]) => date.formatRelative(lang)));
 	}
 }

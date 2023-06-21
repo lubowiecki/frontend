@@ -9,12 +9,6 @@ type TranslationLanguageMap = {
 };
 
 export const translationLanguageMap: TranslationLanguageMap = {
-	pl: {
-		translationKey: t('languageSwitcher.lang.pl'),
-	},
-	en: {
-		translationKey: t('languageSwitcher.lang.en'),
-	},
 	'en-US': {
 		translationKey: t('languageSwitcher.lang.en-us'),
 	},

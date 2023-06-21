@@ -1,6 +1,9 @@
 import { NgModule } from '@angular/core';
 import {
-	LuxonDateAdapter, MatLuxonDateAdapterOptions, MatLuxonDateModule, MAT_LUXON_DATE_ADAPTER_OPTIONS,
+	LuxonDateAdapter,
+	MatLuxonDateAdapterOptions,
+	MatLuxonDateModule,
+	MAT_LUXON_DATE_ADAPTER_OPTIONS,
 } from '@angular/material-luxon-adapter';
 import { DateAdapter } from '@angular/material/core';
 
@@ -21,7 +24,10 @@ const options: MatLuxonDateAdapterOptions = {
 	],
 })
 export class MatDatepickerConfigModule {
-	constructor(private i18nService: I18nService, private dateAdapter: DateAdapter<LuxonDateAdapter>) {
+	constructor(
+		private i18nService: I18nService,
+		private dateAdapter: DateAdapter<LuxonDateAdapter>
+	) {
 		this.i18nService.getCurrentLanguage$().subscribe((lang) => {
 			this.dateAdapter.setLocale(lang.toDto());
 		});

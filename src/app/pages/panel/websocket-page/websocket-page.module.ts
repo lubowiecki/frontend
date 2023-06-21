@@ -5,15 +5,8 @@ import { WebsocketPageComponent } from './websocket-page.component';
 import { WebsocketPageRoutingModule } from './websocket-page-routing.module';
 
 @NgModule({
-	declarations: [
-		WebsocketPageComponent,
-	],
-	imports: [
-		CommonModule,
-		WebsocketPageRoutingModule,
-	],
-	exports: [
-		WebsocketPageComponent,
-	],
+	declarations: [WebsocketPageComponent],
+	imports: [CommonModule, WebsocketPageRoutingModule],
+	exports: [WebsocketPageComponent],
 })
-export class WebsocketPageModule { }
+export class WebsocketPageModule {}

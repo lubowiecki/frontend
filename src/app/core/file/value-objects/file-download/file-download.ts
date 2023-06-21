@@ -1,7 +1,5 @@
 import { HttpEvent, HttpEventType } from '@angular/common/http';
-import {
-	always, Is, Maybe, ValueObject,
-} from '@opi_pib/ts-utility';
+import { always, Is, Maybe, ValueObject } from '@opi_pib/ts-utility';
 
 import { FileDownloadProps } from './file-download-props';
 import { isFileDownloadProps } from './is-file-download-props';
@@ -29,7 +27,10 @@ export class FileDownload extends ValueObject<FileDownloadProps> {
 			progress = 100;
 
 			content = event.body ? new Blob([event.body], { type }) : null;
-		} else if (event.type === HttpEventType.DownloadProgress && Is.number(event.total)) {
+		} else if (
+			event.type === HttpEventType.DownloadProgress &&
+			Is.number(event.total)
+		) {
 			progress = Math.floor((event.loaded / event.total) * 100);
 		}
 

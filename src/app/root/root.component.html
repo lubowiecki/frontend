@@ -1,15 +1,21 @@
-<ul class="flex space-x-sm">
-	<li>
-		<a routerLink="/">{{ "page.profile.title" | translate }}</a>
-	</li>
-	<li>
-		<a routerLink="dates">Dates</a>
-	</li>
-	<li>
-		<a routerLink="panel">Panel</a>
-	</li>
-</ul>
-<div class="mb-md">
-	<app-language-switcher-container></app-language-switcher-container>
-</div>
-<router-outlet></router-outlet>
+<header>
+	<nav>
+		<ul class="flex space-x-sm">
+			<li>
+				<a routerLink="/">{{ "page.profile.title" | translate }}</a>
+			</li>
+			<li>
+				<a routerLink="dates">Dates</a>
+			</li>
+			<li>
+				<a routerLink="panel">Panel</a>
+			</li>
+		</ul>
+	</nav>
+	<div class="mb-md">
+		<app-language-switcher-container></app-language-switcher-container>
+	</div>
+</header>
+<main>
+	<router-outlet></router-outlet>
+</main>

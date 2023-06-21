@@ -32,7 +32,8 @@ export class IsoDate extends ValueObject<IsoDateProps> {
 	}
 
 	static validator(): ValidatorFn {
-		return (control) => (!isIsoDateDto(control?.value) ? { pattern: true } : null);
+		return (control) =>
+			!isIsoDateDto(control?.value) ? { pattern: true } : null;
 	}
 
 	get date(): DateTime {

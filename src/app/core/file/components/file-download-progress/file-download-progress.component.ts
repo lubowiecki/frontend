@@ -12,10 +12,7 @@ import { FileDownload } from '@core/file/value-objects/file-download';
 	styleUrls: ['./file-download-progress.component.scss'],
 	changeDetection: ChangeDetectionStrategy.OnPush,
 	standalone: true,
-	imports: [
-		CommonModule,
-		MatProgressSpinnerModule,
-	],
+	imports: [CommonModule, MatProgressSpinnerModule],
 })
 export class FileDownloadProgressComponent {
 	@Input() file: Maybe<FileDownload>;

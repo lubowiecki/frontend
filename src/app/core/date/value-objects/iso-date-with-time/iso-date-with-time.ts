@@ -1,6 +1,4 @@
-import {
-	always, Is, Maybe, ValueObject,
-} from '@opi_pib/ts-utility';
+import { always, Is, Maybe, ValueObject } from '@opi_pib/ts-utility';
 import { DateTime } from 'luxon';
 
 import { IsoDateWithTimeDto } from '@api/rest/models';
@@ -48,7 +46,9 @@ export class IsoDateWithTime extends ValueObject<IsoDateWithTimeProps> {
 	}
 
 	toDto(): IsoDateWithTimeDto {
-		const isoDate = this.date.toUTC().toISO({ includeOffset: true, suppressMilliseconds: true });
+		const isoDate = this.date
+			.toUTC()
+			.toISO({ includeOffset: true, suppressMilliseconds: true });
 		always(Is.string(isoDate), '8b6wq1e1');
 
 		return isoDate;

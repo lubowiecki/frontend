@@ -4,6 +4,10 @@
 
 # E2e tests
 
+Preferred https://playwright.dev/docs/intro
+https://playwright.dev/docs/accessibility-testing
+https://playwright.dev/docs/test-snapshots
+
 ## Frontend
 
 `npm run start:mock:e2e`
@@ -14,7 +18,7 @@
 
 ## Routing
 
-### Use queryParams instead of route params
+### Use queryParams instead of route params except resource id
 
 Bad
 `'/product-details/:id'`

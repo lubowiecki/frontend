@@ -10,7 +10,8 @@ import { translationLanguageMap } from './translation-language-map';
 
 export class TranslationLanguage
 	extends ValueObject<TranslationLanguageProps>
-	implements TranslationLanguageBase<TranslationLanguageEnum, TranslationKey> {
+	implements TranslationLanguageBase<TranslationLanguageEnum, TranslationKey>
+{
 	constructor(protected override readonly props: TranslationLanguageProps) {
 		super(props);
 	}

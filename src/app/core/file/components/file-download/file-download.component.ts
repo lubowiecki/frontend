@@ -1,5 +1,9 @@
 import {
-	Component, ChangeDetectionStrategy, Input, Output, EventEmitter,
+	Component,
+	ChangeDetectionStrategy,
+	Input,
+	Output,
+	EventEmitter,
 } from '@angular/core';
 import { Is, Maybe } from '@opi_pib/ts-utility';
 import { CommonModule } from '@angular/common';
@@ -15,11 +19,7 @@ import { FileDownloadProgressComponent } from '../file-download-progress/file-do
 	styleUrls: ['./file-download.component.scss'],
 	changeDetection: ChangeDetectionStrategy.OnPush,
 	standalone: true,
-	imports: [
-		CommonModule,
-		MatButtonModule,
-		FileDownloadProgressComponent,
-	],
+	imports: [CommonModule, MatButtonModule, FileDownloadProgressComponent],
 })
 export class FileDownloadComponent {
 	@Input() label = '';

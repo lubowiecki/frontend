@@ -40,9 +40,6 @@ testem.log
 # System files
 .DS_Store
 Thumbs.db
-
-# Cypress
-cypress/screenshots
-cypress-visual-report
-cypress-visual-screenshots/comparison
-cypress-visual-screenshots/diff
+/test-results/
+/playwright-report/
+/playwright/.cache/

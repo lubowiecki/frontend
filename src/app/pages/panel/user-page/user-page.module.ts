@@ -11,9 +11,7 @@ import { UserPageComponent } from './user-page.component';
 import { UserPageDialogsModule } from './user-page-dialogs/user-page-dialogs.module';
 
 @NgModule({
-	declarations: [
-		UserPageComponent,
-	],
+	declarations: [UserPageComponent],
 	imports: [
 		CommonModule,
 		MatProgressSpinnerModule,
@@ -24,4 +22,4 @@ import { UserPageDialogsModule } from './user-page-dialogs/user-page-dialogs.mod
 		I18nModule,
 	],
 })
-export class UserPageModule { }
+export class UserPageModule {}

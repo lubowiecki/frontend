@@ -12,16 +12,23 @@ export class WebSocketUserService {
 	constructor(private webSocketService: WebSocketService) {
 		this.webSocketService.socket$().subscribe((socket) => {
 			if (socket) {
-				socket.on(WebSocketEventType.UserCreated, (x: string) => console.log(User.fromString(x)));
+				socket.on(WebSocketEventType.UserCreated, (x: string) =>
+					// eslint-disable-next-line no-console
+					console.log(User.fromString(x))
+				);
 			}
 		});
 	}
 
 	emitUserCreate(data: string): void {
-		this.webSocketService.value()?.emit(WebSocketEventType.UserCreate, data);
+		this.webSocketService
+			.value()
+			?.emit(WebSocketEventType.UserCreate, data);
 	}
 
 	emitUserUpdate(data: string): void {
-		this.webSocketService.value()?.emit(WebSocketEventType.UserUpdate, data);
+		this.webSocketService
+			.value()
+			?.emit(WebSocketEventType.UserUpdate, data);
 	}
 }
