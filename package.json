@@ -12,7 +12,7 @@
 		"lint": "prettier --ignore-path=.gitignore -c ./",
 		"lint:scripts": "ng lint",
 		"lint:styles": "stylelint **/*.scss --fix -i=.gitignore",
-		"analyze:bundle": "npm run build:prod -- --stats-json && npx webpack-bundle-analyzer dist/frontend/stats.json --port 4002",
+		"analyze:bundle": "npm run build:prod -- --stats-json && npx webpack-bundle-analyzer dist/angular-frontend/stats.json --port 4002",
 		"translate:build": "translate build --source=\"./src/app/**/*+(.ts|.html)\" --i18n=./src/app/core/i18n/translations --langs=en-US --langs=pl-PL",
 		"dtos:build": "openapi b typescript --dist=./src/api/rest --typesOnly=false"
 	},
