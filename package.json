@@ -33,7 +33,7 @@
 		"@opi_pib/ngx-utility": "16.0.0",
 		"@opi_pib/node-translate": "1.2.1",
 		"@opi_pib/ts-utility": "1.1.7",
-		"luxon": "^3.3.0",
+		"luxon": "^3.4.0",
 		"ramda": "^0.29.0",
 		"rxjs": "~7.8.0",
 		"socket.io-client": "^4.6.2",
