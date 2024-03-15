@@ -1,31 +1,29 @@
 /* tslint:disable */
 /* eslint-disable */
+import { HttpClient, HttpContext } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpResponse, HttpContext } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
+
 import { BaseService } from '../base-service';
 import { ApiConfiguration } from '../api-configuration';
 import { StrictHttpResponse } from '../strict-http-response';
-import { RequestBuilder } from '../request-builder';
-import { Observable } from 'rxjs';
-import { map, filter } from 'rxjs/operators';
 
+import { getUser } from '../fn/user/get-user';
+import { GetUser$Params } from '../fn/user/get-user';
+import { getUserCv } from '../fn/user/get-user-cv';
+import { GetUserCv$Params } from '../fn/user/get-user-cv';
+import { updateUser } from '../fn/user/update-user';
+import { UpdateUser$Params } from '../fn/user/update-user';
 import { UserDto } from '../models/user-dto';
-import { UuidDto } from '../models/uuid-dto';
 
-@Injectable({
-  providedIn: 'root',
-})
+@Injectable({ providedIn: 'root' })
 export class UserService extends BaseService {
-  constructor(
-    config: ApiConfiguration,
-    http: HttpClient
-  ) {
+  constructor(config: ApiConfiguration, http: HttpClient) {
     super(config, http);
   }
 
-  /**
-   * Path part for operation getUser
-   */
+  /** Path part for operation `getUser()` */
   static readonly GetUserPath = '/user';
 
   /**
@@ -36,32 +34,8 @@ export class UserService extends BaseService {
    *
    * This method doesn't expect any request body.
    */
-  getUser$Response(params: {
-
-    /**
-     * User id
-     */
-    userId: UuidDto;
-  },
-  context?: HttpContext
-
-): Observable<StrictHttpResponse<UserDto>> {
-
-    const rb = new RequestBuilder(this.rootUrl, UserService.GetUserPath, 'get');
-    if (params) {
-      rb.query('userId', params.userId, {});
-    }
-
-    return this.http.request(rb.build({
-      responseType: 'json',
-      accept: 'application/json',
-      context: context
-    })).pipe(
-      filter((r: any) => r instanceof HttpResponse),
-      map((r: HttpResponse<any>) => {
-        return r as StrictHttpResponse<UserDto>;
-      })
-    );
+  getUser$Response(params: GetUser$Params, context?: HttpContext): Observable<StrictHttpResponse<UserDto>> {
+    return getUser(this.http, this.rootUrl, params, context);
   }
 
   /**
@@ -72,25 +46,13 @@ export class UserService extends BaseService {
    *
    * This method doesn't expect any request body.
    */
-  getUser(params: {
-
-    /**
-     * User id
-     */
-    userId: UuidDto;
-  },
-  context?: HttpContext
-
-): Observable<UserDto> {
-
-    return this.getUser$Response(params,context).pipe(
-      map((r: StrictHttpResponse<UserDto>) => r.body as UserDto)
+  getUser(params: GetUser$Params, context?: HttpContext): Observable<UserDto> {
+    return this.getUser$Response(params, context).pipe(
+      map((r: StrictHttpResponse<UserDto>): UserDto => r.body)
     );
   }
 
-  /**
-   * Path part for operation updateUser
-   */
+  /** Path part for operation `updateUser()` */
   static readonly UpdateUserPath = '/user';
 
   /**
@@ -101,34 +63,8 @@ export class UserService extends BaseService {
    *
    * This method sends `application/json` and handles request body of type `application/json`.
    */
-  updateUser$Response(params: {
-
-    /**
-     * User id
-     */
-    userId: UuidDto;
-    body: UserDto
-  },
-  context?: HttpContext
-
-): Observable<StrictHttpResponse<UserDto>> {
-
-    const rb = new RequestBuilder(this.rootUrl, UserService.UpdateUserPath, 'put');
-    if (params) {
-      rb.query('userId', params.userId, {});
-      rb.body(params.body, 'application/json');
-    }
-
-    return this.http.request(rb.build({
-      responseType: 'json',
-      accept: 'application/json',
-      context: context
-    })).pipe(
-      filter((r: any) => r instanceof HttpResponse),
-      map((r: HttpResponse<any>) => {
-        return r as StrictHttpResponse<UserDto>;
-      })
-    );
+  updateUser$Response(params: UpdateUser$Params, context?: HttpContext): Observable<StrictHttpResponse<UserDto>> {
+    return updateUser(this.http, this.rootUrl, params, context);
   }
 
   /**
@@ -139,26 +75,13 @@ export class UserService extends BaseService {
    *
    * This method sends `application/json` and handles request body of type `application/json`.
    */
-  updateUser(params: {
-
-    /**
-     * User id
-     */
-    userId: UuidDto;
-    body: UserDto
-  },
-  context?: HttpContext
-
-): Observable<UserDto> {
-
-    return this.updateUser$Response(params,context).pipe(
-      map((r: StrictHttpResponse<UserDto>) => r.body as UserDto)
+  updateUser(params: UpdateUser$Params, context?: HttpContext): Observable<UserDto> {
+    return this.updateUser$Response(params, context).pipe(
+      map((r: StrictHttpResponse<UserDto>): UserDto => r.body)
     );
   }
 
-  /**
-   * Path part for operation getUserCv
-   */
+  /** Path part for operation `getUserCv()` */
   static readonly GetUserCvPath = '/user/cv';
 
   /**
@@ -171,32 +94,8 @@ export class UserService extends BaseService {
    *
    * This method doesn't expect any request body.
    */
-  getUserCv$Response(params: {
-
-    /**
-     * User id
-     */
-    userId: UuidDto;
-  },
-  context?: HttpContext
-
-): Observable<StrictHttpResponse<Blob>> {
-
-    const rb = new RequestBuilder(this.rootUrl, UserService.GetUserCvPath, 'get');
-    if (params) {
-      rb.query('userId', params.userId, {});
-    }
-
-    return this.http.request(rb.build({
-      responseType: 'blob',
-      accept: 'application/pdf',
-      context: context
-    })).pipe(
-      filter((r: any) => r instanceof HttpResponse),
-      map((r: HttpResponse<any>) => {
-        return r as StrictHttpResponse<Blob>;
-      })
-    );
+  getUserCv$Response(params: GetUserCv$Params, context?: HttpContext): Observable<StrictHttpResponse<Blob>> {
+    return getUserCv(this.http, this.rootUrl, params, context);
   }
 
   /**
@@ -209,19 +108,9 @@ export class UserService extends BaseService {
    *
    * This method doesn't expect any request body.
    */
-  getUserCv(params: {
-
-    /**
-     * User id
-     */
-    userId: UuidDto;
-  },
-  context?: HttpContext
-
-): Observable<Blob> {
-
-    return this.getUserCv$Response(params,context).pipe(
-      map((r: StrictHttpResponse<Blob>) => r.body as Blob)
+  getUserCv(params: GetUserCv$Params, context?: HttpContext): Observable<Blob> {
+    return this.getUserCv$Response(params, context).pipe(
+      map((r: StrictHttpResponse<Blob>): Blob => r.body)
     );
   }
 
