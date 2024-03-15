@@ -12,6 +12,7 @@ import { I18nService } from '@core/i18n';
 const options: MatLuxonDateAdapterOptions = {
 	firstDayOfWeek: 1,
 	useUtc: false,
+	defaultOutputCalendar: 'iso8601',
 };
 
 @NgModule({
@@ -26,7 +27,7 @@ const options: MatLuxonDateAdapterOptions = {
 export class MatDatepickerConfigModule {
 	constructor(
 		private i18nService: I18nService,
-		private dateAdapter: DateAdapter<LuxonDateAdapter>
+		private dateAdapter: DateAdapter<LuxonDateAdapter>,
 	) {
 		this.i18nService.getCurrentLanguage$().subscribe((lang) => {
 			this.dateAdapter.setLocale(lang.toDto());
