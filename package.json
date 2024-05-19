@@ -34,7 +34,7 @@
 		"@opi_pib/node-translate": "^1.2.7",
 		"@opi_pib/ts-utility": "^1.1.14",
 		"luxon": "^3.4.4",
-		"ramda": "^0.29.1",
+		"ramda": "^0.30.0",
 		"rxjs": "~7.8.0",
 		"socket.io-client": "^4.7.5",
 		"tslib": "^2.3.0",
