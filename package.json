@@ -32,7 +32,7 @@
 		"@opi_pib/ngx-i18n": "^17.0.1",
 		"@opi_pib/ngx-utility": "^17.0.1",
 		"@opi_pib/node-translate": "^1.2.7",
-		"@opi_pib/ts-utility": "^1.1.14",
+		"@opi_pib/ts-utility": "^1.1.16",
 		"luxon": "^3.4.4",
 		"ramda": "^0.29.1",
 		"rxjs": "~7.8.0",
